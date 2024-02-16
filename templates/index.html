@@ -7,7 +7,14 @@
     <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div id="myElement">Hello, World!</div>
+    <label for="xInput">x:</label>
+    <input type="text" id="xInput" />
+
+    <label for="yInput">y:</label>
+    <input type="text" id="yInput" />
+    <button onclick="addAndMultiply()">Calculate</button>
+    <label for="output">Output:</label>
+    <input type="text" id="output" name="output" readonly>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
