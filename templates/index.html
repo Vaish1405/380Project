@@ -2,41 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    <!-- <nav class="nav-menu">
-        <img src="../static/images/logo.png" class="logo"/>
+    <nav class="nav-menu">
+        <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
         <ul class="nav-list">
-            <li>Hotel Info</li>
-            <li>Rooms</li>
-            <li>Food</li>
-            <li>Reserve</li>
+            <li><a href="#">Rooms</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Amenities</a></li>
+            <li><a href="#">Reserve</a></li>
         </ul>
-    </nav> -->
-
-    <nav>
-        <a href="#">Home</a>
-        <div class="dropdown">
-            <a href="#">Rooms & Suites</a>
-            <div class="dropdown-content">
-                <a href="#">Single Rooms</a>
-                <a href="#">Double Rooms</a>
-                <a href="#">Suites</a>
+    </nav>
+    <div class="container">
+        <img src="../static/images/balconyView.png" class="" />
+    </div>
+    <div class="info-container">
+        <p>
+            At LAHotels, our mission is to provide a serene haven where guests can escape the stresses 
+            of everyday life and immerse themselves in tranquility. We strive to create an oasis of relaxation, 
+            offering luxurious accommodations, and breathtaking natural surroundings for every guest to ensure
+            they depart feeling refreshed, revitalized, and inspired.
+        </p>
+    </div>
+    <div class="container-with-text">
+        <img src="../static/images/womanRelax.png" class="" />
+        <p class="img-text">Located at the heart of the city, for your convenience.</p>
+    </div>
+    <div class="footer">
+        <div class="footer-left">
+            <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
+            <p>Contact: (818) 232-23245</p>
+            <p>18111 Nordhoff St,<br> Northridge,<br> CA 91330</p>
+            <div class="social-container">
+                <a><img src="../static/images/socials/Facebook.png" /></a>
+                <a><img src="../static/images/socials/Instagram.png" /></a>
+                <a><img src="../static/images/socials/Youtube.png" /></a>
             </div>
         </div>
-        <a href="#">Special Offers</a>
-        <a href="#">Reservation</a>
-        <a href="#">Amenities</a>
-        <a href="#">Dining</a>
-        <a href="#">Location</a>
-        <a href="#">Contact</a>
-        <a href="#">Gallery</a>
-        <a href="#">Reviews</a>
-        <a href="#">About Us</a>
-        <a href="#">Blog</a>
-    </nav>
+        <div class="footer-right">
+            <p class="heading">Stay in touch!</p>
+            <p>Sign up for our news and updates.</p>
+            <input placeholder="Name" id="name"><br>
+            <input placeholder="Email address" id="email"><br>
+            <button>Send</button>
+        </div>
+    </div>
 </body>
 </html>

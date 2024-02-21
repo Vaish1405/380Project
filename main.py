@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-import logging
 
 app = Flask(__name__)
-# to disable the logs that are printed on terminal
-
 
 @app.route('/')
 def home():
