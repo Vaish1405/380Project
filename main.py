@@ -6,6 +6,10 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/food')
+def food():
+    return render_template('food.html')
+
 # implementation of additional pages in flask
     # @app.route('/add-and-multiply', methods=['POST']) 
     # def add_and_multiply(): 
