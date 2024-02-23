@@ -21,3 +21,5 @@ def food():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# adding test stuff rn
