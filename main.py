@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
+import csv
 
 app = Flask(__name__)
+
+CSV_FILE = 'AvailableRooms.csv'
 
 @app.route('/')
 def home():
@@ -10,22 +13,13 @@ def home():
 def food():
     return render_template('food.html')
 
-@app.route('/room')
-def room():
-    return render_template('room.html')
+@app.route('/rooms')
+def rooms():
+    return render_template('rooms.html')
 
-@app.route('/amenities')
-def amenities():
-    return render_template('amenities.html')
-
-# implementation of additional pages in flask
-    # @app.route('/add-and-multiply', methods=['POST']) 
-    # def add_and_multiply(): 
-    #     data = request.get_json()  # retrieve the data sent from JavaScript 
-    #     x = float(data.get('x', 0))  # convert to float, default to 0 if not present
-    #     y = float(data.get('y', 0))
-    #     result = (x + y) * 2
-    #     return jsonify(result=result) 
+@app.route('/available-rooms')
+def availableRooms():
+    return f"rooms available"
 
 if __name__ == '__main__':
     app.run(debug=True)
