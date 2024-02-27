@@ -1,6 +1,6 @@
-RoomType, RoomNumber,Available
-Standard, 101,True
-Standard, 102,True,
-Deluxe, 203,False
-Deluxe, 204,True
-SuperDeluxe, 005,True
+RoomType,RoomNumber,Available
+Standard,101,True
+Standard,102,True,
+Deluxe,203,False
+Deluxe,204,True
+SuperDeluxe,005,True
