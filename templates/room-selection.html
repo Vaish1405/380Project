@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
-    <link rel="stylesheet" href="../static/css/food.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/reservationPages.css">
 </head>
 <body>
     <nav class="nav-menu">
@@ -12,16 +13,21 @@
         <ul class="nav-list">
             <li><a href="#">Events</a></li>
             <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
-            <li><a href="{{ url_for('food') }}" class="active">Food</a></li>
+            <li><a href="{{ url_for('food') }}">Food</a></li>
             <li><a href="#">Amenities</a></li>
-            <li><a href="{{ url_for('dateSelection')}}">Reserve</a></li>
+            <li><a href="{{ url_for('dateSelection')}}" class="active">Reserve</a></li>
         </ul>
     </nav>
-    <div class="container">
-        <img src="/static/images/foodintropic.jpeg" class=""/>
+
+    <div class="bg-main">
+        <!-- <img src="/static/images/availableRoomsbg.png" class=""/> -->
+        <h2>CHOOSE YOUR ROOM TYPE</h2>
     </div>
-    <div class="containerformenu">
-        <img src="static/images/menupic.png" class=""/>
+    <div class="images">
+        <img src="../static/images/reservationInfo.png" />
+    </div>
+    <div class="images">
+        <a href="{{ url_for('extraSelection') }}"><img src="../static/images/availableRoomsInfo.png" /></a>
     </div>
     <div class="footer">
         <div class="footer-left">

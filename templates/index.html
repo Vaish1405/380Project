@@ -12,12 +12,12 @@
         <ul class="nav-list">
             <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
             <li><a href="{{ url_for('food' )}}">Food</a></li>
-            <li><a href="">Amenities</a></li>
-            <li><a href="#">Reserve</a></li>
+            <li><a href="#">Amenities</a></li>
+            <li><a href="{{ url_for('dateSelection')}}">Reserve</a></li>
         </ul>
     </nav>
     <div class="container">
-        <form action="/available-rooms" method="">
+        <form action="/room-selection" method="">
             <div class="availability-form">
                 <div>
                     <label for="check-in">Check-in Date</label><br> 

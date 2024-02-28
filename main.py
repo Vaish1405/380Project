@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request
 import csv
 
-app = Flask(__name__)
+csv_file = 'AvailableRooms.csv'
 
-CSV_FILE = 'AvailableRooms.csv'
+app = Flask(__name__)
 
 @app.route('/')
 def home():
@@ -17,13 +17,18 @@ def food():
 def rooms():
     return render_template('rooms.html')
 
-@app.route('/selectRoom')
-def selectRoom():
-    return render_template('selectroom.html')
+@app.route('/dateSelection')
+def dateSelection(): 
+    return render_template('dateSelection.html')
 
-@app.route('/available-rooms')
-def availableRooms():
-    return f"rooms available"
+@app.route('/room-selection')
+def roomSelection():
+    return render_template('room-selection.html')
+
+@app.route('/extraSelection')
+def extraSelection(): 
+    return render_template('extraSelection.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
