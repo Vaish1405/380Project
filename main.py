@@ -17,6 +17,10 @@ def food():
 def rooms():
     return render_template('rooms.html')
 
+@app.route('/selectRoom')
+def selectRoom():
+    return render_template('selectroom.html')
+
 @app.route('/available-rooms')
 def availableRooms():
     return f"rooms available"
