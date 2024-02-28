@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
-    <link rel="stylesheet" href="../static/css/rooms.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/reservationPages.css"
 </head>
 <body>
     <nav class="nav-menu">
@@ -12,47 +13,12 @@
         <ul class="nav-list">
             <li><a href="#">Events</a></li>
             <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
-            <li><a href="{{ url_for('food' )}}">Food</a></li>
+            <li><a href="{{ url_for('food') }}">Food</a></li>
             <li><a href="#">Amenities</a></li>
             <li><a href="#">Reserve</a></li>
         </ul>
     </nav>
-
-    <div class="container">
-        <img src="/static/images/roomsFirst.png" class=""/>
-        <div class="img-text">
-            <h2>ROOMS & SUITES</h2>
-            <p class="value-text">4.8</p>
-            <p class="info-text">Customer Ratings</p>
-            <p class="value-text">100+</p>
-            <p class="info-text">Luxurious and <br>comfortable rooms</p>
-        </div>
-    </div>
-
-    <div class="room-types">
-        <h2>OUR ROOMS</h2>
-        <div class="images-section">
-            <div>
-                <img src="../static/images/standard.png" />
-                <p class="room">Standard</p>
-            </div>
-            <div>
-                <img src="../static/images/deluxe.png" />
-                <p class="room">Deluxe</p>
-            </div>
-            <div>
-                <img src="../static/images/superDeluxe.png" />
-                <p class="room">Super Deluxe</p>
-            </div>
-        </div>
-    </div>
-    <div class="testimonials">
-        <h2>Testimonials</h2>
-        <p>
-            <span class="quotation-mark">“</span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget risus sed metus blandit condimentum.
-        </p>
-    </div>
+    <div class="temp">This is extraSelection page. Includes food, parking, shuttle from airport, pets etc.</div>
     <div class="footer">
         <div class="footer-left">
             <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>

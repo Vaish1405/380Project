@@ -17,15 +17,13 @@ def food():
 def rooms():
     return render_template('rooms.html')
 
-@app.route('/available-rooms')
-def availableRooms():
-    with open(csv_file, 'r') as file:
-        available_rooms = csv.DictReader(file)
-        for row in available_rooms:
-            if row['Available'] == 'True':
-                print(f"{row['RoomNumber']}")
+@app.route('/room-selection')
+def roomSelection():
+    return render_template('room-selection.html')
 
-    return render_template('temp.html')
+@app.route('/extraSelection')
+def extraSelection(): 
+    return render_template('extraSelection.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
