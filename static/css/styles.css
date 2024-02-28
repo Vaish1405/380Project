@@ -165,3 +165,8 @@ body {
     padding: 10px 30px;
     margin: 8px;
 }
+.active {
+    background-color: white;
+    color: black !important; 
+    font-weight: bold;
+}

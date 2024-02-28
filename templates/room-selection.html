@@ -15,13 +15,13 @@
             <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
             <li><a href="{{ url_for('food') }}">Food</a></li>
             <li><a href="#">Amenities</a></li>
-            <li><a href="#">Reserve</a></li>
+            <li><a href="{{ url_for('dateSelection')}}" class="active">Reserve</a></li>
         </ul>
     </nav>
 
     <div class="bg-main">
         <!-- <img src="/static/images/availableRoomsbg.png" class=""/> -->
-        <h2>AVAILABLE ROOMS</h2>
+        <h2>CHOOSE YOUR ROOM TYPE</h2>
     </div>
     <div class="images">
         <img src="../static/images/reservationInfo.png" />

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="stylesheet" href="../static/css/rooms.css">
 </head>
 <body>
@@ -11,10 +12,10 @@
         <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
         <ul class="nav-list">
             <li><a href="#">Events</a></li>
-            <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
+            <li><a href="{{ url_for('rooms') }}" class="active">Rooms</a></li>
             <li><a href="{{ url_for('food' )}}">Food</a></li>
             <li><a href="#">Amenities</a></li>
-            <li><a href="#">Reserve</a></li>
+            <li><a href="{{ url_for('dateSelection')}}">Reserve</a></li>
         </ul>
     </nav>
 
