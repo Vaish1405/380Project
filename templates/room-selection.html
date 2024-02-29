@@ -19,15 +19,21 @@
         </ul>
     </nav>
 
-    <div class="bg-main">
-        <!-- <img src="/static/images/availableRoomsbg.png" class=""/> -->
-        <h2>CHOOSE YOUR ROOM TYPE</h2>
+    <div class="bg-main rooms-bg">
+        <div class="rooms">
+            <h2>AVAILABLE ROOMS</h2>
+            <P></P>
+            <div class="reserve-progress">
+                <p><span>1 Dates</span><span class="current">2 Rooms</span><span>3 Extras</span><span>4 Payment</span></p>
+            </div>
+        </div>
     </div>
-    <div class="images">
-        <img src="../static/images/reservationInfo.png" />
-    </div>
-    <div class="images">
-        <a href="{{ url_for('extraSelection') }}"><img src="../static/images/availableRoomsInfo.png" /></a>
+    <div class="available-rooms">
+        <ul>
+            {% for room in available_rooms %}
+                <li>{{ room }}</li>
+            {% endfor %}
+        </ul>
     </div>
     <div class="footer">
         <div class="footer-left">

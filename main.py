@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request
-import csv
+from roomsAvailability import find_available_rooms
 
-csv_file = 'AvailableRooms.csv'
+available_room_types = [] # to store the values read from csv file
 
 app = Flask(__name__)
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -21,9 +20,9 @@ def rooms():
 def dateSelection(): 
     return render_template('dateSelection.html')
 
-@app.route('/room-selection')
-def roomSelection():
-    return render_template('room-selection.html')
+@app.route('/room-selection', methods=['GET'])
+def roomSelection():    
+    return render_template('room-selection.html', available_rooms=find_available_rooms())
 
 @app.route('/extraSelection')
 def extraSelection(): 

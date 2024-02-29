@@ -66,13 +66,6 @@ body {
     line-height: 2rem;
 }
 
-.container {
-    height: 800px;    
-    display: flex; 
-    text-align: center;
-    justify-content: center;
-}
-
 .room-types {
     height: 800px;    
     position: relative;
