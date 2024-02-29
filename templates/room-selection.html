@@ -19,15 +19,66 @@
         </ul>
     </nav>
 
-    <div class="bg-main">
-        <!-- <img src="/static/images/availableRoomsbg.png" class=""/> -->
-        <h2>CHOOSE YOUR ROOM TYPE</h2>
+    <div class="bg-main rooms-bg">
+        <div class="rooms">
+            <h2>AVAILABLE ROOMS</h2>
+            <P></P>
+            <div class="reserve-progress">
+                <p><span>1 Dates</span><span class="current">2 Rooms</span><span>3 Extras</span><span>4 Payment</span></p>
+            </div>
+        </div>
     </div>
-    <div class="images">
-        <img src="../static/images/reservationInfo.png" />
+    <div class="reserveInfo">
+        <div class="elements">
+            <img src="../static/images/reserveInfo/calendarDates.png" />
+            <p class="text">{{ form.get('check-in') }}</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/calendarDates.png" />
+            <p class="text">{{ form.get('check-out') }}</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/people.png" />
+            <p class="text">1 room, {{ form.get('people') }} adults</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/promoCode.png" />
+            <p class="text">Promo Code</p>
+        </div>
     </div>
-    <div class="images">
-        <a href="{{ url_for('extraSelection') }}"><img src="../static/images/availableRoomsInfo.png" /></a>
+    <div class="available-rooms">
+        {% for room in available_rooms %}
+            <div class="room-card">
+                {% if room.lower() == 'standard' %}
+                    <img src="../static/images/room-selection/standard.png">
+                    <div class="room-info">
+                        <h2 class="heading">STANDARD ROOM</h2>
+                        <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                        <p class="price">$109/night</p>
+                        <button class="view-room">VIEW ROOM</button>
+                        <button class="select" onclick="window.location.href='{{ url_for('extraSelection') }}'">SELECT</button>
+                    </div>
+                {% elif room.lower() == 'deluxe' %}
+                    <img src="../static/images/room-selection/deluxe.png">
+                    <div class="room-info">
+                        <h2 class="heading">DELUXE ROOM</h2>
+                        <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                        <p class="price">$309/night</p>
+                        <button class="view-room">VIEW ROOM</button>
+                        <button class="select">SELECT</button>
+                    </div>
+                {% else %} 
+                    <img src="../static/images/room-selection/superDeluxe.png">
+                    <div class="room-info">
+                        <h2 class="heading">SUPER DELUXE ROOM</h2>
+                        <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                        <p class="price">$509/night</p>
+                        <button class="view-room">VIEW ROOM</button>
+                        <button class="select">SELECT</button>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
     <div class="footer">
         <div class="footer-left">

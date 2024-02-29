@@ -61,6 +61,51 @@
 }
 
 .dates p, .rooms p, .extras p{
+.reserve-progress{
+    width: 100%; 
+    bottom: 0;
+}
+
+.reserve-progress span {
+    padding: 0 60px;
+    font-size: 30px;
+    color: gray; 
+}
+
+.reserve-progress .current {
+    font-weight: bolder;
+    color: white; 
+}
+
+.reserveInfo, .elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reserveInfo{
+    padding: 20px;
+    border-bottom: 1px solid;
+}
+.reserveInfo img {
+    width: 45px;
+    height: 45px;
+}
+
+.elements {
+    margin: 0 50px;
+    padding: 0px 40px;
+}
+.elements .text {
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.dates, .rooms, .extras{
+    margin-top: 120px;
+}
+
+.dates p, .rooms p, .extras p{
     font-size: 20px;
     color: white;
     margin: 0;
@@ -69,7 +114,10 @@
 
 .dates-bg {
     background: url('../images/dateSelectionBg.png') center no-repeat;
+.dates-bg {
+    background: url('../images/dateSelectionBg.png') center no-repeat;
 }
+
 
 .dates-form {
     display: flex;
