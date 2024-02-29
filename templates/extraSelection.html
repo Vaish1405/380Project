@@ -18,7 +18,55 @@
             <li><a href="{{ url_for('dateSelection')}}" class="active">Reserve</a></li>
         </ul>
     </nav>
-    <div class="temp">This is extraSelection page. Includes food, parking, shuttle from airport, pets etc.</div>
+    <div class="bg-main extras-bg">
+        <div class="extras">
+            <h2>Additional Options</h2>
+            <P></P>
+            <div class="reserve-progress">
+                <p><span>1 Dates</span><span>2 Rooms</span><span class="current">3 Extras</span><span>4 Payment</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="reserveInfo">
+        <div class="elements">
+            <img src="../static/images/reserveInfo/calendarDates.png" />
+            <p class="text">{{ info.get('check_in') }}</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/calendarDates.png" />
+            <p class="text">{{ info.get('check_out') }}</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/people.png" />
+            <p class="text">1 room, {{ info.get('people') }} adults</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/promoCode.png" />
+            <p class="text">Promo Code</p>
+        </div>
+    </div>
+    <div class="extra-options">
+        <div class="item-card">
+            <img src="../static/images/extrasSelection/shuttle.png">
+            <div class="item-info">
+                <h2 class="heading">AIRPORT SHUTTLE</h2>
+                <p class="description">Providing additional pick up & drop off services to the LAX airport. Let us know your flight schedule and we will be there to get you!</p>
+                <p class="price">Additional $100</p>
+                <button class="requirements">REQUIREMENTS</button>
+                <button class="select" onclick="window.location.href='{{ url_for('payment') }}'">SELECT</button>
+            </div>
+        </div>
+        <div class="item-card">
+            <img src="../static/images/extrasSelection/pet.png">
+                <div class="item-info">
+                    <h2 class="heading">BRING A PET</h2>
+                    <p class="description">Want to enjoy your vacation but miss your pet? Bring them together and explore the peace. Services include vet on call, Pet safe rooms, treats and much more!</p>
+                    <p class="price">Additional $200</p>
+                    <button class="requirements">REQUIREMENTS</button>
+                    <button class="select">SELECT</button>
+                </div>
+        </div>
+    </div>
     <div class="footer">
         <div class="footer-left">
             <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
