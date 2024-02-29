@@ -32,11 +32,35 @@
     color: white; 
 }
 
-.dates, .rooms {
+.reserveInfo, .elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reserveInfo{
+    padding: 20px;
+    border-bottom: 1px solid;
+}
+.reserveInfo img {
+    width: 45px;
+    height: 45px;
+}
+
+.elements {
+    margin: 0 50px;
+    padding: 0px 40px;
+}
+.elements .text {
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.dates, .rooms, .extras{
     margin-top: 120px;
 }
 
-.dates p, .rooms p {
+.dates p, .rooms p, .extras p{
     font-size: 20px;
     color: white;
     margin: 0;
@@ -83,7 +107,62 @@
 .rooms-bg {
     background: url('../images/availableRoomsbg.png') center no-repeat;
 }
+.available-rooms, .extra-options {
+    margin: 50px 200px;
+}
+.room-card, .item-card {
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-bottom: 50px;
+}
 
+.room-card img, .item-card img {
+    max-height: 100%
+}
+
+.room-info, .item-info {
+    margin-top: 0;
+    padding-left: 30px;
+}
+
+.room-info .heading, .item-info .heading {
+    font-weight: bolder;
+    font-size: 40px;
+    margin-top: 5px;
+}
+.room-info .price, .item-info .price {
+    font-size: 26px;
+    font-weight: bold;
+    padding-left: 200px;
+}
+
+.room-info button, .item-info button{
+    border: 1.5px solid #000000;
+    font-size: 18px;
+    padding: 15px 0px;
+    margin: 20px 10px 0px 10px;
+    width: 180px;
+    cursor: pointer;
+    text-align: center;
+}
+.room-info .view-room, .item-info .requirements {
+    background-color: white;
+}
+
+.item-info .requirements {
+    width: 200px !important;
+}
+
+.room-info .select, .item-info .select {
+    background-color: #4F7A6D;
+    font-weight: bold;
+}
+
+.extras-bg {
+    background: url('../images/extrasSelectionbg.png') center no-repeat;
+}
 .images {
     width: 100%; 
     display: flex; 
