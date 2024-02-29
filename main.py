@@ -29,6 +29,10 @@ def roomSelection():
 def extraSelection(): 
     return render_template('extraSelection.html')
 
+@app.route('/selectRoom')
+def selectRoom():
+    return render_template('selectroom.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
