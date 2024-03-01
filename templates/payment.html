@@ -18,7 +18,13 @@
         </ul>
     </nav>
     <div class="temp">
-        This is payment and all final information page
+        <ul>
+            <li>{{ info.get('check_in') }}</li>
+            <li>{{ info.get('check_out') }}</li>
+            <li>{{ info.get('people') }}</li>
+            <li>{{ info.get('select-room') }}</li>
+            <li>{{ info.get('select-extras') }}</li>
+        </ul>
     </div>
     <div class="footer">
         <div class="footer-left">

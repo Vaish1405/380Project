@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, session
+import logging
 from roomsAvailability import find_available_rooms
 
 available_room_types = [] # to store the values read from csv file
 
 app = Flask(__name__)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 app.secret_key = "Vaish"
 
 @app.route('/')
@@ -29,13 +32,15 @@ def roomSelection():
     session['people'] = request.form.get('people')
     return render_template('room-selection.html', available_rooms=find_available_rooms(), form=request.form)
 
-@app.route('/extraSelection', methods=['GET'])
+@app.route('/extraSelection', methods=['POST'])
 def extraSelection(): 
+    session['select-room'] = request.form.get('select-room')
     return render_template('extraSelection.html', info=session)
 
-@app.route('/payment')
+@app.route('/payment', methods=['POST'])
 def payment():
-    return render_template('payment.html')
+    session['select-extras'] = request.form.get('select-extras')
+    return render_template('payment.html', info=session)
 
 @app.route('/selectRoom')
 def selectRoom():
