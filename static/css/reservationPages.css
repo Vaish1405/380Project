@@ -163,19 +163,12 @@
 .extras-bg {
     background: url('../images/extrasSelectionbg.png') center no-repeat;
 }
+.payment-bg {
+    background: url('../images/paymentbg.png') center no-repeat;
+}
 .images {
     width: 100%; 
     display: flex; 
     justify-content: center;
     align-items: center;
-}
-.temp {
-    position: relative;
-    width: 100%; 
-    height: 400px; 
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
 }
