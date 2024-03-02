@@ -44,10 +44,10 @@ body {
 .container {
     height: 800px;    
     display: flex; 
-    /* position: relative; */
+    position: relative;
     justify-content: center;
     align-items: center;
-    background: url('../images/balconyView.png') center/cover no-repeat;
+    background: url('../images/mainPageBg.png') center/cover no-repeat;
 }
 
 .container-with-text {
@@ -56,6 +56,19 @@ body {
     position: relative; 
     background: url('../images/womanRelax.png') center/cover no-repeat;
     z-index: 1;
+}
+
+.flash-messages {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 0;
+    color: white; 
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
 }
 
 .availability-form {
