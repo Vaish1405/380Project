@@ -10,6 +10,7 @@
     <nav class="nav-menu">
         <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
         <ul class="nav-list">
+            <li><a href="#">Events</a></li>
             <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
             <li><a href="{{ url_for('food' )}}">Food</a></li>
             <li><a href="#">Amenities</a></li>
@@ -17,23 +18,34 @@
         </ul>
     </nav>
     <div class="container">
-        <form action="/room-selection" method="post">
-            <div class="availability-form">
-                <div>
-                    <label for="check-in">Check-in Date</label><br> 
-                    <input type="date" id="check-in" name="check-in" required>
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul><br>
+                {% endif %}
+            {% endwith %}
+            <form action="/room-selection" method="post">
+                <div class="availability-form">
+                    <div>
+                        <label for="check-in">Check-in Date</label><br> 
+                        <input type="date" id="check-in" name="check-in" required>
+                    </div>
+                    <div>
+                        <label for="check-out">Check-out Date</label><br>
+                        <input type="date" id="check-out" name="check-out" required>
+                    </div>
+                    <div>
+                        <label for="people">No. of People</label><br>
+                        <input type="number" id="people" name="people" required>
+                    </div>
+                    <button class="availability-submit" type="submit">Check Availability</button>
                 </div>
-                <div>
-                    <label for="check-out">Check-out Date</label><br>
-                    <input type="date" id="check-out" name="check-out" required>
-                </div>
-                <div>
-                    <label for="persons">No. of People</label><br>
-                    <input type="number" id="persons" name="persons" required>
-                </div>
-                <button class="availability-submit" onsubmit="">Check Availability</button>
-            </div>
-        </form>
+            </form>
+        </div>   
     </div>
     <div class="info-container">
         <p>

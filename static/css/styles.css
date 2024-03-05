@@ -44,10 +44,10 @@ body {
 .container {
     height: 800px;    
     display: flex; 
-    /* position: relative; */
+    position: relative;
     justify-content: center;
     align-items: center;
-    background: url('../images/balconyView.png') center/cover no-repeat;
+    background: url('../images/mainPageBg.png') center/cover no-repeat;
 }
 
 .container-with-text {
@@ -56,6 +56,19 @@ body {
     position: relative; 
     background: url('../images/womanRelax.png') center/cover no-repeat;
     z-index: 1;
+}
+
+.flash-messages {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 0;
+    color: white; 
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
 }
 
 .availability-form {
@@ -156,7 +169,7 @@ body {
     padding: 0; 
     margin: 8px;
 }
-#name, #email {
+#name, #footer-email {
     margin: 8px;
     width: 200px;
     padding: 10px;
@@ -170,13 +183,31 @@ body {
     color: black !important; 
     font-weight: bold;
 }
-.temp {
-    position: relative;
+
+.bg-main {
     width: 100%; 
     height: 400px; 
+    flex-direction: column;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
     z-index: 1;
+}
+
+.bg-main h2 {
+    font-size: 40px;
+    color: white; 
+    font-weight: bold;
+}
+.food-bg {
+    background: url('../images/foodBg.png') center no-repeat;
+}
+.food{
+    margin-top: 70px;
+}
+
+.food p{
+    font-size: 20px;
+    color: white;
 }

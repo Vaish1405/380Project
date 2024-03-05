@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/payment.css">
+    <link rel="stylesheet" href="../static/css/reservationPages.css">
 </head>
 <body>
     <nav class="nav-menu">
@@ -17,8 +19,84 @@
             <li><a href="{{ url_for('dateSelection')}}" class="active">Reserve</a></li>
         </ul>
     </nav>
-    <div class="temp">
-        This is payment and all final information page
+    <div class="bg-main payment-bg">
+        <div class="rooms">
+            <h2>Checkout</h2>
+            <P></P>
+            <div class="reserve-progress">
+                <p><span>1 Dates</span><span>2 Rooms</span><span>3 Extras</span><span class="current">4 Payment</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="payment-container">
+        <div class="left">
+            <div class="customer-info">
+                <h2>Customer Information</h2>
+                <form action="" method="post">
+                    <div class="names">
+                        <div>
+                            <label for="first-name">First Name:</label>
+                            <input type="text" id="first-name" name="first-name" required><br>
+                        </div>
+                        <div> 
+                            <label for="last-name">Last Name:</label>
+                            <input type="text" id="last-name" name="last-name" required><br>
+                        </div>
+                    </div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br>
+                </form>
+            </div>
+            <div class="card-info">
+                <h2>Card Information</h2>
+                <form action="" method="post">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" required><br>
+
+                    <div class="names">
+                        <div>  
+                            <label for="cvv">CVV:</label>
+                            <input type="text" id="cvv" name="cvv" required><br>
+                        </div>
+                        <div>
+                            <label for="expiration-date">Expiration Date:</label>
+                            <input type="text" id="expiration-date" name="expiration-date" placeholder="MM/YYYY" required><br>
+                        </div>    
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <div class="info-card">
+                <h3 >Your Stay</h3>
+                <div class="info">
+                    <p><strong>Check-in:</strong></p>
+                    <p>{{ info.get('check_in') }}</p>
+                
+                    <p><strong>Check-out:</strong></p>
+                    <p>{{ info.get('check_out') }}</p>
+                
+                    <p><strong>Guests:</strong></p>
+                    <p>{{ info.get('people') }}</p>
+                
+                    <p><strong>Nights:</strong></p>
+                    <p>calculated</p>
+
+                    <p><strong>Room ({{ info.get('select-room') }}):</strong></p>
+                    <p>price</p>
+
+                    <p><strong>Extras ({{ info.get('select-extras') }}):</strong></p>
+                    <p>price</p>
+                    <p><strong>Taxes:</strong></p>
+                    <p>$50</p>
+            
+                    <p class="total"><strong>Total:</strong></p>
+                    <p style="margin-top: 20px; font-size: 23px;">price</p>
+                </div>   
+                <p>*Changes in taxes or fees will affect the total price.</p>                                
+            </div>
+            <button>PAY NOW</button>
+        </div>
     </div>
     <div class="footer">
         <div class="footer-left">
@@ -35,7 +113,7 @@
             <p class="heading">Stay in touch!</p>
             <p>Sign up for our news and updates.</p>
             <input placeholder="Name" id="name"><br>
-            <input placeholder="Email address" id="email"><br>
+            <input placeholder="Email address" id="footer-email"><br>
             <button>Send</button>
         </div>
     </div>
