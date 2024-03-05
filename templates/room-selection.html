@@ -46,40 +46,43 @@
             <p class="text">Promo Code</p>
         </div>
     </div>
-    <div class="available-rooms">
-        {% for room in available_rooms %}
-            <div class="room-card">
-                {% if room.lower() == 'standard' %}
-                    <img src="../static/images/room-selection/standard.png">
-                    <div class="room-info">
-                        <h2 class="heading">STANDARD ROOM</h2>
-                        <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
-                        <p class="price">$109/night</p>
-                        <button class="view-room">VIEW ROOM</button>
-                        <!--<button class="select" onclick="window.location.href='{{ url_for('extraSelection') }}'">SELECT</button>-->
-                    </div>
-                {% elif room.lower() == 'deluxe' %}
-                    <img src="../static/images/room-selection/deluxe.png">
-                    <div class="room-info">
-                        <h2 class="heading">DELUXE ROOM</h2>
-                        <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
-                        <p class="price">$309/night</p>
-                        <button class="view-room">VIEW ROOM</button>
-                        <button class="select">SELECT</button>
-                    </div>
-                {% else %} 
-                    <img src="../static/images/room-selection/superDeluxe.png">
-                    <div class="room-info">
-                        <h2 class="heading">SUPER DELUXE ROOM</h2>
-                        <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
-                        <p class="price">$509/night</p>
-                        <button class="view-room">VIEW ROOM</button>
-                        <button class="select">SELECT</button>
-                    </div>
-                {% endif %}
-            </div>
-        {% endfor %}
-    </div>
+    <form method="POST" action="/extraSelection">
+        <div class="available-rooms">
+            {% for room in available_rooms %}
+                <div class="room-card">
+                    {% if room.lower() == 'standard' %}
+                        <img src="../static/images/room-selection/standard.png">
+                        <div class="room-info">
+                            <h2 class="heading">STANDARD ROOM</h2>
+                            <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                            <p class="price">$109/night</p>
+                            <button class="view-room">VIEW ROOM</button>
+                            <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
+                        </div>
+                    {% elif room.lower() == 'deluxe' %}
+                        <img src="../static/images/room-selection/deluxe.png">
+                        <div class="room-info">
+                            <h2 class="heading">DELUXE ROOM</h2>
+                            <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                            <p class="price">$309/night</p>
+                            <button class="view-room">VIEW ROOM</button>
+                            <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
+                        </div>
+                    {% else %} 
+                        <img src="../static/images/room-selection/superDeluxe.png">
+                        <div class="room-info">
+                            <h2 class="heading">SUPER DELUXE ROOM</h2>
+                            <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                            <p class="price">$509/night</p>
+                            <button class="view-room">VIEW ROOM</button>
+                            <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+
     <div class="footer">
         <div class="footer-left">
             <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
