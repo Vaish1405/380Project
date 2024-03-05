@@ -13,4 +13,4 @@ function addAndMultiply() {
     .then(response => response.json()) 
     .then(data => {document.getElementById('output').value = data.result;}) // handle the action that you want to take care of
     .catch(error => console.error('Error:', error)); // print the error message if there is any
-} 
+}
