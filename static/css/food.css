@@ -4,18 +4,29 @@
     /* position: relative; */
     justify-content: center;
     align-items: center;
+    text-align: center;
     background: url('../images/foodintropic.jpeg') center/cover no-repeat;
 }
 .container img{
-    margin-bottom: 0;
+    margin-bottom:0;
     width: 100%; 
     height: 100%; 
 }
+.title {
+    color: white;
+    font-size: 30px;
+    font-family: 'Goblin One';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
 .containerformenu {
     width: 100%;
-    height: 930px;    
+    height: auto;
     display: flex; 
-    /* position: relative; */
+    position: relative;
     justify-content: center;
     align-items: center;
     
@@ -71,23 +82,6 @@ body {
     z-index: 0;
     font-weight: bold;
 }
-
-.img-text h2 {
-    font-size: 50px;
-}
-.img-text .value-text {
-    color: #EBFF00;
-    font-size: 35px;
-    margin-bottom: 0 !important;
-    margin-top: 70px;
-}
-
-.img-text .info-text {
-    font-size: 20px;
-    margin-top: 0 !important;
-    line-height: 2rem;
-}
-
 .container {
     height: 800px;    
     display: flex; 
