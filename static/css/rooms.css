@@ -114,6 +114,9 @@ body {
     padding: 20px 5px;
     box-sizing: border-box;
 }
+.room a {
+    color: white !important;
+}
 
 .testimonials {    
     height: 500px;    
