@@ -169,7 +169,7 @@ body {
     padding: 0; 
     margin: 8px;
 }
-#name, #email {
+#name, #footer-email {
     margin: 8px;
     width: 200px;
     padding: 10px;
