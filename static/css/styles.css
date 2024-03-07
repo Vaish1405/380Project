@@ -217,7 +217,7 @@ body {
 }*/
 
 .amenities{
-    height: 398px;    
+    margin:82px;   
     display: flex; 
     /* position: relative;*/
     justify-content: center;
