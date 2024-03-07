@@ -20,14 +20,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-
-  .amenities{
-    height: 398px;    
-    display: flex; 
-    /* position: relative; */
-    justify-content: center;
-    align-items: center;
-  }
 body {
     font-family: Arial, sans-serif;
     margin: 0;
