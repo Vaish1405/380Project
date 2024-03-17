@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, session, flash, redirect, url_for
+from flask import Flask, render_template, request, session, flash, redirect, jsonify
+import stripe
 import logging
 from roomsAvailability import find_available_rooms
 from ValidateAvailabilityInput import check_validity 
@@ -9,6 +10,7 @@ app = Flask(__name__)
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 app.secret_key = "Vaish"
+stripe.api_key = 'sk_test_51Or85ZH77c6gByb9aWwNuCUv0aIO4IWIX0kYlMaZ3CXQuAYgjMQ3MhvsKBGL2xsWGKKilBHJ5BjwPrjKShhbadzT00OvJ0FpU9'
 
 def isValid(check_in, check_out, people):
     if people > 6 or people <= 0:
@@ -42,15 +44,28 @@ def roomSelection():
     session['people'] = request.form.get('people')
     return render_template('room-selection.html', available_rooms=find_available_rooms(), form=request.form)
     
-@app.route('/extraSelection', methods=['POST'])
+@app.route('/extraSelection', methods=['POST', 'GET'])
 def extraSelection(): 
-    session['select-room'] = request.form.get('select-room')
+    # session['select-room'] = request.form.get('select-room')
     return render_template('extraSelection.html', info=session)
 
 @app.route('/payment', methods=['POST'])
 def payment():
     session['select-extras'] = request.form.get('select-extras')
     return render_template('payment.html', info=session)
+
+@app.route('/create-payment-intent', methods=['POST'])
+def create_payment_intent():
+    data = request.json
+    amount = data['amount']
+    currency = data['currency']
+
+    intent = stripe.PaymentIntent.create(
+        amount=amount,
+        currency=currency
+    )
+
+    return jsonify({'clientSecret': intent.client_secret})
 
 @app.route('/selectRoom')
 def selectRoom():
