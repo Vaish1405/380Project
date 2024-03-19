@@ -5,19 +5,10 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
     <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="stylesheet" href="../static/css/reservationPages.css"
+    <link rel="stylesheet" href="../static/css/reservationPages.css">
 </head>
 <body>
-    <nav class="nav-menu">
-        <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
-        <ul class="nav-list">
-            <li><a href="#">Events</a></li>
-            <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
-            <li><a href="{{ url_for('food') }}">Food</a></li>
-            <li><a href="#">Amenities</a></li>
-            <li><a href="{{ url_for('dateSelection')}}" class="active">Reserve</a></li>
-        </ul>
-    </nav>
+    {% include 'nav-menu.html' %}
     <div class="bg-main extras-bg">
         <div class="extras">
             <h2>Additional Options</h2>
@@ -70,24 +61,6 @@
         </div>
     </form>
 
-    <div class="footer">
-        <div class="footer-left">
-            <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
-            <p>Contact: (818) 232-23245</p>
-            <p>18111 Nordhoff St,<br> Northridge,<br> CA 91330</p>
-            <div class="social-container">
-                <a><img src="../static/images/socials/Facebook.png" /></a>
-                <a><img src="../static/images/socials/Instagram.png" /></a>
-                <a><img src="../static/images/socials/Youtube.png" /></a>
-            </div>
-        </div>
-        <div class="footer-right">
-            <p class="heading">Stay in touch!</p>
-            <p>Sign up for our news and updates.</p>
-            <input placeholder="Name" id="name"><br>
-            <input placeholder="Email address" id="email"><br>
-            <button>Send</button>
-        </div>
-    </div>
+    {% include 'footer.html' %}
 </body>
 </html>
