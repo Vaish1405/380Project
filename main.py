@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, flash, redirect, jsonify
-import stripe
+import stripe, os
 import logging
 from roomsAvailability import find_available_rooms
 from ValidateAvailabilityInput import check_validity 
@@ -9,8 +9,8 @@ available_room_types = [] # to store the values read from csv file
 app = Flask(__name__)
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
-app.secret_key = "Vaish"
-stripe.api_key = 'sk_test_51Or85ZH77c6gByb9aWwNuCUv0aIO4IWIX0kYlMaZ3CXQuAYgjMQ3MhvsKBGL2xsWGKKilBHJ5BjwPrjKShhbadzT00OvJ0FpU9'
+app.secret_key = os.getenv('app_secret_key')
+stripe.api_key = os.getenv('stripe-api-key')
 
 def isValid(check_in, check_out, people):
     if people > 6 or people <= 0:
