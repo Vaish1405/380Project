@@ -10,7 +10,7 @@ app = Flask(__name__)
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 app.secret_key = os.getenv('app_secret_key')
-stripe.api_key = os.getenv('stripe-api-key')
+stripe.api_key = os.getenv('stripe_api_key')
 
 def isValid(check_in, check_out, people):
     if people > 6 or people <= 0:
