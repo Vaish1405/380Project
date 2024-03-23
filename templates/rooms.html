@@ -8,17 +8,7 @@
     <link rel="stylesheet" href="../static/css/rooms.css">
 </head>
 <body>
-    <nav class="nav-menu">
-        <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
-        <ul class="nav-list">
-            <li><a href="#">Events</a></li>
-            <li><a href="{{ url_for('rooms') }}" class="active">Rooms</a></li>
-            <li><a href="{{ url_for('food' )}}">Food</a></li>
-            <li><a href="#">Amenities</a></li>
-            <li><a href="{{ url_for('dateSelection')}}">Reserve</a></li>
-        </ul>
-    </nav>
-
+    {% include 'nav-menu.html' %}
     <div class="container">
         <img src="/static/images/roomsFirst.png" class=""/>
         <div class="img-text">
@@ -55,24 +45,6 @@
 
         </p>
     </div>
-    <div class="footer">
-        <div class="footer-left">
-            <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
-            <p>Contact: (818) 232-23245</p>
-            <p>18111 Nordhoff St,<br> Northridge,<br> CA 91330</p>
-            <div class="social-container">
-                <a><img src="../static/images/socials/Facebook.png" /></a>
-                <a><img src="../static/images/socials/Instagram.png" /></a>
-                <a><img src="../static/images/socials/Youtube.png" /></a>
-            </div>
-        </div>
-        <div class="footer-right">
-            <p class="heading">Stay in touch!</p>
-            <p>Sign up for our news and updates.</p>
-            <input placeholder="Name" id="name"><br>
-            <input placeholder="Email address" id="email"><br>
-            <button>Send</button>
-        </div>
-    </div>
+    {% include 'footer.html' %}
 </body>
 </html>

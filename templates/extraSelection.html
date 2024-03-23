@@ -5,19 +5,10 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
     <link rel="stylesheet" href="../static/css/styles.css">
-    <link rel="stylesheet" href="../static/css/reservationPages.css"
+    <link rel="stylesheet" href="../static/css/reservationPages.css">
 </head>
 <body>
-    <nav class="nav-menu">
-        <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
-        <ul class="nav-list">
-            <li><a href="#">Events</a></li>
-            <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
-            <li><a href="{{ url_for('food') }}">Food</a></li>
-            <li><a href="#">Amenities</a></li>
-            <li><a href="{{ url_for('dateSelection')}}" class="active">Reserve</a></li>
-        </ul>
-    </nav>
+    {% include 'nav-menu.html' %}
     <div class="bg-main extras-bg">
         <div class="extras">
             <h2>Additional Options</h2>
@@ -30,15 +21,15 @@
     <div class="reserveInfo">
         <div class="elements">
             <img src="../static/images/reserveInfo/calendarDates.png" />
-            <p class="text">{{ info.get('check_in') }}</p>
+            <p class="text">{{ check_in }}</p>
         </div>
         <div class="elements">
             <img src="../static/images/reserveInfo/calendarDates.png" />
-            <p class="text">{{ info.get('check_out') }}</p>
+            <p class="text">{{ check_out }}</p>
         </div>
         <div class="elements">
             <img src="../static/images/reserveInfo/people.png" />
-            <p class="text">1 room, {{ info.get('people') }} adults</p>
+            <p class="text">1 room, {{ people }} adults</p>
         </div>
         <div class="elements">
             <img src="../static/images/reserveInfo/promoCode.png" />
@@ -53,7 +44,7 @@
                     <h2 class="heading">AIRPORT SHUTTLE</h2>
                     <p class="description">Providing additional pick up & drop off services to the LAX airport. Let us know your flight schedule and we will be there to get you!</p>
                     <p class="price">Additional $100</p>
-                    <button class="requirements">REQUIREMENTS</button>
+                    <a class="requirements">REQUIREMENTS</a>
                     <button class="select" name="select-extras" value="Shuttle" type="submit">SELECT</button>
                 </div>
             </div>
@@ -63,31 +54,14 @@
                         <h2 class="heading">BRING A PET</h2>
                         <p class="description">Want to enjoy your vacation but miss your pet? Bring them together and explore the peace. Services include vet on call, Pet safe rooms, treats and much more!</p>
                         <p class="price">Additional $200</p>
-                        <button class="requirements">REQUIREMENTS</button>
+                        <a class="requirements">REQUIREMENTS</a>
                         <button class="select" name="select-extras" value="Pet" type="submit">SELECT</button>
                     </div>
             </div>
         </div>
     </form>
 
-    <div class="footer">
-        <div class="footer-left">
-            <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
-            <p>Contact: (818) 232-23245</p>
-            <p>18111 Nordhoff St,<br> Northridge,<br> CA 91330</p>
-            <div class="social-container">
-                <a><img src="../static/images/socials/Facebook.png" /></a>
-                <a><img src="../static/images/socials/Instagram.png" /></a>
-                <a><img src="../static/images/socials/Youtube.png" /></a>
-            </div>
-        </div>
-        <div class="footer-right">
-            <p class="heading">Stay in touch!</p>
-            <p>Sign up for our news and updates.</p>
-            <input placeholder="Name" id="name"><br>
-            <input placeholder="Email address" id="email"><br>
-            <button>Send</button>
-        </div>
-    </div>
+    {% include 'footer.html' %}
+    
 </body>
 </html>
