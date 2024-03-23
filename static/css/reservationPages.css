@@ -130,7 +130,8 @@
     text-align: center;
 }
 .room-info .view-room, .item-info .requirements {
-    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
 }
 
 .item-info .requirements {

@@ -66,27 +66,27 @@
                 <h3 >Your Stay</h3>
                 <div class="info">
                     <p><strong>Check-in:</strong></p>
-                    <p>{{ info.get('check_in') }}</p>
+                    <p>{{ check_in }}</p>
                 
                     <p><strong>Check-out:</strong></p>
-                    <p>{{ info.get('check_out') }}</p>
+                    <p>{{ check_out }}</p>
                 
                     <p><strong>Guests:</strong></p>
-                    <p>{{ info.get('people') }}</p>
+                    <p>{{ people }}</p>
                 
                     <p><strong>Nights:</strong></p>
-                    <p>calculated</p>
+                    <p>{{ nights }}</p>
 
-                    <p><strong>Room ({{ info.get('select-room') }}):</strong></p>
-                    <p>price</p>
+                    <p><strong>Room ({{ room_selection }}):</strong></p>
+                    <p>${{ roomCost }}</p>
 
-                    <p><strong>Extras ({{ info.get('select-extras') }}):</strong></p>
-                    <p>price</p>
+                    <p><strong>Extras ({{ extras_selection }}):</strong></p>
+                    <p>${{ extrasCost }}</p>
                     <p><strong>Taxes:</strong></p>
                     <p>$50</p>
             
                     <p class="total"><strong>Total:</strong></p>
-                    <p style="margin-top: 20px; font-size: 23px;">price</p>
+                    <p style="margin-top: 20px; font-weight: bold; font-size: 22px;">${{ total }}</p>
                 </div>   
                 <p>*Changes in taxes or fees will affect the total price.</p>                                
             </div>
@@ -146,6 +146,7 @@
                     });
                     });
                 </script>
+                
                 <!-- Button to submit the form and trigger Stripe payment -->
                 <button type="submit" id="submit-payment">PAY NOW</button>
             </form>
