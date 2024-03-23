@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
-    <!--<link rel="stylesheet" href="../static/css/selectroom.css">-->
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
     {% include 'nav-menu.html' %}
-    <div class="container"id="standard">
-        <img src="/static/images/roompicintro.jpeg">
-        <div class="standardTitle">
-            <h1>Standard Room</h1>
+    <div id="standard-room" class="bg-main standard-bg">
+        <div class="room-heading">
+            <h2>Standard Room</h2>
         </div>
     </div>
-    <div class="amenities">
+    <div class="amenities" style="margin-bottom: 50px !important;">
         <img src="/static/images/roomamenities.png">
     </div>
-    <div class="bg-main standard-bg">
-        <div class="food">
+    <div id="deluxe-room" class="bg-main standard-bg">
+        <div class="room-heading">
             <h2>Deluxe Room</h2>
         </div>
     </div>
     <div class="amenities">
         <img src="/static/images/roomamenities.png">
     </div>
-    <div class="bg-main standard-bg">
-        <div class="food">
+    <div id="super-deluxe-room" class="bg-main standard-bg">
+        <div class="room-heading">
             <h2>Super Deluxe Room</h2>
         </div>
     </div>

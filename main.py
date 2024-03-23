@@ -87,9 +87,9 @@ def create_payment_intent():
 
     return jsonify({'clientSecret': intent.client_secret})
 
-@app.route('/selectRoom')
+@app.route('/room-info')
 def selectRoom():
-    return render_template('selectroom.html')
+    return render_template('room-info.html')
 
 
 if __name__ == '__main__':

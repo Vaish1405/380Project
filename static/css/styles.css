@@ -203,11 +203,11 @@ body {
 .food-bg {
     background: url('../images/foodBg.png') center no-repeat;
 }
-.food{
+.food, .room-heading{
     margin-top: 70px;
 }
 
-.food p{
+.food p, .room-heading p{
     font-size: 20px;
     color: white;
 }
@@ -217,13 +217,13 @@ body {
 }*/
 
 .amenities{
-    margin:82px;   
+    margin: 40px;   
     display: flex; 
     /* position: relative;*/
     justify-content: center;
     align-items: center;
 }
 
-  .standard-bg{
-    background:url('/static/images/roomtypepic2.png') center no-repeat;
-  }
+.standard-bg{
+background:url('/static/images/roomtypepic2.png') center no-repeat;
+}
