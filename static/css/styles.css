@@ -211,3 +211,19 @@ body {
     font-size: 20px;
     color: white;
 }
+
+/*.bg-main .img {
+    object-fit: cover;
+}*/
+
+.amenities{
+    margin:82px;   
+    display: flex; 
+    /* position: relative;*/
+    justify-content: center;
+    align-items: center;
+}
+
+  .standard-bg{
+    background:url('/static/images/roomtypepic2.png') center no-repeat;
+  }
