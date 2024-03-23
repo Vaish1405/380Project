@@ -217,7 +217,7 @@ body {
 }*/
 
 .amenities{
-    margin: 40px;   
+    margin: 20px;   
     display: flex; 
     /* position: relative;*/
     justify-content: center;
@@ -226,4 +226,25 @@ body {
 
 .standard-bg{
 background:url('/static/images/roomtypepic2.png') center no-repeat;
+}
+
+.slider {
+    position: relative;
+    margin: auto;
+    margin: 0 0 10px 10px;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.slides {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; 
+    scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+.slides img {
+    height: 300px; 
+    object-fit: cover; /* Maintain aspect ratio while covering container */
+    margin-right: 5px; /* Add space between images */
 }
