@@ -91,6 +91,9 @@ def create_payment_intent():
 def selectRoom():
     return render_template('selectroom.html')
 
+@app.route('/amenities')
+def amenities():
+    return render_template('amenities.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
