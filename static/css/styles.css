@@ -1,0 +1,250 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu{
+    background-color: black;
+    width: 100%;
+    height: 70px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+}
+
+.logo {
+    margin: 20px;
+    max-height: 40px;
+}
+
+.nav-list{
+    list-style: none;
+    color: white;
+    display: flex; 
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.nav-list a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+.nav-list a:hover {
+    background-color: white;
+    color: black;
+}
+
+.container {
+    height: 800px;    
+    display: flex; 
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/mainPageBg.png') center/cover no-repeat;
+}
+
+.container-with-text {
+    height: 800px;
+    display: flex; 
+    position: relative; 
+    background: url('../images/womanRelax.png') center/cover no-repeat;
+    z-index: 1;
+}
+
+.flash-messages {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 0;
+    color: white; 
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
+}
+
+.availability-form {
+    background: white;
+    padding: 30px;
+    width: 900px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.availability-form label {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.availability-submit {
+    background-color: #808080;
+    color: white;
+    border: none;
+}
+
+.container img, .container-with-text img {
+    margin-bottom: 0;
+    width: 100%; 
+    height: 100%; 
+}
+
+.img-text {
+    position: absolute;
+    top: 0;
+    right: 0; 
+    font-size: 26px;
+    font-weight: bold; 
+    color: white; 
+    padding: 20px;
+    margin: 150px 40px;
+    z-index: 0;
+}
+
+.info-container {
+    width: 100%;
+    background-color: #D7C0AF;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-container p {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    width: 80%;
+    text-align: center;
+    font-family: "Times New Roman";
+}
+
+.footer {
+    height: 300px;
+    width: 100%; 
+    background-color: #2B4C44;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-left {
+    padding-left: 60px;
+}
+.footer p {
+    color: white; 
+    font-weight: bold; 
+    text-align: left; 
+    padding-left: 20px;
+    line-height: 1.5;
+}
+.social-container {
+    padding: 10px;
+}
+.social-container img{
+    width: 35px;
+    height: 35px;
+    padding-right: 20px;
+}
+.footer-right{
+    justify-content: flex-end;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+.footer-right .heading {
+    margin: 8px;
+    font-size: 26px;
+    font-weight: bold; 
+}
+.footer-right p{
+    padding: 0; 
+    margin: 8px;
+}
+#name, #footer-email {
+    margin: 8px;
+    width: 200px;
+    padding: 10px;
+}
+.footer-right button {
+    padding: 10px 30px;
+    margin: 8px;
+}
+.active {
+    background-color: white;
+    color: black !important; 
+    font-weight: bold;
+}
+
+.bg-main {
+    width: 100%; 
+    height: 400px; 
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.bg-main h2 {
+    font-size: 40px;
+    color: white; 
+    font-weight: bold;
+}
+.food-bg {
+    background: url('../images/foodBg.png') center no-repeat;
+}
+.food, .room-heading{
+    margin-top: 70px;
+}
+
+.food p, .room-heading p{
+    font-size: 20px;
+    color: white;
+}
+
+/*.bg-main .img {
+    object-fit: cover;
+}*/
+
+.amenities{
+    margin: 20px;   
+    display: flex; 
+    /* position: relative;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.standard-bg{
+background:url('/static/images/roomtypepic2.png') center no-repeat;
+}
+
+.slider {
+    position: relative;
+    margin: auto;
+    margin: 0 0 10px 10px;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.slides {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; 
+    scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+.slides img {
+    height: 300px; 
+    object-fit: cover; /* Maintain aspect ratio while covering container */
+    margin-right: 5px; /* Add space between images */
+}

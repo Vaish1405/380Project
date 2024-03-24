@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>LA Hotels</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Goblin One' rel='stylesheet'>
+    <style>
+        .food button {
+            font-size: 25px;
+            padding: 20px 40px;
+            font-weight: bold;
+            background-color: rgb(250, 250, 250, 0.7);
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav-menu.html' %}
+    <div class="bg-main food-bg">
+        <div class="food">
+            <h2>Food & Drinks</h2>
+            <p>Enjoy the exquisite cuisine offered at our Hotel.</p>
+            <p>Call and get it delivered or come join in for complete experience of the hotel.</p>
+            <button>CONTACT</button>
+        </div>
+    </div>
+    <div class="containerformenu" style="display: flex; justify-content: center; align-items: center;">
+        <img src="static/images/menuupdated.png" style="width:600px; height:800px"; class=""/>
+    </div>
+    {% include 'footer.html' %}
+    
+</body>
+</html>

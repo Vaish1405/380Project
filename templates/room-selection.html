@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>LA Hotels</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/reservationPages.css">
+</head>
+<body>
+    {% include 'nav-menu.html' %}
+    <div class="bg-main rooms-bg">
+        <div class="rooms">
+            <h2>AVAILABLE ROOMS</h2>
+            <P></P>
+            <div class="reserve-progress">
+                <p><span>1 Dates</span><span class="current">2 Rooms</span><span>3 Extras</span><span>4 Payment</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="reserveInfo">
+        <div class="elements">
+            <img src="../static/images/reserveInfo/calendarDates.png" />
+            <p class="text">{{ form.get('check-in') }}</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/calendarDates.png" />
+            <p class="text">{{ form.get('check-out') }}</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/people.png" />
+            <p class="text">1 room, {{ form.get('people') }} adults</p>
+        </div>
+        <div class="elements">
+            <img src="../static/images/reserveInfo/promoCode.png" />
+            <p class="text">Promo Code</p>
+        </div>
+    </div>
+    <form method="POST" action="/extraSelection">
+        <div class="available-rooms">
+            {% for room in available_rooms %}
+                <div class="room-card">
+                    {% if room.lower() == 'standard' %}
+                        <img src="../static/images/room-selection/standard.png">
+                        <div class="room-info">
+                            <h2 class="heading">STANDARD ROOM</h2>
+                            <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                            <p class="price">$109/night</p>
+                            <a class="view-room" href="/room-info#standard-room">VIEW ROOM</a>
+                            <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
+                        </div>
+                    {% elif room.lower() == 'deluxe' %}
+                        <img src="../static/images/room-selection/deluxe.png">
+                        <div class="room-info">
+                            <h2 class="heading">DELUXE ROOM</h2>
+                            <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                            <p class="price">$309/night</p>
+                            <a class="view-room" href="/room-info#deluxe-room">VIEW ROOM</a>
+                            <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
+                        </div>
+                    {% else %} 
+                        <img src="../static/images/room-selection/superDeluxe.png">
+                        <div class="room-info">
+                            <h2 class="heading">SUPER DELUXE ROOM</h2>
+                            <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
+                            <p class="price">$509/night</p>
+                            <a class="view-room" href="/room-info#super-deluxe-room">VIEW ROOM</a>
+                            <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+
+    {% include 'footer.html' %}
+</body>
+</html>
