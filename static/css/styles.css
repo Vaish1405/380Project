@@ -212,14 +212,9 @@ body {
     color: white;
 }
 
-/*.bg-main .img {
-    object-fit: cover;
-}*/
-
 .amenities{
     margin: 20px;   
     display: flex; 
-    /* position: relative;*/
     justify-content: center;
     align-items: center;
 }
