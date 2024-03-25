@@ -87,8 +87,8 @@ def create_payment_intent():
 
     return jsonify({'clientSecret': intent.client_secret})
 
-@app.route('/room-info')
-def selectRoom():
+@app.route('/roomInfo', methods=['GET'])
+def roomInfo():
     return render_template('room-info.html')
 
 @app.route('/amenities')
