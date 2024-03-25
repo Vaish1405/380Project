@@ -6,7 +6,7 @@ from ValidateAvailabilityInput import check_validity
 from room_cost import get_room_price
 from extras_cost import get_extras_price
 from datetime import datetime
-from reservation import make_reservation
+from reservation import make_reservation, ReservationController
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
@@ -98,8 +98,8 @@ def amenities():
 
 @app.route('/temp')
 def temp():
-    reservation = ["vaish", 1, session['check_in'], session['check_out'], session['room_type']]
-    return render_template('temp.html', temp=make_reservation(reservation=reservation))
+    reservation = ["vaish", 1, session['check_in'], session['check_out'], session['room-type']]
+    return render_template('temp.html', temp=ReservationController(reservation=reservation))
 
 if __name__ == '__main__':
     app.run(debug=True)
