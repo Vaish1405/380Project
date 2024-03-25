@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/amenities.css">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'nav-menu.html' %}
+    <div class="amens-main amenities-bg">
+        <div class="amens">
+            <h2>Amenities</h2>
+        </div>
+    </div>
+    <div class="room-types">
+        <div class="images-section">
+            <div>
+                <img src="../static/images/spa.png" />
+                <p class="room"><a href="#spa">Spa</a></p>
+                
+            </div>
+            <div>
+                <img src="../static/images/game.png" />
+                <p class="room"><a href="#game">Game Room</a></p>
+            </div>
+            <div>
+                <img src="../static/images/gymbg.png" />
+                <p class="room"><a href="#gym">Gym</a></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="amen-main amen-bg" id="game">
+        <div class="amentxt">
+            <h2>Games</h2>
+        </div>
+    </div>
+    <div class="amenities">
+        <p class="amentext">Enjoy unlimited access to our Games Room. Equipped with Nintendo Switches, Wiis, Xbox, and Ping Pong tables, Foosball table, and Billards. Perfect for all kids and adults alike!</p>
+    </div>
+    <div class="gym-main gym-bg" id="gym">
+        <div class="amenities">
+            <h2>Gym</h2>
+        </div>
+    </div>
+    <div class="amenities">
+        <p class="amentext">Ready to clear your mind? Join some of our fitness classes like yoga, pilates, and dance classes. The fitness studio also includes a spacious gym with different elliptical machines, workout machines, and various types of weights for weight training.</p>
+    </div>
+    <div class="spa-main spa-bg" id="spa">
+        <div class="amentxt">
+            <h2>Spa</h2>
+        </div>
+    </div>
+    <div class="amenities">
+        <p class="amentext">Call (818) 232-23245 to make an appointment with our spa! Take some time to unwind and relax with our super, deluxe, and luxurious packages. </p>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>
