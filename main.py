@@ -95,5 +95,9 @@ def selectRoom():
 def amenities():
     return render_template('amenities.html')
 
+@app.route('/events')
+def events():
+    return render_template('events.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
