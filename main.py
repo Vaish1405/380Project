@@ -6,6 +6,7 @@ from ValidateAvailabilityInput import check_validity
 from room_cost import get_room_price
 from extras_cost import get_extras_price
 from datetime import datetime
+from reservation import make_reservation, ReservationController
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
@@ -73,6 +74,14 @@ def payment():
                            extrasCost=get_extras_price(session['extras']), 
                            nights=nights,
                            total=get_total(nights, session['room-type'], session['extras']))
+
+
+@app.route('/temp', methods=['POST', 'GET'])
+def temp():
+    print(request.form)
+    session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
+    return render_template('temp.html', temp=ReservationController(reservation=reservation))
 
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
