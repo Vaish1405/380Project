@@ -50,4 +50,4 @@ class ReservationController:
                                 'check_in': self.reservation.check_in,
                                 'check_out': self.reservation.check_out,
                                 'room_type': self.reservation.room_type})
-        print("successful") 
+        return self.reservation

@@ -78,10 +78,11 @@ def payment():
 
 @app.route('/temp', methods=['POST', 'GET'])
 def temp():
-    print(request.form)
     session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
-    return render_template('temp.html', temp=ReservationController(reservation=reservation))
+    return render_template('temp.html', temp=ReservationController(reservation=reservation), name=session['name'], check_in=session['check_in'], 
+                           check_out=session['check_out'], people=session['people'], 
+                           room_selection=session['room-type'], extras_selection=session['extras'])
 
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
