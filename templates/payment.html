@@ -23,7 +23,7 @@
         <div class="left">
             <div class="customer-info">
                 <h2>Customer Information</h2>
-                <form action="">
+                <form id="payment-form" method="POST" action="/temp">
                     <div class="names">
                         <div>
                             <label for="first-name">First Name:</label>
@@ -36,29 +36,71 @@
                     </div>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required><br>
-                </form>
-            </div>
-            <div class="card-info">
-                <h2>Card Information</h2>
-                <!-- <form action="" method="post">
-                    <label for="card-number">Card Number:</label>
-                    <input type="text" id="card-number" name="card-number" required><br>
 
-                    <div class="names">
-                        <div>  
-                            <label for="cvv">CVV:</label>
-                            <input type="text" id="cvv" name="cvv" required><br>
-                        </div>
-                        <div>
-                            <label for="expiration-date">Expiration Date:</label>
-                            <input type="text" id="expiration-date" name="expiration-date" placeholder="MM/YYYY" required><br>
-                        </div>    
+                    <div class="card-info">
+                        <h2>Card Information</h2>
+                        <div id="card-element"></div>
+        
+                        <!-- Display any errors from Stripe -->
+                        <div id="card-errors" role="alert" style="color: red"></div>
+                        <!-- Button to submit the form and trigger Stripe payment -->
+                        <button type="submit" id="submit-payment">PAY NOW</button>
                     </div>
-                </form> -->
-                <div id="card-element"></div>
 
-                <!-- Display any errors from Stripe -->
-                <div id="card-errors" role="alert" style="color: red"></div>
+                        <!-- Stripe.js and handle payment form submission -->
+                    <script src="https://js.stripe.com/v3/"></script>
+                    <script>
+                        var stripe = Stripe('pk_test_51Or85ZH77c6gByb9H4GM4qH5gLGhtjUWcwf2amkD0av60ziieQ0u4WZF8qvf8wu24ZHEgAXV5mgjazvxRIp60TFh009i6KiT8y');
+                        var elements = stripe.elements();
+                        var card = elements.create('card');
+                        card.mount('#card-element');
+
+                        // Handle real-time validation errors on the card Element
+                        card.addEventListener('change', function(event) {
+                            var displayError = document.getElementById('card-errors');
+                            if (event.error) {
+                                displayError.textContent = event.error.message;
+                            } else {
+                                displayError.textContent = '';
+                            }
+                        });
+
+                        // Handle form submission
+                        var form = document.getElementById('payment-form');
+                        form.addEventListener('submit', function(event) {
+
+                        // Fetch the client secret from your server
+                        fetch('/create-payment-intent', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                amount: 1000,  // Replace with the actual amount in cents
+                                currency: 'usd',
+                            }),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Use the client secret to confirm the card payment
+                            stripe.confirmCardPayment(data.clientSecret, {
+                                payment_method: {
+                                    card: card,
+                                },
+                            })
+                            .then(result => {
+                                if (result.error) {
+                                    // Handle errors
+                                    document.getElementById('card-errors').textContent = result.error.message;
+                                } else {
+                                    // Payment succeeded
+                                    window.location.href = '/temp';
+                                }
+                            });
+                        });
+                        });
+                    </script>
+                </form>
             </div>
         </div>
         <div class="right">
@@ -90,68 +132,9 @@
                 </div>   
                 <p>*Changes in taxes or fees will affect the total price.</p>                                
             </div>
-            <form id="payment-form" method="POST" action="/temp">
-                <!-- Stripe.js and handle payment form submission -->
-                <script src="https://js.stripe.com/v3/"></script>
-                <script>
-                    var stripe = Stripe('pk_test_51Or85ZH77c6gByb9H4GM4qH5gLGhtjUWcwf2amkD0av60ziieQ0u4WZF8qvf8wu24ZHEgAXV5mgjazvxRIp60TFh009i6KiT8y');
-                    var elements = stripe.elements();
-                    var card = elements.create('card');
-                    card.mount('#card-element');
-            
-                    // Handle real-time validation errors on the card Element
-                    card.addEventListener('change', function(event) {
-                        var displayError = document.getElementById('card-errors');
-                        if (event.error) {
-                            displayError.textContent = event.error.message;
-                        } else {
-                            displayError.textContent = '';
-                        }
-                    });
-            
-                    // Handle form submission
-                    var form = document.getElementById('payment-form');
-                    form.addEventListener('submit', function(event) {
-                        event.preventDefault();
-                        // document.getElementById('submit-payment').disabled = true;
-            
-                        // Fetch the client secret from your server
-                    fetch('/create-payment-intent', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            amount: 1000,  // Replace with the actual amount in cents
-                            currency: 'usd',
-                        }),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Use the client secret to confirm the card payment
-                        stripe.confirmCardPayment(data.clientSecret, {
-                            payment_method: {
-                                card: card,
-                            },
-                        })
-                        .then(result => {
-                            if (result.error) {
-                                // Handle errors
-                                document.getElementById('card-errors').textContent = result.error.message;
-                            } else {
-                                // Payment succeeded
-                                window.location.href = '/temp';
-                            }
-                        });
-                    });
-                    });
-                </script>
-                
-                <!-- Button to submit the form and trigger Stripe payment -->
-                <button type="submit" id="submit-payment">PAY NOW</button>
-            </form>
         </div>
     </div>
     {% include 'footer.html' %}
+
 </body>
 </html>

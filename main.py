@@ -75,6 +75,14 @@ def payment():
                            nights=nights,
                            total=get_total(nights, session['room-type'], session['extras']))
 
+
+@app.route('/temp', methods=['POST', 'GET'])
+def temp():
+    print(request.form)
+    session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
+    return render_template('temp.html', temp=ReservationController(reservation=reservation))
+
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
     data = request.json
@@ -96,10 +104,6 @@ def roomInfo():
 def amenities():
     return render_template('amenities.html')
 
-@app.route('/temp')
-def temp():
-    reservation = ["vaish", 1, session['check_in'], session['check_out'], session['room-type']]
-    return render_template('temp.html', temp=ReservationController(reservation=reservation))
 
 if __name__ == '__main__':
     app.run(debug=True)
