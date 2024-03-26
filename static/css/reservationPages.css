@@ -130,8 +130,15 @@
     text-align: center;
 }
 .room-info .view-room, .item-info .requirements {
-    border: 1px solid black;
-    padding: 20px;
+    border: 2px solid black;
+    color: black;
+    text-decoration: none;
+}
+.item-info .requirements {
+    padding: 16px 30px;
+}
+.room-info .view-room {
+    padding: 16px 35px;
 }
 
 .item-info .requirements {

@@ -46,7 +46,7 @@
                             <h2 class="heading">STANDARD ROOM</h2>
                             <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
                             <p class="price">$109/night</p>
-                            <button class="view-room">VIEW ROOM</button>
+                            <a class="view-room" href="/roomInfo#standard-room">VIEW ROOM</a>
                             <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
                         </div>
                     {% elif room.lower() == 'deluxe' %}
@@ -55,7 +55,7 @@
                             <h2 class="heading">DELUXE ROOM</h2>
                             <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
                             <p class="price">$309/night</p>
-                            <button class="view-room">VIEW ROOM</button>
+                            <a class="view-room" href="/roomInfo#deluxe-room">VIEW ROOM</a>
                             <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
                         </div>
                     {% else %} 
@@ -64,7 +64,7 @@
                             <h2 class="heading">SUPER DELUXE ROOM</h2>
                             <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
                             <p class="price">$509/night</p>
-                            <button class="view-room">VIEW ROOM</button>
+                            <a class="view-room" href="/roomInfo#super-deluxe-room">VIEW ROOM</a>
                             <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
                         </div>
                     {% endif %}
