@@ -73,12 +73,12 @@ def payment():
                            roomCost=get_room_price(session['room-type']), 
                            extrasCost=get_extras_price(session['extras']), 
                            nights=nights,
-                           total=get_total(nights, session['room-type'], session['extras']))
+                           total=get_total(nights, session['room-type'], session['extras']),
+                           public_key=os.getenv('stripe_public_key'))
 
 
 @app.route('/temp', methods=['POST', 'GET'])
 def temp():
-    print(request.form)
     session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
     return render_template('temp.html', temp=ReservationController(reservation=reservation))
