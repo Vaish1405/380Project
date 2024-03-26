@@ -55,9 +55,9 @@
 }
 
 .images-section img {
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
-    margin: 0 30px;
+    margin: 0 10px;
     vertical-align: middle;
 }
 
