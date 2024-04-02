@@ -55,7 +55,7 @@ def roomSelection():
     if not result.startswith('Welcome'):
         flash(result) 
         return redirect(request.referrer)
-    return render_template('room-selection.html', available_rooms=find_available_rooms(), form=request.form)
+    return render_template('room-selection.html', available_rooms=find_available_rooms(session['check_in'], session['check_out']), form=request.form)
     
 @app.route('/extraSelection', methods=['POST', 'GET'])
 def extraSelection(): 
