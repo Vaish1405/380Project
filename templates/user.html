@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Profile</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="stylesheet" href="../static/css/user.css" />
+  </head>
+  <body>
     {% include 'nav-menu.html' %}
-    hi
-</body>
+    <div class="icon-bar">
+      <a href="#">User Info</a>
+      <a href="#">Reservations</a>
+      <a href="#">Settings</a>
+      <a href="#" style="margin-top: 350px; color: red">Logout</a>
+    </div>
+    <div class="userProfile">
+      <div class="profileDisplay">
+        <img src="/static/images/profilepic.png" style="padding-top: 100px; width:200px; padding-left: 100px;">
+      </div>
+      <div class="userProfile">
+        <div class="profileDisplay">
+          <p style="padding-top: 100px; width:200px;"><h1>Amy Truong</h1></p>
+        </div>
+    </div>
+    <div class="userName" style="width: 150px;">
+        <h2>First Name</h2>
+        <input placeholder="First Name" id="name"><br>
+    </div>
+    <div class="phoneNum" style="width: 100px;">
+        <h2>Phone #</h2>
+        <input placeholder="Phone Number" id="footer-email"><br>
+    </div>
+    <div class="testFloat">
+    <div class="userLast">
+        <h2>Last Name</h2>
+        <input placeholder="First Name" id="name"><br>
+    </div>
+    <div class="email">
+        <h2>Email</h2>
+        <input placeholder="Phone Number" id="footer-email"><br>
+    </div>
+</div>
+  </body>
 </html>
