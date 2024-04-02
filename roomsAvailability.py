@@ -15,8 +15,8 @@ def read_info():
 def find_available_rooms(start_date, end_date):
     available_room_types = []
     data_read = read_info()
-    for i in data_read:        
-        availability = i[start_date.strftime('%m-%d-%Y'):end_date.strftime('%m-%d-%Y') + timedelta(days=1)]
+    for i in data_read:
+        availability = i[datetime.strptime(start_date, "%m-%d-%Y"):datetime.strptime(end_date, "%m-%d-%Y") + timedelta(days=1)]
         if all(availability) and i['RoomType'] not in available_room_types:
-            available_room_types.append(i['RoomType'])
+            available_room_types.append(i['RoomType']) 
     return available_room_types
