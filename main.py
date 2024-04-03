@@ -55,7 +55,7 @@ def roomSelection():
     if not result.startswith('Welcome'):
         flash(result) 
         return redirect(request.referrer)
-    return render_template('room-selection.html', available_rooms=find_available_rooms(), form=request.form)
+    return render_template('room-selection.html', available_rooms=find_available_rooms(session['check_in'], session['check_out']), form=request.form)
     
 @app.route('/extraSelection', methods=['POST', 'GET'])
 def extraSelection(): 
@@ -73,7 +73,8 @@ def payment():
                            roomCost=get_room_price(session['room-type']), 
                            extrasCost=get_extras_price(session['extras']), 
                            nights=nights,
-                           total=get_total(nights, session['room-type'], session['extras']))
+                           total=get_total(nights, session['room-type'], session['extras']),
+                           public_key=os.getenv('stripe_public_key'))
 
 
 @app.route('/temp', methods=['POST', 'GET'])
@@ -104,7 +105,6 @@ def roomInfo():
 @app.route('/amenities')
 def amenities():
     return render_template('amenities.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
