@@ -1,10 +1,11 @@
 <nav class="nav-menu">
     <a href="/"><img src="../static/images/logo.png" class="logo" href="/"/></a>
     <ul class="nav-list">
-        <li><a href="#">Events</a></li>
-        <li><a href="rooms">Rooms</a></li>
-        <li><a href="food">Food</a></li>
-        <li><a href="amenities">Amenities</a></li>
-        <li><a href="dateSelection">Reserve</a></li>
+        <li><a href="{{ url_for('events') }}">Events</a></li>
+        <li><a href="{{ url_for('rooms') }}">Rooms</a></li>
+        <li><a href="{{ url_for('food' )}}">Food</a></li>
+        <li><a href="{{ url_for('amenities')}}">Amenities</a></li>
+        <li><a href="{{ url_for('dateSelection')}}">Reserve</a></li>
+        <li><a href="{{ url_for('user')}}">User</a></li>
     </ul>
 </nav>

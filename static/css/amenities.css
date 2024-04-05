@@ -27,9 +27,15 @@
     font-weight: bold;
 }
 
+.amenities{
+    margin: 85px;   
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
 
 .room-types {
-    height: 600px;    
+    height: 670px;    
     position: relative;
     z-index: 1;
     text-align: center;
@@ -55,9 +61,12 @@
 }
 
 .images-section img {
-    max-width: 300px;
-    height: auto;
-    margin: 0 30px;
+    max-width: 400px;
+    height: 400px;
+    display: inline-block;
+    overflow: hidden;
+    /*top right bottom left*/
+    margin: 0 10px 0px 10px;
     vertical-align: middle;
 }
 
@@ -71,8 +80,10 @@
     background-color: #252C34;
     color: white;
     font-size: 35px;
-    width: 300px;
-    margin: 0 30px;
+    width: 400px;
+    height: 200px;
+        /*top right bottom left*/
+    margin: 0px 30px;
     padding: 60px 5px;
     box-sizing: border-box;
     color: #BEAA76 !important;

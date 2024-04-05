@@ -212,13 +212,6 @@ body {
     color: white;
 }
 
-.amenities{
-    margin: 20px;   
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-}
-
 .standard-bg{
 background:url('/static/images/roomtypepic2.png') center no-repeat;
 }
