@@ -109,9 +109,13 @@ def roomInfo():
 def amenities():
     return render_template('amenities.html')
 
-@app.route('/userPageTemp')
-def tempUserPage(): 
-    return render_template('userPageTemp.html')
+@app.route('/events')
+def events():
+    return render_template('events.html')
+
+@app.route('/user')
+def user():
+    return render_template('user.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

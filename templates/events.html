@@ -4,11 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Events</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/events.css">
 </head>
+
 <body>
     {% include 'nav-menu.html' %}
-    
+    <div class="events-main events-bg">
+        <div class="events">
+            <h2>Events</h2>
+            <p>Let us take care of every detail</p>
+            <p>Call (818) 223-2933 to reserve rooms for meetings, seminars, conventions, award ceremonies, weddings, and more!</p>
+        </div>
+    </div>
+    <div class="eventsdescrip">
+        <div class="eventsdescriptext">
+                <h1>Conferences & Events</h2>
+                <h4>We provide all of the spaces, services, and equipment!</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <!--eventroom1-->
+          <img src="/static/images/eventroom1.png" alt="Snow" style="width:100%">
+          <div class="text">
+          <h2>Cornelius Room</h2>
+          <p>8.422 square feet</p>
+          <p>Conference room for 16 people</p>
+          </div>
+        </div>
+        <div class="column">
+            <!--eventroom2-->
+          <img src="/static/images/eventroom2.png" alt="Forest" style="width:100%">
+          <div class="text">
+            <h2>Studio Room</h2>
+            <p>9.452 square feet</p>
+            <p>Classroom for 400 people</p>
+          </div>
+        </div>
+        <div class="column">
+            <!--eventroom4-->
+          <img src="/static/images/eventroom4.png" alt="Mountains" style="width:100%">
+              <div class="text">
+                <h2>Congo Room</h2>
+                <p>7.464 square feet</p>
+                <p>Conference room for 16 people</p>
+          </div>    
+        </div>
+      </div>
     {% include 'footer.html' %}
 </body>
 </html>
