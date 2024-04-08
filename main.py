@@ -5,8 +5,11 @@ from roomsAvailability import find_available_rooms
 from ValidateAvailabilityInput import check_validity 
 from room_cost import get_room_price
 from extras_cost import get_extras_price
-from datetime import datetime
+from datetime import datetime, timedelta
 from reservation import make_reservation, ReservationController
+from roomsAvailability import read_info
+import csv
+
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
@@ -20,7 +23,7 @@ def get_total(nights, room_selection, extras_selection):
     sum += int(get_room_price(room_selection)) * int(nights)
     sum += int(get_extras_price(extras_selection))
     sum += 50
-    return sum
+    return sum                      
 
 available_room_types = [] # to store the values read from csv file
 
