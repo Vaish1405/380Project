@@ -3,7 +3,8 @@ from roomsAvailability import read_info, csv_file
 
 # defines the 
 class Reservation:
-    def __init__(self, user_name, check_in, check_out, room_type):
+    def __init__(self, user_id, user_name, check_in, check_out, room_type):
+        self.user_id = user_id
         self.user_name = user_name
         self.check_in = check_in
         self.check_out = check_out
@@ -12,11 +13,12 @@ class Reservation:
 # Adding the reservation to database
 def make_reservation(reservation):
     # Declaring keys in dictionary that is going to be added to CSV file
-    main_key = ['user_name', 'user_id', 'check_in', 'check_out', 'room_type']
+    main_key = ['user_id', 'user_name', 'check_in', 'check_out', 'room_type']
     # Using dictionary to add the data to CSV file, let me know if you want alternative way
     with open('reservations.csv', mode='a', newline='') as file:
         data_adding = csv.DictWriter(file, fieldnames= main_key)
-        data_adding.writerow({'user_name': reservation.user_name,
+        data_adding.writerow({'user_id' : reservation.user_id,
+                            'user_name': reservation.user_name,
                             'check_in': reservation.check_in,
                             'check_out': reservation.check_out,
                             'room_type': reservation.room_type})
@@ -42,12 +44,32 @@ class ReservationController:
         self.make_reservation()
 
     def make_reservation(self):
-        main_key = ['user_name', 'check_in', 'check_out', 'room_type']
+        main_key = ['user_id','user_name', 'check_in', 'check_out', 'room_type']
         # Using dictionary to add the data to CSV file, let me know if you want alternative way
         with open('reservations.csv', mode='a', newline='') as file:
             data_adding = csv.DictWriter(file, fieldnames= main_key)
-            data_adding.writerow({'user_name': self.reservation.user_name,
+            data_adding.writerow({'user_id': self.reservation.user_id,
+                                'user_name': self.reservation.user_name,
                                 'check_in': self.reservation.check_in,
                                 'check_out': self.reservation.check_out,
                                 'room_type': self.reservation.room_type})
         return self.reservation
+
+'''
+reservation_data1 = ('jd1','John Doe', '2024-04-08', '2024-04-10', 'Single')
+reservation_controller1 = ReservationController(reservation_data1)
+
+reservation_data2 = ('dc2','David Chan', '2024-04-20', '2024-04-23', 'Deluxe')
+reservation_controller2 = ReservationController(reservation_data2)
+
+reservation_data3 = ('at3','Aung Thu', '2024-04-26', '2024-04-28', 'Deluxe')
+reservation_controller3 = ReservationController(reservation_data3)
+
+reservation_data4 = ('kk4', 'Kaung Khant', '2024-04-19', '2024-04-22','Deluxe')
+reservation_controller4 = ReservationController(reservation_data4)
+
+reservation_data5 = ('pz3','PPZ', '2024-04-19', '2024-04-20','Deluxe')
+reservation_controller5 = ReservationController(reservation_data5)
+'''
+
+
