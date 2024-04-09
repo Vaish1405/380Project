@@ -5,11 +5,8 @@ from roomsAvailability import find_available_rooms
 from ValidateAvailabilityInput import check_validity 
 from room_cost import get_room_price
 from extras_cost import get_extras_price
-from datetime import datetime, timedelta
-from reservation import make_reservation, ReservationController
-from roomsAvailability import read_info
-import csv
-
+from datetime import datetime
+from reservation import ReservationController
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
