@@ -1,71 +1,81 @@
 import csv
-from reservation import change_availability
+from reservation import Reservation, change_availability
+import pandas as pd
 
 # Removing the reservation from csv file after canceling
 def cancel_reservation(user_name):
-    # Defining the fields of csv file
-    main_key = ['user_name', 'check_in', 'check_out', 'room_type']
+    # Reading the data from CSV file using pandas
+    read_data = pd.read_csv('reservations.csv')
 
-    # This list restores the remaining reservation data from CSV file after canceling
-    restore_data = []
+    # Removing te canceled reservation from
+    remove_cancellation = read_data[read_data['user_name'] != user_name]
 
-    # Reading the data in CSV file
+    # Updating data to CSV file after removing reservation that got canceled
+    remove_cancellation.to_csv('reservations.csv', index=False)
+
+
+# Function to retrieve a reservation by user_id
+def get_reservation_by_user_id(user_id):
+    # Read reservations from the CSV file
     with open('reservations.csv', 'r') as file:
-        # Create a CSV reader object
-        csv_reader = csv.DictReader(file)
-
-        for r in csv_reader:
-            # Checking if the username in CSV file data is the same as the username for canceling reservation
-            if r['user_name'] != user_name: # Could also be used with user_id here
-                restore_data.append(r)
-
-    # Editing the data in CSV again by removing the canceled reservation
-    with open('reservations.csv', 'w') as file:
-        writer = csv.DictWriter(file, fieldnames=main_key)
-        # Editing the data in csv file without the reservation that has been canceled
-        writer.writerows(restore_data)
-
-    # Giving message to inform the user the reservation cancellation is made
-    return "Reservation canceled successfully."
+        data_reader = csv.DictReader(file)
+        # Iterate through each reservation
+        for row in data_reader:
+            # Checking if the user_id matches the data
+            if row['user_id'] == user_id:
+                return Reservation(row['user_id'], row['user_name'], row['check_in'], row['check_out'], row['room_type'])
+    # Return None if the reservation for specific User ID is not found
+    return None
 
 
-def edit_reservation(self, user_id, **kwargs):
+def edit_reservation(reservation, user_id, **kwargs):
     """
-     user_id must be included for each reservation changes for each customer in the database
+     user_name must be included for each reservation changes for each customer in the database
      Using **kwargs which is flexible for variable number of keyword arguments which are the changes to be made
      Examples would be all possible options check_in, check_out and room_type
    """
 
+    reservation = get_reservation_by_user_id(user_id)
+
+    # We can add validation check if the reservation is found or not
+
     # Defining the data we could change according to the user's preference
-    change_data = ['room_type', 'check_in', 'check_out']
+    change_data = ['user_name', 'room_type', 'check_in', 'check_out']
 
     for key, value in kwargs.items():
-        # Checking if the provided key is one of the editable fields
         if key in change_data:
-            # Update the corresponding attribute of the reservation
-            setattr(self.reservation, key, value)
+            # Updating the attribute of the reservation in data
+            setattr(reservation, key, value)
 
-    # Read the existing reservations from the CSV file
+    # Reading the data in the CSV file
     with open('reservations.csv', 'r') as file:
         data_reader = csv.DictReader(file)
-        read_rows = list(data_reader)
+        read_data = list(data_reader)
 
-    # Write the modified reservation data back to the file
+    # Modifying the data back to CSV file
     with open('reservations.csv', 'w') as file:
-        writer = csv.DictWriter(file, fieldnames=['user_name', 'check_in', 'check_out', 'room_type'])
+        writer = csv.DictWriter(file, fieldnames=['user_id','user_name', 'check_in', 'check_out', 'room_type'])
         writer.writeheader()
-        for row in read_rows:
-            # Tracking reservation information by the User ID
-            if row['user_name'] == user_id:
+        for r in read_data:
+            # Checking if reservation information by User ID
+            if r['user_id'] == user_id:
                 # Editing the reservation details for any specific customer
-                row['room_type'] = self.reservation.room_type
-                row['check_in'] = self.reservation.check_in
-                row['check_out'] = self.reservation.check_out
+                r['user_name'] = reservation.user_name
+                r['room_type'] = reservation.room_type
+                r['check_in'] = reservation.check_in
+                r['check_out'] = reservation.check_out
             # Changing the data the CSV file according to reservation changes
-            writer.writerow(row)
+            writer.writerow(r)
 
     # Updating room availability based on the reservation changed by customer, essential for specific changes in rooms availability only
     for stored_data, value in kwargs.items():
         if stored_data == 'room type':
-            change_availability(self.reservation.room_type)
+            change_availability(reservation.room_type)
     return "Your reservation has been updated successfully!"
+
+'''
+cancel_reservation('Kaung Khant')
+cancel_reservation('Kaung')
+edit_reservation(Reservation,'pz2',room_type='Deluxe')
+edit_reservation(Reservation,'as99',room_type='Single', check_in = '2024-04-16')
+'''
