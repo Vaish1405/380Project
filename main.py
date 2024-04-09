@@ -6,7 +6,7 @@ from ValidateAvailabilityInput import check_validity
 from room_cost import get_room_price
 from extras_cost import get_extras_price
 from datetime import datetime
-from reservation import make_reservation, ReservationController
+from reservation import ReservationController
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
@@ -20,7 +20,7 @@ def get_total(nights, room_selection, extras_selection):
     sum += int(get_room_price(room_selection)) * int(nights)
     sum += int(get_extras_price(extras_selection))
     sum += 50
-    return sum
+    return sum                      
 
 available_room_types = [] # to store the values read from csv file
 
@@ -79,7 +79,10 @@ def payment():
 
 @app.route('/temp', methods=['POST', 'GET'])
 def temp():
+    session['first-name'] = request.form.get('first-name')
+    session["last-name"] = request.form.get('last-name')
     session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
+    session['email'] = request.form.get('email')
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
     return render_template('temp.html', temp=ReservationController(reservation=reservation), name=session['name'], check_in=session['check_in'], 
                            check_out=session['check_out'], people=session['people'], 
@@ -112,7 +115,7 @@ def events():
 
 @app.route('/user')
 def user():
-    return render_template('user.html')
+    return render_template('user.html', user_first_name=session['first-name'], user_last_name=session['last-name'], user_email=session['email'])
 
 if __name__ == '__main__':
     app.run(debug=True)
