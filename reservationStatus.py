@@ -6,6 +6,7 @@ import pandas as pd
 def cancel_reservation(user_name):
     # Reading the data from CSV file using pandas
     read_data = pd.read_csv('reservations.csv')
+    # print(read_data['user_name'])
 
     # Removing te canceled reservation from
     remove_cancellation = read_data[read_data['user_name'] != user_name]
@@ -66,3 +67,6 @@ def edit_reservation(reservation, user_id, **kwargs):
         if stored_data == 'room type':
             change_availability(reservation.room_type)
     return "Your reservation has been updated successfully!"
+
+
+edit_reservation(Reservation, '44', check_in='2024-04-10', check_out = '2024-04-12')

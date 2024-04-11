@@ -4,8 +4,7 @@ from datetime import datetime, timedelta
 
 # defines the 
 class Reservation:
-    def __init__(self, user_id, user_name, check_in, check_out, room_type):
-        self.user_id = user_id
+    def __init__(self, user_name, check_in, check_out, room_type):
         self.user_name = user_name
         self.check_in = check_in
         self.check_out = check_out
@@ -50,8 +49,7 @@ class ReservationController:
         # Using dictionary to add the data to CSV file, let me know if you want alternative way
         with open('reservations.csv', mode='a', newline='') as file:
             data_adding = csv.DictWriter(file, fieldnames= main_key)
-            data_adding.writerow({'user_id': self.reservation.user_id,
-                                'user_name': self.reservation.user_name,
+            data_adding.writerow({'user_name': self.reservation.user_name,
                                 'check_in': self.reservation.check_in,
                                 'check_out': self.reservation.check_out,
                                 'room_type': self.reservation.room_type})
