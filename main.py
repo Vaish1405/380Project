@@ -115,7 +115,7 @@ def events():
 
 @app.route('/user')
 def user():
-    return render_template('user.html', user_first_name=session['first-name'], user_last_name=session['last-name'], user_email=session['email'])
+    return render_template('user.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
 
 if __name__ == '__main__':
     app.run(debug=True)
