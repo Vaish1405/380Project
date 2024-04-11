@@ -50,7 +50,7 @@
                         <!-- Stripe.js and handle payment form submission -->
                     <script src="https://js.stripe.com/v3/"></script>
                     <script>
-                        var stripe = Stripe('pk_test_51Or85ZH77c6gByb9H4GM4qH5gLGhtjUWcwf2amkD0av60ziieQ0u4WZF8qvf8wu24ZHEgAXV5mgjazvxRIp60TFh009i6KiT8y');
+                        var stripe = Stripe("{{ public_key }}");
                         var elements = stripe.elements();
                         var card = elements.create('card');
                         card.mount('#card-element');
