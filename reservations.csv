@@ -1,4 +1,2 @@
-user_id,user_name,check_in,check_out,room_type
-1,Vaishnavi Sen,2024-04-09,2024-04-10,Deluxe
-2,y Sen,2024-04-09,2024-04-10,Deluxe
-,Ruben banuelos,2024-04-16,2024-04-26,Deluxe
+reservation_id,user_name,check_in,check_out,room_type
+b96c2131-8e43-4fa2-92fb-86a4bf3abb0c,y Sen,2024-04-17,2024-04-25,Standard
