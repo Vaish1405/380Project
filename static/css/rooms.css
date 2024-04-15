@@ -4,6 +4,30 @@ body {
     padding: 0;
 }
 
+.rooms-intro{
+    width: 100%;
+    height: 450px;
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.rooms-bg{
+    background: url('/static/images/roomsFirst.png') center/cover no-repeat;
+}
+
+.roomsDescrip h2{
+    font-size: 40px;
+    color: white;
+}
+
+.roomsDescrip p{
+    font-weight: bold;
+    color: yellow;
+    font-size: 20px;
+}
 .nav-menu{
     background-color: black;
     width: 100%;
@@ -75,7 +99,7 @@ body {
 }
 
 .room-types h2 {
-    font-size: 50px;
+    font-size: 37px;
     margin: 0;
     padding: 70px;
     color: black; 
