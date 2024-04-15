@@ -41,10 +41,10 @@ class ReservationController:
                 'room_type': self.reservation.room_type
             })
         return self.reservation
-    
+
     def change_availability(self):
-    # read data and change the 
-        with open('AvailableRooms.csv', mode="r") as file: 
+        # read data and change the
+        with open('AvailableRooms.csv', mode="r") as file:
             read_data = csv.reader(file)
             header = next(read_data)
             rows = []
@@ -60,7 +60,7 @@ class ReservationController:
                 rows.append(row)
 
         # write the updated data back to the csv file
-        with open('AvailableRooms.csv', mode='w') as file: 
+        with open('AvailableRooms.csv', mode='w') as file:
             write_data = csv.writer(file)
             write_data.writerow(header)
             write_data.writerows(rows)
