@@ -117,5 +117,9 @@ def events():
 def user():
     return render_template('user.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
 
+@app.route('/userReservation')
+def userReservation():
+    return render_template('userReservation.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
