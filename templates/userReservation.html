@@ -7,6 +7,7 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="../static/css/styles.css" />
     <link rel="stylesheet" href="../static/css/user.css" />
+    <link rel="stylesheet" href="../static/css/userReservation.css" />
   </head>
   <body>
     {% include 'nav-menu.html' %}
@@ -23,3 +24,21 @@
                 <a href="#" style="margin-top: 140px; color: red; font-size: 18px;"><strong>Logout</strong></a>
             </div>
         </div>
+    <div class="testFloat">
+        <h2>Current Reservation</h2>
+        <div class="currentResContainer">
+        <div class="currentReservation">
+            <!--Example data-->
+            4/15/2024 - 4/25/2024
+            <br>
+            <br>
+            Check-in: 4:00pm
+            <br>
+            Check-out: 5:00pm
+        </div>
+        <div class="editNCancel">
+            <a href="#">Edit</a>
+            <a href="#">Cancel</a>
+        </div>
+    </div>
+    </div>
