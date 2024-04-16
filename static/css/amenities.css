@@ -1,5 +1,5 @@
 .amenities-bg{
-    background: url('/static/images/amenitiesbg.png') center no-repeat;
+    background: url('/static/images/amenities/amenitiesbg.png') center no-repeat;
   }
 
 .amens{
@@ -121,7 +121,7 @@
 }
 
 .amen-bg{
-    background:url('/static/images/gameintro.png') center no-repeat;
+    background:url('/static/images/amenities/gameintro.png') center no-repeat;
   }
 
 .amentxt{
@@ -151,7 +151,7 @@
 }
 
 .spa-bg{
-    background:url('/static/images/spaintro.png') center no-repeat;
+    background:url('/static/images/amenities/spaintro.png') center no-repeat;
   }
 
 .gym-main {
@@ -172,7 +172,7 @@
 }
 
 .gym-bg{
-    background:url('/static/images/gymintro.png') center no-repeat;
+    background:url('/static/images/amenities/gymintro.png') center no-repeat;
   }
 
 #learn{
