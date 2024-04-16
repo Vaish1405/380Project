@@ -79,33 +79,18 @@ class ReservationController:
         read_data.to_csv('reservations.csv', index=False)
 
     # Editing the reservation according to user preference and User ID is unique key
-    def edit_reservation(self, user_name, **changes):
-
-        # Defining the data we could change according to the user's preference
-        change_data = ['user_name', 'check_in', 'check_out', 'room_type']
-
-        # Reading the data in the CSV file
-        with open('reservations.csv', 'r') as file:
-            data_reader = csv.DictReader(file)
-            read_data = list(data_reader)
-
-            # Editing the reservation by tracking the username in csv file
-            for reservation in read_data:
-                if reservation['user_name'] == user_name:
-
-                    # Editing all possible according to customer's preferences
-                    for main_key, data in changes.items():
-                        if main_key in change_data:
-                            reservation[main_key] = data
-
-            # Adding the edited data back to CSV file
-            with open('reservations.csv', 'w') as file:
-                writer = csv.DictWriter(file, fieldnames=['reservation_id', 'user_name', 'check_in', 'check_out', 'room_type'])
-                writer.writeheader()
-                writer.writerows(read_data)
-            
+    def edit_reservation(self, **changes):
+        self.cancel_reservation(find_reservation(self.reservation.user_name, self.reservation.check_in, self.reservation.check_out))
+        for key, val in changes.items(): 
+            if key == 'new_check_in':
+                self.reservation.check_in = val
+            if key == 'new_check_out':
+                self.reservation.check_out = val
+            if key == 'new_toom_type':
+                self.reservation.room_type = val
+    
+        self.make_reservation()
 
 # reservation = ['Vaishu Sen', '2024-03-27', '2024-04-01', 'Standard']
 # id = find_reservation('Vaishu Sen', '2024-03-27', '2024-04-01')
-# # ReservationController(reservation).cancel_reservation(id)
-# ReservationController(reservation).edit_reservation('Vaishu Sen', check_in="2021-03-29")
+# ReservationController(reservation).edit_reservation(new_check_in="2024-03-29")
