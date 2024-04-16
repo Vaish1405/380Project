@@ -10,7 +10,7 @@ def find_reservation(user_name, check_in, check_out):
                                  (read_data['check_in'] == check_in) & 
                                  (read_data['check_out'] == check_out)]
 
-    return reservation_data['reservation_id']
+    return reservation_data
 
 # defines the 
 class Reservation:
@@ -25,10 +25,9 @@ class Reservation:
 class ReservationController:
     def __init__(self, reservation):
         self.reservation = Reservation(uuid.uuid4(), *reservation)
-        self.make_reservation()
-        self.change_availability()
 
     def make_reservation(self):
+        self.change_availability('false')
         main_key = ['reservation_id', 'user_name', 'check_in', 'check_out', 'room_type']
         # Adding reservation to the file 
         with open('reservations.csv', mode='a', newline='') as file:
@@ -42,7 +41,7 @@ class ReservationController:
             })
         return self.reservation
 
-    def change_availability(self):
+    def change_availability(self, value):
         # read data and change the
         with open('AvailableRooms.csv', mode="r") as file:
             read_data = csv.reader(file)
@@ -55,7 +54,7 @@ class ReservationController:
                     end_date = datetime.strptime(self.reservation.check_out, '%Y-%m-%d')
                     current_date = start_date
                     while current_date <= end_date:
-                        row[header.index(current_date.strftime('%Y-%m-%d'))] = 'false'
+                        row[header.index(current_date.strftime('%Y-%m-%d'))] = value
                         current_date += timedelta(days=1)
                 rows.append(row)
 
@@ -65,7 +64,48 @@ class ReservationController:
             write_data.writerow(header)
             write_data.writerows(rows)
 
-    
+    # Removing the reservation from csv file after canceling, using pandas
+    def cancel_reservation(self, cancel_reservation_id):
+        self.change_availability(" true")
+        
+        # Reading the data from CSV file using pandas
+        read_data = pd.read_csv('reservations.csv')
 
 
-# print(find_reservation('y Sen', '2024-04-17', '2024-04-25'))
+        # Remove the canceled reservation from the DataFrame
+        read_data.drop(cancel_reservation_id.index, inplace=True)
+        
+        # Updating data to CSV file after removing reservation that got canceled
+        read_data.to_csv('reservations.csv', index=False)
+
+    # Editing the reservation according to user preference and User ID is unique key
+    def edit_reservation(self, user_name, **changes):
+
+        # Defining the data we could change according to the user's preference
+        change_data = ['user_name', 'check_in', 'check_out', 'room_type']
+
+        # Reading the data in the CSV file
+        with open('reservations.csv', 'r') as file:
+            data_reader = csv.DictReader(file)
+            read_data = list(data_reader)
+
+            # Editing the reservation by tracking the username in csv file
+            for reservation in read_data:
+                if reservation['user_name'] == user_name:
+
+                    # Editing all possible according to customer's preferences
+                    for main_key, data in changes.items():
+                        if main_key in change_data:
+                            reservation[main_key] = data
+
+            # Adding the edited data back to CSV file
+            with open('reservations.csv', 'w') as file:
+                writer = csv.DictWriter(file, fieldnames=['reservation_id', 'user_name', 'check_in', 'check_out', 'room_type'])
+                writer.writeheader()
+                writer.writerows(read_data)
+            
+
+# reservation = ['Vaishu Sen', '2024-03-27', '2024-04-01', 'Standard']
+# id = find_reservation('Vaishu Sen', '2024-03-27', '2024-04-01')
+# # ReservationController(reservation).cancel_reservation(id)
+# ReservationController(reservation).edit_reservation('Vaishu Sen', check_in="2021-03-29")
