@@ -130,5 +130,9 @@ def editReservation():
 def settings():
     return render_template('settings.html')
 
+@app.route('/editReservation')
+def editReservation():
+    return render_template('editReservation.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
