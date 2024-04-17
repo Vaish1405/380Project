@@ -1,7 +1,3 @@
-Vaishnavi Sen,2024-03-27,2024-03-29,Deluxe
-Vaishnavi Sen,2024-04-10,2024-04-19,Deluxe
-Vaishnavi Sen,2024-04-10,2024-04-18,Deluxe
-Vaishnavi Sen,2024-04-03,2024-04-18,Standard
-Vaishnavi Sen,2024-04-10,2024-04-12,Standard
-Vaishnavi Sen,2024-04-09,2024-04-10,Deluxe
-y Sen,2024-04-09,2024-04-10,Deluxe
+reservation_id,user_name,check_in,check_out,room_type,room_number
+3959115b-23fd-4134-82cb-b80308c3c4ee,y y,2024-04-18,2024-04-20,Standard,101
+31cc4544-f32a-424b-b9cf-3d61cef16228,Ruben Vaishnavi,2024-04-18,2024-04-24,Standard,102
