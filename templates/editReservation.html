@@ -11,25 +11,26 @@
 </head>
 <body>
     {% include 'nav-menu.html' %}
-<form action="" style="border:1px solid #ccc">
-    <div class="editContainer">
-        <h1>Amy Truong</h1><hr>
-        <label for="Check-in"><b>Check-in:</b></label>
-        <input type="text" placeholder="Enter Check-in Date" name="Check-in" required>
+    <form action="/userPageTemp.html" method="post" style="border:1px solid #ccc">
+        <div class="editContainer">
+            <h1>Amy Truong</h1><hr>
+            <label for="new_check_in"><b>Check-in:</b></label>
+            <input type="date" placeholder="Enter New Check-in Date" id="new_check_in" name="new_check_in">
 
-        <label for="Check-out"><b>Check-out:</b></label>
-        <input type="text" placeholder="Enter Check-out Date" name="Check-out" required>
+            <label for="new_check_out"><b>Check-out:</b></label>
+            <input type="date" placeholder="Enter New Check-out Date" id="new_check_out" name="new_check_out">
 
-        <label for="roomType"><b>Room Type</b></label>
-        <input type="text" placeholder="Enter Room Type" name="roomType" required>
+            <label for="new_room_type"><b>Room Type</b></label>
+            <input type="text" placeholder="Enter New Room Type" id="new_check_out" name="new_room_type">
 
-        <label for="noOfPeople"><b>Number of People</b></label>
-        <input type="number" placeholder="Enter # of people" name="noOfPeople" required>
-    </div>
+            <label for="new_num_people"><b>Number of People</b></label>
+            <input type="number" placeholder="Enter Number of people" id="new_num_people" name="new_num_people">
+        </div>
 
-    <div class="confirmChangesBtn">
-        <button class="confirmEdit">Confirm</button>
-    </div>
-</form>
+        <div class="confirmChangesBtn">
+            <button class="confirmEdit">Confirm</button>
+        </div>
+    </form>
+    {% include 'footer.html' %}
 </body>
 </html>

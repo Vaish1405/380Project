@@ -120,12 +120,6 @@ def user():
 def userReservation():
     return render_template('userReservation.html')
 
-@app.route('/editReservation')
-def editReservation():
-    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
-    ReservationController(reservation=reservation).edit_reservation(new_check_in="2024-04-13")
-    return render_template("userPageTemp.html", message="edited reservation")
-
 @app.route('/settings')
 def settings():
     return render_template('settings.html')
@@ -133,6 +127,15 @@ def settings():
 @app.route('/editReservation')
 def editReservation():
     return render_template('editReservation.html')
+
+@app.route('/userPageTemp.html', methods=['POST'])
+def userPageTemp():
+    new_reservation = [request.form.get('new_check_in'), request.form.get('new_check_out'), 
+                       request.form.get('new_room_type'), request.form.get('new_num_people')]
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
+    print(reservation)
+    ReservationController(reservation=reservation).edit_reservation(new_check_in=request.form.get('new_check_in'))
+    return render_template('userPageTemp.html', message="success!!")
 
 if __name__ == '__main__':
     app.run(debug=True)
