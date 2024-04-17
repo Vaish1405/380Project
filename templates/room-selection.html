@@ -38,7 +38,7 @@
     </div>
     <form method="POST" action="/extraSelection">
         <div class="available-rooms">
-            {% for room in available_rooms %}
+            {% for room in available_rooms %}           
                 <div class="room-card">
                     {% if room.lower() == 'standard' %}
                         <img src="../static/images/room-selection/standard.png">
@@ -58,15 +58,17 @@
                             <a class="view-room" href="/roomInfo#deluxe-room">VIEW ROOM</a>
                             <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
                         </div>
-                    {% else %} 
-                        <img src="../static/images/room-selection/superDeluxe.png">
+                    {% elif room.lower() == 'superdeluxe' %}
+                        <img src="../static/images/room-selection/deluxe.png">
                         <div class="room-info">
                             <h2 class="heading">SUPER DELUXE ROOM</h2>
                             <p class="description">Features Proper beds outfitted with imported linens, sitting areas, and well-appointed bathrooms with generous walk-in showers, Parachute Home robes, and Aesop amenities.</p>
                             <p class="price">$509/night</p>
-                            <a class="view-room" href="/roomInfo#super-deluxe-room">VIEW ROOM</a>
+                            <a class="view-room" href="/roomInfo#deluxe-room">VIEW ROOM</a>
                             <button class="select" name="select-room" value="{{ room }}" type="submit">SELECT</button>
                         </div>
+                    {% else %} 
+                        <p>No rooms are available for the given type. Please choose different dates.</p>
                     {% endif %}
                 </div>
             {% endfor %}

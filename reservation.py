@@ -14,12 +14,13 @@ def find_reservation(user_name, check_in, check_out):
 
 # defines the 
 class Reservation:
-    def __init__(self, unique_id, user_name, check_in, check_out, room_type):
+    def __init__(self, unique_id, user_name, check_in, check_out, room_type, room_number):
         self.unique_id = unique_id
         self.user_name = user_name
         self.check_in = check_in
         self.check_out = check_out
         self.room_type = room_type
+        self.room_number = room_number
 
 # Reservation controller to be called from front-end
 class ReservationController:
@@ -28,7 +29,7 @@ class ReservationController:
 
     def make_reservation(self):
         self.change_availability('false')
-        main_key = ['reservation_id', 'user_name', 'check_in', 'check_out', 'room_type']
+        main_key = ['reservation_id', 'user_name', 'check_in', 'check_out', 'room_type', 'room_number']
         # Adding reservation to the file 
         with open('reservations.csv', mode='a', newline='') as file:
             data_adding = csv.DictWriter(file, fieldnames=main_key)
@@ -37,7 +38,8 @@ class ReservationController:
                 'user_name': self.reservation.user_name,
                 'check_in': self.reservation.check_in,
                 'check_out': self.reservation.check_out,
-                'room_type': self.reservation.room_type
+                'room_type': self.reservation.room_type,
+                'room_number': self.reservation.room_number
             })
         return self.reservation
 
@@ -49,7 +51,7 @@ class ReservationController:
             rows = []
 
             for row in read_data:
-                if row[1] == self.reservation.room_type:
+                if row[0] == self.reservation.room_number:
                     start_date = datetime.strptime(self.reservation.check_in, '%Y-%m-%d')
                     end_date = datetime.strptime(self.reservation.check_out, '%Y-%m-%d')
                     current_date = start_date

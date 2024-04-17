@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, flash, redirect, jsonify
 import stripe, os
 import logging
-from roomsAvailability import find_available_rooms
+from roomsAvailability import find_available_room_types
 from ValidateAvailabilityInput import check_validity 
 from room_cost import get_room_price
 from extras_cost import get_extras_price
@@ -55,7 +55,7 @@ def roomSelection():
     if not result.startswith('Welcome'):
         flash(result) 
         return redirect(request.referrer)
-    return render_template('room-selection.html', available_rooms=find_available_rooms(session['check_in'], session['check_out']), form=request.form)
+    return render_template('room-selection.html', available_rooms=find_available_room_types(session['check_in'], session['check_out']), form=request.form)
     
 @app.route('/extraSelection', methods=['POST', 'GET'])
 def extraSelection(): 
