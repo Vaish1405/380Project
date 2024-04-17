@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA Hotels</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/editReservation.css">
+    <link rel="stylesheet" href="../static/css/user.css" />
+</head>
+<body>
+    {% include 'nav-menu.html' %}
+<form action="" style="border:1px solid #ccc">
+    <div class="editContainer">
+        <h1>Amy Truong</h1><hr>
+        <label for="Check-in"><b>Check-in:</b></label>
+        <input type="text" placeholder="Enter Check-in Date" name="Check-in" required>
+
+        <label for="Check-out"><b>Check-out:</b></label>
+        <input type="text" placeholder="Enter Check-out Date" name="Check-out" required>
+
+        <label for="roomType"><b>Room Type</b></label>
+        <input type="text" placeholder="Enter Room Type" name="roomType" required>
+
+        <label for="noOfPeople"><b>Number of People</b></label>
+        <input type="number" placeholder="Enter # of people" name="noOfPeople" required>
+    </div>
+
+    <div class="confirmChangesBtn">
+        <button class="confirmEdit">Confirm</button>
+    </div>
+</form>
+</body>
+</html>
