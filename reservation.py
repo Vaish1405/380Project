@@ -91,8 +91,8 @@ class ReservationController:
     
         self.make_reservation()
 
-reservation = ['Ruben B', '2024-04-12', '2024-04-14', 'Deluxe']
-id = find_reservation('Ruben B', '2024-04-12', '2024-04-14')
-ReservationController(reservation).make_reservation()
-ReservationController(reservation).edit_reservation(new_check_in="2024-04-13")
+# reservation = ['Ruben B', '2024-04-12', '2024-04-14', 'Deluxe']
+# id = find_reservation('Ruben B', '2024-04-12', '2024-04-14')
+# ReservationController(reservation).make_reservation()
+# ReservationController(reservation).edit_reservation(new_check_in="2024-04-13")
 

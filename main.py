@@ -98,7 +98,6 @@ def create_payment_intent():
         amount=amount,
         currency=currency
     )
-
     return jsonify({'clientSecret': intent.client_secret})
 
 @app.route('/roomInfo', methods=['GET'])
@@ -120,6 +119,12 @@ def user():
 @app.route('/userReservation')
 def userReservation():
     return render_template('userReservation.html')
+
+@app.route('/editReservation')
+def editReservation():
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
+    ReservationController(reservation=reservation).edit_reservation(new_check_in="2024-04-13")
+    return render_template("userPageTemp.html", message="edited reservation")
 
 @app.route('/settings')
 def settings():
