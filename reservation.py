@@ -73,7 +73,6 @@ class ReservationController:
         # Reading the data from CSV file using pandas
         read_data = pd.read_csv('reservations.csv')
 
-
         # Remove the canceled reservation from the DataFrame
         read_data.drop(cancel_reservation_id.index, inplace=True)
         
@@ -93,8 +92,8 @@ class ReservationController:
     
         self.make_reservation()
 
-# reservation = ['Ruben B', '2024-04-12', '2024-04-14', 'Deluxe']
-# id = find_reservation('Ruben B', '2024-04-12', '2024-04-14')
-# ReservationController(reservation).make_reservation()
+# reservation = ['y y','2024-04-18','2024-04-20','Standard','101']
+# id = find_reservation('y y', '2024-04-18', '2024-04-20')
+# ReservationController(reservation).cancel_reservation(id)
 # ReservationController(reservation).edit_reservation(new_check_in="2024-04-13")
 
