@@ -31,7 +31,6 @@ def find_available_room_types(start_date, end_date):
         # If the room is available for the entire date range, append it to available_rooms
         if room_available and room['RoomType'] not in available_rooms:
             available_rooms.append(room['RoomType'])
-        
     return available_rooms
 
 def find_room_number(start_date, end_date, room_type):

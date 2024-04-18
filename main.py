@@ -85,7 +85,6 @@ def temp():
     session['email'] = request.form.get('email')
     session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
-    print(reservation)
     return render_template('temp.html', temp=ReservationController(reservation=reservation).make_reservation(), name=session['name'], check_in=session['check_in'], 
                            check_out=session['check_out'], people=session['people'], 
                            room_selection=session['room-type'], extras_selection=session['extras'])
