@@ -1,64 +1,49 @@
 import csv
 from roomsAvailability import read_info, csv_file
 from datetime import datetime, timedelta
+import pandas as pd
+import uuid
 
+def find_reservation(user_name, check_in, check_out):
+    read_data = pd.read_csv('reservations.csv')
+    reservation_data = read_data[(read_data['user_name'] == user_name) & 
+                                 (read_data['check_in'] == check_in) & 
+                                 (read_data['check_out'] == check_out)]
 
-# Defining the required data (attributes) for making reservation
+    return reservation_data
+
+# defines the 
 class Reservation:
-    def __init__(self, user_name, check_in, check_out, room_type):
+    def __init__(self, unique_id, user_name, check_in, check_out, room_type, room_number):
+        self.unique_id = unique_id
         self.user_name = user_name
         self.check_in = check_in
         self.check_out = check_out
         self.room_type = room_type
-
-
-# Adding the reservation to database
-def make_reservation(reservation):
-    # Declaring keys in dictionary that is going to be added to CSV file
-    main_key = ['user_name', 'check_in', 'check_out', 'room_type']
-    # Using dictionary to add the data to CSV file, let me know if you want alternative way
-    with open('reservations.csv', mode='a') as file:
-        data_adding = csv.DictWriter(file, fieldnames=main_key)
-        data_adding.writerow({'user_name': reservation.user_name,
-                              'check_in': reservation.check_in,
-                              'check_out': reservation.check_out,
-                              'room_type': reservation.room_type})
-    return "successful"
-
-
-# based on front-end info, it will change room availability after making reservation
-def change_availability(room_type):
-    # Reusing read_info method in roomsAvailability.py to read the data
-    read_data = read_info()
-    for r in read_data:
-        if r['RoomType'] == room_type:
-            # This makes available status after reservation is done
-            r['Available'] = 'False'
-    with open(csv_file, 'w') as file:
-        field = ['RoomType', 'Available']
-        csv_writer = csv.DictWriter(file, fieldnames=field)
-        csv_writer.writerows([r for r in read_data if r['RoomType'] == room_type])
-
+        self.room_number = room_number
 
 # Reservation controller to be called from front-end
 class ReservationController:
     def __init__(self, reservation):
-        self.reservation = Reservation(*reservation)
-        self.make_reservation()
-        self.change_availability()
+        self.reservation = Reservation(uuid.uuid4(), *reservation)
 
     def make_reservation(self):
-        main_key = ['user_name', 'check_in', 'check_out', 'room_type']
-        # Using dictionary to add the data to CSV file, let me know if you want alternative way
+        self.change_availability('false')
+        main_key = ['reservation_id', 'user_name', 'check_in', 'check_out', 'room_type', 'room_number']
+        # Adding reservation to the file 
         with open('reservations.csv', mode='a', newline='') as file:
             data_adding = csv.DictWriter(file, fieldnames=main_key)
-            data_adding.writerow({'user_name': self.reservation.user_name,
-                                  'check_in': self.reservation.check_in,
-                                  'check_out': self.reservation.check_out,
-                                  'room_type': self.reservation.room_type})
+            data_adding.writerow({
+                'reservation_id': self.reservation.unique_id,
+                'user_name': self.reservation.user_name,
+                'check_in': self.reservation.check_in,
+                'check_out': self.reservation.check_out,
+                'room_type': self.reservation.room_type,
+                'room_number': self.reservation.room_number
+            })
         return self.reservation
 
-    def change_availability(self):
+    def change_availability(self, value):
         # read data and change the
         with open('AvailableRooms.csv', mode="r") as file:
             read_data = csv.reader(file)
@@ -66,12 +51,12 @@ class ReservationController:
             rows = []
 
             for row in read_data:
-                if row[1] == self.reservation.room_type:
+                if row[0] == self.reservation.room_number:
                     start_date = datetime.strptime(self.reservation.check_in, '%Y-%m-%d')
                     end_date = datetime.strptime(self.reservation.check_out, '%Y-%m-%d')
                     current_date = start_date
                     while current_date <= end_date:
-                        row[header.index(current_date.strftime('%Y-%m-%d'))] = 'false'
+                        row[header.index(current_date.strftime('%Y-%m-%d'))] = value
                         current_date += timedelta(days=1)
                 rows.append(row)
 
@@ -80,3 +65,34 @@ class ReservationController:
             write_data = csv.writer(file)
             write_data.writerow(header)
             write_data.writerows(rows)
+
+    # Removing the reservation from csv file after canceling, using pandas
+    def cancel_reservation(self, cancel_reservation_id):
+        self.change_availability(" true")
+        
+        # Reading the data from CSV file using pandas
+        read_data = pd.read_csv('reservations.csv')
+
+        # Remove the canceled reservation from the DataFrame
+        read_data.drop(cancel_reservation_id.index, inplace=True)
+        
+        # Updating data to CSV file after removing reservation that got canceled
+        read_data.to_csv('reservations.csv', index=False)
+
+    # Editing the reservation according to user preference and User ID is unique key
+    def edit_reservation(self, **changes):
+        self.cancel_reservation(find_reservation(self.reservation.user_name, self.reservation.check_in, self.reservation.check_out))
+        for key, val in changes.items(): 
+            if key == 'new_check_in':
+                self.reservation.check_in = val
+            if key == 'new_check_out':
+                self.reservation.check_out = val
+            if key == 'new_toom_type':
+                self.reservation.room_type = val
+    
+        self.make_reservation()
+
+# reservation = ['y y','2024-04-18','2024-04-20','Standard','101']
+# id = find_reservation('y y', '2024-04-18', '2024-04-20')
+# ReservationController(reservation).cancel_reservation(id)
+# ReservationController(reservation).edit_reservation(new_check_in="2024-04-13")
