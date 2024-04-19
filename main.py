@@ -3,8 +3,8 @@ import stripe, os
 import logging
 from roomsAvailability import find_available_room_types, find_room_number
 from ValidateAvailabilityInput import check_validity 
-from room_cost import get_room_price
-from extras_cost import get_extras_price
+from Rooms import get_room_price
+from Extras import get_extras_price
 from datetime import datetime
 from reservation import ReservationController
 
