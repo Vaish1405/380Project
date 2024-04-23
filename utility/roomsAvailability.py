@@ -1,7 +1,7 @@
 import csv
 from datetime import datetime, timedelta
 
-csv_file = 'AvailableRooms.csv'
+csv_file = 'data/AvailableRooms.csv'
 
 # method to read from csv file and store in the array
 def read_info():
@@ -23,7 +23,7 @@ def find_available_room_types(start_date, end_date):
         room_available = True
         current_date = start_date
         while current_date <= end_date:
-            if room.get(current_date.strftime("%Y-%m-%d")) != ' true':
+            if room.get(current_date.strftime("%Y-%m-%d")) != 'true':
                 room_available = False
                 break
             current_date += timedelta(days=1)  # Move to the next date
@@ -43,7 +43,7 @@ def find_room_number(start_date, end_date, room_type):
         if room['RoomType'].lower() == room_type.lower():
             current_date = start_date
             while current_date <= end_date:
-                if room.get(current_date.strftime("%Y-%m-%d")) != ' true':
+                if room.get(current_date.strftime("%Y-%m-%d")) != 'true':
                     room_available = False
                     break
                 current_date += timedelta(days=1)
