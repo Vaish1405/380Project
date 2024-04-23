@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, session, flash, redirect, jsonify
 import stripe, os
 import logging
-from roomsAvailability import find_available_rooms
-from ValidateAvailabilityInput import check_validity 
-from room_cost import get_room_price
-from extras_cost import get_extras_price
+from utility import find_available_room_types, find_room_number
+from utility import check_validity 
+from Rooms import get_room_price
+from Extras import get_extras_price
 from datetime import datetime
-from reservation import make_reservation, ReservationController
+from Reservation import ReservationController
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
@@ -20,7 +20,7 @@ def get_total(nights, room_selection, extras_selection):
     sum += int(get_room_price(room_selection)) * int(nights)
     sum += int(get_extras_price(extras_selection))
     sum += 50
-    return sum
+    return sum                      
 
 available_room_types = [] # to store the values read from csv file
 
@@ -55,7 +55,7 @@ def roomSelection():
     if not result.startswith('Welcome'):
         flash(result) 
         return redirect(request.referrer)
-    return render_template('room-selection.html', available_rooms=find_available_rooms(session['check_in'], session['check_out']), form=request.form)
+    return render_template('room-selection.html', available_rooms=find_available_room_types(session['check_in'], session['check_out']), form=request.form)
     
 @app.route('/extraSelection', methods=['POST', 'GET'])
 def extraSelection(): 
@@ -79,9 +79,13 @@ def payment():
 
 @app.route('/temp', methods=['POST', 'GET'])
 def temp():
+    session['first-name'] = request.form.get('first-name')
+    session["last-name"] = request.form.get('last-name')
     session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
-    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type']]
-    return render_template('temp.html', temp=ReservationController(reservation=reservation), name=session['name'], check_in=session['check_in'], 
+    session['email'] = request.form.get('email')
+    session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+    return render_template('temp.html', temp=ReservationController(reservation=reservation).make_reservation(), name=session['name'], check_in=session['check_in'], 
                            check_out=session['check_out'], people=session['people'], 
                            room_selection=session['room-type'], extras_selection=session['extras'])
 
@@ -95,7 +99,6 @@ def create_payment_intent():
         amount=amount,
         currency=currency
     )
-
     return jsonify({'clientSecret': intent.client_secret})
 
 @app.route('/roomInfo', methods=['GET'])
@@ -112,7 +115,28 @@ def events():
 
 @app.route('/user')
 def user():
-    return render_template('user.html')
+    return render_template('user.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
+
+@app.route('/userReservation')
+def userReservation():
+    return render_template('userReservation.html')
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
+@app.route('/editReservation')
+def editReservation():
+    return render_template('editReservation.html')
+
+@app.route('/userPageTemp.html', methods=['POST'])
+def userPageTemp():
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+    ReservationController(reservation=reservation).edit_reservation(new_check_in=request.form.get('new_check_in') or session['check_in'], 
+                                                                    new_check_out=request.form.get('new_check_out') or session['check_out'], 
+                                                                    new_room_type=request.form.get('new_room_type').lower() or session['room-type'],
+                                                                    new_num_people=request.form.get('new_num_people') or session['people'])
+    return render_template('userPageTemp.html', message="success!!")
 
 if __name__ == '__main__':
     app.run(debug=True)

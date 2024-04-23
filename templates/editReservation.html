@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA Hotels</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/editReservation.css">
+    <link rel="stylesheet" href="../static/css/user.css" />
+</head>
+<body>
+    {% include 'nav-menu.html' %}
+    <form action="/userPageTemp.html" method="post" style="border:1px solid #ccc">
+        <div class="editContainer">
+            <h1>Amy Truong</h1><hr>
+            <label for="new_check_in"><b>Check-in:</b></label>
+            <input type="date" placeholder="Enter New Check-in Date" id="new_check_in" name="new_check_in">
+
+            <label for="new_check_out"><b>Check-out:</b></label>
+            <input type="date" placeholder="Enter New Check-out Date" id="new_check_out" name="new_check_out">
+
+            <label for="new_room_type"><b>Room Type</b></label>
+            <input type="text" placeholder="Enter New Room Type" id="new_check_out" name="new_room_type">
+
+            <label for="new_num_people"><b>Number of People</b></label>
+            <input type="number" placeholder="Enter Number of people" id="new_num_people" name="new_num_people">
+        </div>
+
+        <div class="confirmChangesBtn">
+            <button class="confirmEdit">Confirm</button>
+        </div>
+    </form>
+    {% include 'footer.html' %}
+</body>
+</html>

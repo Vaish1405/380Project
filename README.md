@@ -15,9 +15,9 @@ Creating a Hotel Reservation System through Web.
 - Navigate to the project directory. 
 
 ### Installation
-- Download "flask" environment.
-    - MacOS: `pip3 install flask`
-    - Windows: `pip install flask`
+- Download the dependencies. 
+    - MacOS: `pip3 install -r requirements.txt`
+    - Windows: `pip install -r requirements.txt`
 - Run the flask application
     - MacOS: `python3 main.py`
     - Windows: `python main.py`

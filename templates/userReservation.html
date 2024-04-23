@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="stylesheet" href="../static/css/user.css" />
+    <link rel="stylesheet" href="../static/css/userReservation.css" />
+  </head>
+  <body>
+    {% include 'nav-menu.html' %}
+    <div class="temp">
+        <div class="fullIconBar">
+            <div class="profileDisplay">
+                <img src="/static/images/profilepic.png" style="padding-top: 80px; width:150px; padding-left: 30px;" />
+                <h2 style="padding-left: 32px;">{{ user_first_name }} {{ user_last_name }}</h2>
+            </div>
+            <div class="icon-bar">
+                <a href="{{ url_for('user')}}" style="font-size: 18px;"><strong>User Info</strong></a>
+                <a href="{{ url_for('userReservation')}}" style="font-size: 18px;"><strong>Reservations</strong></a>
+                <a href="{{ url_for('settings')}}"  style="font-size: 18px;"><strong>Settings</strong></a>
+                <a href="#" style="margin-top: 140px; color: red; font-size: 18px;"><strong>Logout</strong></a>
+            </div>
+        </div>
+    <div class="testFloat">
+        <h2>Current Reservation</h2>
+        <div class="currentResContainer">
+        <div class="currentReservation">
+            <!--Example data-->
+            4/15/2024 - 4/25/2024
+            <br>
+            <br>
+            Check-in: 4:00pm
+            <br>
+            Check-out: 5:00pm
+        </div>
+        <div class="editNCancel">
+            <a href="/editReservation">Edit</a>
+            <a href="#">Cancel</a>
+        </div>
+    </div>
+    </div>
