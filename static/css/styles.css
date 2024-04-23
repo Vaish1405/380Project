@@ -44,13 +44,54 @@ body {
 .container {
     height: 800px;    
     display: flex; 
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/mainPageBg.png') center/cover no-repeat;
 }
 
 .container-with-text {
     height: 800px;
     display: flex; 
     position: relative; 
+    background: url('../images/womanRelax.png') center/cover no-repeat;
     z-index: 1;
+}
+
+.flash-messages {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 0;
+    color: white; 
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
+}
+
+.availability-form {
+    background: white;
+    padding: 30px;
+    width: 900px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.availability-form label {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.availability-submit {
+    background-color: #808080;
+    color: white;
+    border: none;
 }
 
 .container img, .container-with-text img {
@@ -128,7 +169,7 @@ body {
     padding: 0; 
     margin: 8px;
 }
-#name, #email {
+#name, #footer-email {
     margin: 8px;
     width: 200px;
     padding: 10px;
@@ -136,4 +177,62 @@ body {
 .footer-right button {
     padding: 10px 30px;
     margin: 8px;
+}
+.active {
+    background-color: white;
+    color: black !important; 
+    font-weight: bold;
+}
+
+.bg-main {
+    width: 100%; 
+    height: 400px; 
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.bg-main h2 {
+    font-size: 40px;
+    color: white; 
+    font-weight: bold;
+}
+.food-bg {
+    background: url('../images/foodBg.png') center no-repeat;
+}
+.food, .room-heading{
+    margin-top: 70px;
+}
+
+.food p, .room-heading p{
+    font-size: 20px;
+    color: white;
+}
+
+.standard-bg{
+background:url('/static/images/roomtypepic2.png') center no-repeat;
+}
+
+.slider {
+    position: relative;
+    margin: auto;
+    margin: 0 0 10px 10px;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.slides {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; 
+    scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+.slides img {
+    height: 300px; 
+    object-fit: cover; /* Maintain aspect ratio while covering container */
+    margin-right: 5px; /* Add space between images */
 }

@@ -1,0 +1,69 @@
+.events-bg{
+    background: url('/static/images/events/eventsintro2.png') center no-repeat;
+  }
+
+.events{
+    margin-top: 70px;
+}
+
+.events p{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.events-main {
+    width: 100%; 
+    height: 450px; 
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.events-main h2 {
+    font-size: 40px;
+    color: white; 
+    font-weight: bold;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: right;
+    width: 33.33%;
+    /* top right bottom left*/
+    padding: 30px 20px 20px 20px;
+}
+
+.row{
+    padding: 0px 70px 20px 70px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.text{
+    text-align: center;
+    width: 300px;
+    height: 120px;
+    padding: 0px;
+    margin: 40px;
+}
+
+.eventsdescrip{
+    margin: 70px 70px 17px 70px;   
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.eventsdescriptext{
+    text-align: center;
+    max-width: 900px;
+    word-wrap: break-word;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>LA Hotels</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/rooms.css">
+</head>
+<body>
+    {% include 'nav-menu.html' %}
+    <!--<div class="container">
+        <img src="/static/images/roomsFirst.png" class=""/>
+        <div class="img-text">
+            <h2>ROOMS & SUITES</h2>
+            <p class="value-text">4.8</p>
+            <p class="info-text">Customer Ratings</p>
+            <p class="value-text">100+</p>
+            <p class="info-text">Luxurious and <br>comfortable rooms</p>
+        </div>
+    </div>-->
+    <div class="rooms-intro rooms-bg">
+        <div class="roomsDescrip">
+            <h2>Rooms & Suites</h2>
+            <p>Luxurious and comfortable rooms</p>
+        </div>
+    </div>
+    <div class="room-types">
+        <h2>OUR ROOMS</h2>
+        <div class="images-section">
+            <div>
+                <img src="../static/images/standard-room/roomMain.png" />
+                <p class="room"><a href="/roomInfo#standard-room">Standard</a></p>
+                
+            </div>
+            <div>
+                <img src="../static/images/deluxe-room/roomMain.png" />
+                <p class="room"><a href="/roomInfo#deluxe-room">Deluxe</a></p>
+            </div>
+            <div>
+                <img src="../static/images/super-deluxe-room/roomMain.png" />
+                <p class="room"><a href="/roomInfo#super-deluxe-room">Super Deluxe</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="testimonials">
+        <h2>Testimonials</h2>
+        <p>
+            <span class="quotation-mark">“</span>
+            Our stay at LaHotels was fantastic! From the warm welcome to the cozy room, every moment was a pleasure. The hotel's attention to detail and central location made our stay truly enjoyable. We can't wait to return.
+        </p>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

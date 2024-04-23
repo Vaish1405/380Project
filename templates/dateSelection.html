@@ -5,22 +5,33 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/reservationPages.css">
 </head>
 <body>
     {% include 'nav-menu.html' %}
-    <div class="container">
+    <div class="bg-main dates-bg">
+        <div class="dates">
+            <h2>DATE SELECTION</h2>
+            <p style="color: white;">Choose your dates. Plan your trip. Relax and Enjoy the nature. </p>
+            <div class="reserve-progress">
+                <p><span class="current">1 Dates</span><span>2 Rooms</span><span>3 Extras</span><span>4 Payment</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dates-form">
         <div>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul class="flash-messages">
                         {% for message in messages %}
-                            <li>{{ message }}</li>
+                            <li style="color: red">{{ message }}</li>
                         {% endfor %}
                     </ul><br>
                 {% endif %}
             {% endwith %}
             <form action="/room-selection" method="post">
-                <div class="availability-form">
+                <div class="dates-availability-form">
                     <div>
                         <label for="check-in">Check-in Date</label><br> 
                         <input type="date" id="check-in" name="check-in" required>
@@ -33,21 +44,10 @@
                         <label for="people">No. of People</label><br>
                         <input type="number" id="people" name="people" required>
                     </div>
-                    <button class="availability-submit" type="submit">Check Availability</button>
+                    <button type="submit" class="dates-availability-submit">Check Availability</button>
                 </div>
             </form>
-        </div>   
-    </div>
-    <div class="info-container">
-        <p>
-            At LAHotels, our mission is to provide a serene haven where guests can escape the stresses 
-            of everyday life and immerse themselves in tranquility. We strive to create an oasis of relaxation, 
-            offering luxurious accommodations, and breathtaking natural surroundings for every guest to ensure
-            they depart feeling refreshed, revitalized, and inspired.
-        </p>
-    </div>
-    <div class="container-with-text">
-        <p class="img-text">Located at the heart of the city, for your convenience.</p>
+        </div>
     </div>
     {% include 'footer.html' %}
 </body>
