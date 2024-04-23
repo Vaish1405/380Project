@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module Reservation.ReservationController</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="Reservation.html" class="white">Reservation</a>.ReservationController</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/Users/vaishnavisen/Desktop/380Project/Reservation/ReservationController.py">/Users/vaishnavisen/Desktop/380Project/Reservation/ReservationController.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="csv.html">csv</a><br>
+</td><td class="multicolumn"><a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"><a href="uuid.html">uuid</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="Reservation.ReservationController.html#ReservationController">ReservationController</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ReservationController">class <strong>ReservationController</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ReservationController">ReservationController</a>(reservation)<br>
+&nbsp;<br>
+Programmer:&nbsp;Vaishnavi&nbsp;Sen&nbsp;and&nbsp;Kaung&nbsp;Khant<br>
+&nbsp;<br>
+Purpose:&nbsp;Class&nbsp;to&nbsp;handle&nbsp;all&nbsp;the&nbsp;requests&nbsp;related&nbsp;to&nbsp;reservation.&nbsp;&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;reservation:&nbsp;An&nbsp;<a href="builtins.html#object">object</a>&nbsp;of&nbsp;the&nbsp;type&nbsp;reesrvation&nbsp;which&nbsp;contains&nbsp;details&nbsp;of&nbsp;the&nbsp;current&nbsp;reservation.&nbsp;<br>
+&nbsp;<br>
+Functions:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Main&nbsp;functions&nbsp;performed&nbsp;include&nbsp;make_reservation,&nbsp;change_availability,&nbsp;cancel_reservation&nbsp;and&nbsp;edit_reservation<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="ReservationController-__init__"><strong>__init__</strong></a>(self, reservation)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ReservationController-cancel_reservation"><strong>cancel_reservation</strong></a>(self, cancel_reservation_id)</dt><dd><span class="code">Programmer:&nbsp;Vaishnavi&nbsp;Sen&nbsp;and&nbsp;Kaung&nbsp;Khant<br>
+&nbsp;<br>
+Purpose:&nbsp;Removes&nbsp;the&nbsp;reservation&nbsp;from&nbsp;the&nbsp;database&nbsp;and&nbsp;updates&nbsp;the&nbsp;available&nbsp;rooms.&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Args:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cancel_reservation_id:&nbsp;id&nbsp;of&nbsp;the&nbsp;reservation&nbsp;that&nbsp;is&nbsp;being&nbsp;cancelled.</span></dd></dl>
+
+<dl><dt><a name="ReservationController-change_availability"><strong>change_availability</strong></a>(self, value)</dt><dd><span class="code">Programmer:&nbsp;Vaishnavi&nbsp;Sen&nbsp;and&nbsp;Kaung&nbsp;Khant<br>
+&nbsp;<br>
+Purpose:&nbsp;Changes&nbsp;the&nbsp;availability&nbsp;in&nbsp;the&nbsp;database&nbsp;to&nbsp;indicate&nbsp;which&nbsp;rooms&nbsp;are&nbsp;available&nbsp;at&nbsp;some&nbsp;time.<br>
+&nbsp;<br>
+Args:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;'true'&nbsp;or&nbsp;'false',&nbsp;passed&nbsp;by&nbsp;the&nbsp;function&nbsp;that&nbsp;is&nbsp;calling&nbsp;it.</span></dd></dl>
+
+<dl><dt><a name="ReservationController-edit_reservation"><strong>edit_reservation</strong></a>(self, **changes)</dt><dd><span class="code">Programmer:&nbsp;Vaishnavi&nbsp;Sen<br>
+&nbsp;<br>
+Purpose:&nbsp;Edit&nbsp;the&nbsp;reservation&nbsp;with&nbsp;new&nbsp;values.&nbsp;&nbsp;<br>
+&nbsp;<br>
+Args:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;**changes:&nbsp;the&nbsp;value&nbsp;that&nbsp;is&nbsp;to&nbsp;be&nbsp;change&nbsp;and&nbsp;it's&nbsp;new&nbsp;value&nbsp;should&nbsp;be&nbsp;passed.&nbsp;It&nbsp;is&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;possible&nbsp;to&nbsp;give&nbsp;multiple&nbsp;changes.</span></dd></dl>
+
+<dl><dt><a name="ReservationController-make_reservation"><strong>make_reservation</strong></a>(self)</dt><dd><span class="code">Programmer:&nbsp;Vaishnavi&nbsp;Sen&nbsp;and&nbsp;Kaung&nbsp;Khant<br>
+&nbsp;<br>
+Purpose:&nbsp;Stores&nbsp;the&nbsp;reservation&nbsp;details&nbsp;in&nbsp;database&nbsp;and&nbsp;updating&nbsp;the&nbsp;availability&nbsp;of&nbsp;the&nbsp;rooms.&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Returns:&nbsp;Current&nbsp;reservation&nbsp;<a href="builtins.html#object">object</a>.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

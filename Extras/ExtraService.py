@@ -1,15 +1,10 @@
-class shuttle():
-    """Class representing the shuttle services provided for extra amenities."""
-    def get_price(self):
-        """Get price of adding shuttle service to the reservation.
-
-        Returns:
-            int: total price of the shuttle service.
-        """
-        return 100
-    
 class ExtraService(): 
-    """Class for creating new extra amenities offered to the users during the reservation option."""
+    """
+    Programmer: Vaishnavi Sen
+    
+    Purpose: Class for creating new extra amenities offered to the users during the reservation option.
+    
+    """
     def __init__(self, service_type, service_cost): 
         """Intializes the room object with given roomType
 
@@ -21,9 +16,9 @@ class ExtraService():
         self.service_cost = service_cost
 
     def get_price(self):
-        """Method to retrieve the price of the requested room. 
+        """Method to retrieve the price of the requested service. 
 
         Returns:
-            int: Room price for each type.
+            int: Price for adding each requested service.
         """
         return self.service_cost

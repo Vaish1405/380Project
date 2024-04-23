@@ -8,10 +8,28 @@ from utility import find_room_number
 
 # Reservation controller to be called from front-end
 class ReservationController:
+    """
+    Programmer: Vaishnavi Sen and Kaung Khant
+    
+    Purpose: Class to handle all the requests related to reservation.  
+
+    Args:
+        reservation: An object of the type reesrvation which contains details of the current reservation. 
+
+    Functions: 
+        Main functions performed include make_reservation, change_availability, cancel_reservation and edit_reservation
+    """
     def __init__(self, reservation):
         self.reservation = Reservation(uuid.uuid4(), *reservation)
 
     def make_reservation(self):
+        """
+            Programmer: Vaishnavi Sen and Kaung Khant
+            
+            Purpose: Stores the reservation details in database and updating the availability of the rooms.   
+
+            Returns: Current reservation object. 
+        """
         self.change_availability('false')
         main_key = ['reservation_id', 'user_name', 'check_in', 'check_out', 'room_type', 'room_number']
         # Adding reservation to the file 
@@ -28,7 +46,14 @@ class ReservationController:
         return self.reservation
 
     def change_availability(self, value):
-        # read data and change the
+        """
+            Programmer: Vaishnavi Sen and Kaung Khant
+            
+            Purpose: Changes the availability in the database to indicate which rooms are available at some time.
+
+            Args: 
+                value: 'true' or 'false', passed by the function that is calling it. 
+        """
         with open('data/AvailableRooms.csv', mode="r") as file:
             read_data = csv.reader(file)
             header = next(read_data)
@@ -52,6 +77,14 @@ class ReservationController:
 
     # Removing the reservation from csv file after canceling, using pandas
     def cancel_reservation(self, cancel_reservation_id):
+        """
+            Programmer: Vaishnavi Sen and Kaung Khant
+            
+            Purpose: Removes the reservation from the database and updates the available rooms.   
+
+            Args: 
+                cancel_reservation_id: id of the reservation that is being cancelled.
+        """
         self.change_availability("true")
         
         # Reading the data from CSV file using pandas
@@ -65,6 +98,16 @@ class ReservationController:
 
     # Editing the reservation according to user preference and User ID is unique key
     def edit_reservation(self, **changes):
+        """
+            Programmer: Vaishnavi Sen
+            
+            Purpose: Edit the reservation with new values.  
+
+            Args: 
+                **changes: the value that is to be change and it's new value should be passed. It is 
+                            possible to give multiple changes. 
+ 
+        """
         self.cancel_reservation(find_reservation(self.reservation.user_name, self.reservation.check_in, self.reservation.check_out))
         for key, val in changes.items(): 
             if key == 'new_check_in':
@@ -76,9 +119,4 @@ class ReservationController:
                 self.reservation.room_number = find_room_number(self.reservation.check_in, self.reservation.check_out, self.reservation.room_type)
     
         self.make_reservation()
-
-# reservation = ['y y','2024-04-18','2024-04-20','Standard','101']
-# id = find_reservation('y y', '2024-04-18', '2024-04-20')
-# ReservationController(reservation).cancel_reservation(id)
-# ReservationController(reservation).edit_reservation(new_check_in="2024-04-13")
 
