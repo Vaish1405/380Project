@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, session, flash, redirect, jsonify
 import stripe, os
 import logging
-from roomsAvailability import find_available_room_types, find_room_number
-from ValidateAvailabilityInput import check_validity 
-from room_cost import get_room_price
-from extras_cost import get_extras_price
+from utility import find_available_room_types, find_room_number
+from utility import check_validity 
+from Rooms import get_room_price
+from Extras import get_extras_price
 from datetime import datetime
-from reservation import ReservationController
+from Reservation import ReservationController
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
@@ -85,7 +85,6 @@ def temp():
     session['email'] = request.form.get('email')
     session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
-    print(reservation)
     return render_template('temp.html', temp=ReservationController(reservation=reservation).make_reservation(), name=session['name'], check_in=session['check_in'], 
                            check_out=session['check_out'], people=session['people'], 
                            room_selection=session['room-type'], extras_selection=session['extras'])
@@ -132,10 +131,11 @@ def editReservation():
 
 @app.route('/userPageTemp.html', methods=['POST'])
 def userPageTemp():
-    new_reservation = [request.form.get('new_check_in'), request.form.get('new_check_out'), 
-                       request.form.get('new_room_type'), request.form.get('new_num_people')]
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
-    ReservationController(reservation=reservation).edit_reservation(new_check_in=request.form.get('new_check_in'))
+    ReservationController(reservation=reservation).edit_reservation(new_check_in=request.form.get('new_check_in') or session['check_in'], 
+                                                                    new_check_out=request.form.get('new_check_out') or session['check_out'], 
+                                                                    new_room_type=request.form.get('new_room_type').lower() or session['room-type'],
+                                                                    new_num_people=request.form.get('new_num_people') or session['people'])
     return render_template('userPageTemp.html', message="success!!")
 
 if __name__ == '__main__':
