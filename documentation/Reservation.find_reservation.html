@@ -25,13 +25,15 @@
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt><a name="-find_reservation"><strong>find_reservation</strong></a>(user_name, check_in, check_out)</dt><dd><span class="code">Programmer:&nbsp;Vaishnavi&nbsp;Sen<br>
 &nbsp;<br>
-Purpose:&nbsp;Function&nbsp;that&nbsp;is&nbsp;delegated&nbsp;the&nbsp;task&nbsp;of&nbsp;getting&nbsp;the&nbsp;price&nbsp;for&nbsp;selected&nbsp;amenities.&nbsp;<br>
+Purpose:&nbsp;Function&nbsp;to&nbsp;get&nbsp;the&nbsp;reservation&nbsp;details&nbsp;for&nbsp;a&nbsp;given&nbsp;person.&nbsp;&nbsp;<br>
 &nbsp;<br>
 Args:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;selection:&nbsp;The&nbsp;type&nbsp;of&nbsp;amenities&nbsp;selected&nbsp;(Pet&nbsp;or&nbsp;Shuttle).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;user_name:&nbsp;User's&nbsp;name&nbsp;for&nbsp;which&nbsp;the&nbsp;reservation&nbsp;is&nbsp;being&nbsp;retrieved.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;check_in:&nbsp;Start&nbsp;date&nbsp;of&nbsp;the&nbsp;reservation.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;check_out:&nbsp;End&nbsp;date&nbsp;of&nbsp;the&nbsp;reservation.&nbsp;<br>
 &nbsp;<br>
 Returns:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;The&nbsp;price&nbsp;of&nbsp;the&nbsp;selected&nbsp;service,&nbsp;or&nbsp;0&nbsp;if&nbsp;the&nbsp;selected&nbsp;option&nbsp;is&nbsp;invalid.</span></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;reservation_data:&nbsp;array&nbsp;containing&nbsp;all&nbsp;the&nbsp;reservation&nbsp;details.</span></dd></dl>
 </td></tr></table><p>
 <table class="section">
 <tr class="decor data-decor heading-text">

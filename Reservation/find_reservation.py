@@ -4,13 +4,15 @@ def find_reservation(user_name, check_in, check_out):
     """
     Programmer: Vaishnavi Sen
     
-    Purpose: Function that is delegated the task of getting the price for selected amenities. 
+    Purpose: Function to get the reservation details for a given person.  
 
     Args:
-        selection: The type of amenities selected (Pet or Shuttle).
+        user_name: User's name for which the reservation is being retrieved. 
+        check_in: Start date of the reservation. 
+        check_out: End date of the reservation. 
 
     Returns:
-        int: The price of the selected service, or 0 if the selected option is invalid.
+        reservation_data: array containing all the reservation details. 
     """
     read_data = pd.read_csv('data/reservations.csv')
     reservation_data = read_data[(read_data['user_name'] == user_name) & 
