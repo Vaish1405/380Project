@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
 </head>
 <body>
     {% include 'nav-menu.html' %}
     <div class="container">
+            <div class="logoText">
+                <h1>LAHotels</h1>
+            </div>
         <div>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -36,8 +42,9 @@
                     <button class="availability-submit" type="submit">Check Availability</button>
                 </div>
             </form>
-        </div>   
+        </div>
     </div>
+
     <div class="info-container">
         <p>
             At LAHotels, our mission is to provide a serene haven where guests can escape the stresses 
@@ -47,6 +54,7 @@
         </p>
     </div>
     <div class="container-with-text">
+        <p id="LAHotel">LAHotel</p>
         <p class="img-text">Located at the heart of the city, for your convenience.</p>
     </div>
     {% include 'footer.html' %}
