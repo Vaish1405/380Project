@@ -13,7 +13,7 @@
   
   .icon-bar a {
     display: block;
-    text-align: center;
+    text-align: left;
     padding: 16px;
     transition: all 0.3s ease;
     color: black;
