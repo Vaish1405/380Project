@@ -2,7 +2,10 @@ from .Pet import Pet
 from .Shuttle import Shuttle
 
 def get_extras_price(selection):
-    """Function that is delegated the task of getting the price for selected amenities. 
+    """
+    Programmer: Vaishnavi Sen
+    
+    Purpose: Function that is delegated the task of getting the price for selected amenities. 
 
     Args:
         selection: The type of amenities selected (Pet or Shuttle).

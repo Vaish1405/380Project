@@ -3,7 +3,10 @@ from .Room import Room
 class DeluxeRoom(Room):
     """Class representing the standard room."""
     def __init__(self):
-        """Intializes the room object with given room_type.
+        """
+        Programmer: Vaishnavi Sen
+
+        Purpose: Intializes the room object with given room_type.
 
         Args:
             room_type: The type of the room.

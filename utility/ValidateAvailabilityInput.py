@@ -1,5 +1,21 @@
 import datetime
 def check_validity(check_in_date, check_out_date, num_people):
+    """
+    Programmer: Kaung Khant
+
+    Date:
+    
+    Purpose: Function for input validation during date selection. It checks to ensure that the dates selected are logical and 
+            number of people for the reservation are not more than maximum.  
+
+    Args:
+        check_in_date: Start date of the reservation.
+        check_out_date: End date of the reservation. 
+        num_people: Number of people in the reservation. 
+
+    Returns:
+        string: A custom message indicating success or errors.  
+    """
     try:
         # Convert string inputs to datetime.date and int
         check_in_date = datetime.datetime.strptime(check_in_date, '%Y-%m-%d').date()

@@ -1,7 +1,10 @@
 class Room():
     """Class for different types of rooms.""" 
     def __init__(self, room_type, room_price):
-        """Intializes the room object with given roomType
+        """
+        Programmer: Vaishnavi Sen
+        
+        Purpose: Intializes the room object with given roomType
 
         Args:
             room_type: The type of the room.
