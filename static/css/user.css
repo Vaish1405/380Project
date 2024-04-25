@@ -88,6 +88,10 @@
     display: inline-block;
     font-size: 16px;
   }
+
+  .saveButton:hover{
+    background-color: black;
+  }
 .fullIconBar{
   box-shadow: 10px 0 10px -1px #00000030;
   padding-left: 30px;

@@ -1,15 +1,15 @@
 .container {
-    height: 800px;    
+    height: 800px;
     display: flex; 
     position: relative;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url('../images/food/foodanddrinkintro.png') center/cover no-repeat;
+    background: url('../images/food/restuarantBg.png') center/cover no-repeat;
 }
 
 .food-bg {
-    background: url('../images/food/foodBg.png') center no-repeat;
+    background: url('../images/food/restuarantBg.png') center no-repeat;
 }
 
 .container img{

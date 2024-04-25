@@ -104,9 +104,13 @@ body {
 }
 
 .availability-submit {
-    background-color: #618764;
+    background-color: #4F7A6D;
     color: white;
     border: none;
+}
+
+.availability-submit:hover{
+    background-color: black;
 }
 
 .container img, .container-with-text img {
@@ -117,14 +121,18 @@ body {
 
 .img-text {
     position: absolute;
-    top: 0;
-    right: 0; 
-    font-size: 26px;
+    /*top: 0;
+    right: 0;*/
+    display: flex;
+    padding-top: 50px;
+    padding-left: 400px;
+    font-size: 30px;
     text-shadow: 1px 1px 2px black;
     color: white; 
+    /*
     padding: 20px;
     margin: 150px 40px;
-    z-index: 0;
+    z-index: 0;*/
 }
 
 .info-container {
@@ -138,6 +146,7 @@ body {
 
 .info-container p {
     font-size: 22px;
+    line-height: 40px;
     margin: 0;
     padding: 0;
     width: 85%;
@@ -252,13 +261,4 @@ background:url('/static/images/roomtypepic2.png') center no-repeat;
     height: 300px; 
     object-fit: cover; /* Maintain aspect ratio while covering container */
     margin-right: 5px; /* Add space between images */
-}
-
-#LAHotel{
-    color: white;
-    font-family: "Hurricane", cursive;
-    text-shadow: 1px 1px 2px black;
-    font-weight: bold;
-    font-size: 60px;
-    padding-left: 978px;
 }
