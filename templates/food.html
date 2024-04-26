@@ -6,8 +6,9 @@
     <title>LA Hotels</title>
     <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="stylesheet" href="../static/css/food.css">
+
     <link href='https://fonts.googleapis.com/css?family=Goblin One' rel='stylesheet'>
-    <style>
+   <!-- <style>
         .food button {
             font-size: 25px;
             padding: 15px 35px;
@@ -15,10 +16,11 @@
             background-color: rgb(250, 250, 250, 0.7);
             border: none;
         }
-    </style>
+    </style>-->
 </head>
 <body>
     {% include 'nav-menu.html' %}
+        <!--
     <div class="bg-main food-bg">
         <div class="food">
             <h2>Food & Drinks</h2>
@@ -29,6 +31,40 @@
     </div>
     <div class="containerformenu" style="display: flex; justify-content: center; align-items: center;">
         <img src="static/images/food/menuupdated.png" style="width:600px; height:800px"; class=""/>
+    </div>-->
+    <div class="bg-main food-bg">
+        <div class="food">
+            <h2>Menu</h2>
+        </div>
+    </div>
+    <div class="foodWrapper">
+        <div class="foodItem">
+            <div class="menuItemImage">
+                <img src="/static/images/food/tonkotsu.png">
+            </div>
+            <div class="menuItemDescription">
+                <h3>Miso Udon</h3>
+                <p>Vegeterian Udon, very tasty.</p>
+            </div>
+        </div>
+        <div class="foodItem">
+            <div class="menuItemImage">
+                <img src="/static/images/food/tonkotsu.png">
+            </div>
+            <div class="menuItemDescription">
+                <h3>Miso Udon</h3>
+                <p>Vegeterian Udon, very tasty.</p>
+            </div>
+        </div>
+        <div class="foodItem">
+            <div class="menuItemImage">
+                <img src="/static/images/food/tonkotsu.png">
+            </div>
+            <div class="menuItemDescription">
+                <h3>Miso Udon</h3>
+                <p>Vegeterian Udon, very tasty.</p>
+            </div>
+        </div>
     </div>
     {% include 'footer.html' %}
     
