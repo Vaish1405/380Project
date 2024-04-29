@@ -16,10 +16,11 @@ log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 app.secret_key = os.getenv('app_secret_key')
 stripe.api_key = os.getenv('stripe_api_key')
+google_maps_api_key = os.getenv('google_maps_api_key')
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', api_key=google_maps_api_key)
 
 @app.route('/food')
 def food():
