@@ -145,13 +145,14 @@ body {
 
 .foodWrapper{
     max-width: 1280px;
-    width: 95%;
+    width: 100%;
     margin: 0,auto;
     position: relative;
+    padding-left: 125px;
 }
 
 .foodItem{
-    width: 50%;
+    width: 45%;
     float: left;
     display: flex;
     align-items: center;
@@ -161,11 +162,35 @@ body {
 
 .menuItemImage{
     float: left;
-    width: 50%;
+    width: 40%;
 }
 
 .menuItemDescription{
     float: left;
-    padding: 0 0 0 50px;
+    padding: 0 0 0 10px;
     width: 67%;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 20px;
+}
+
+.udonIntro{
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 25px;
+    margin: 40px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.foodButton {
+    font-size: 20px;
+    padding: 15px 35px;
+    font-weight: bold;
+    background-color: rgba(176, 172, 172, 0.7);
+    border: none;
+    display: block;
+    margin: auto;
+}
+
+.foodButton:hover{
+    background-color: rgb(255, 252, 252);
 }
