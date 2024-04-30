@@ -2,25 +2,12 @@ from flask import Flask, render_template, request, session, flash, redirect, jso
 import stripe, os
 import logging
 from utility import find_available_room_types, find_room_number
-from utility import check_validity 
+from utility import check_validity, get_total, getDays 
 from Rooms import get_room_price
 from Extras import get_extras_price
 from datetime import datetime
 from Reservation import ReservationController
-
-def getDays(checkIn, checkOut):
-    checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
-    checkOut = datetime.strptime(checkOut, "%Y-%m-%d")
-
-    nights = (checkOut - checkIn).days 
-    return nights
-
-def get_total(nights, room_selection, extras_selection):
-    sum = 0
-    sum += int(get_room_price(room_selection)) * int(nights)
-    sum += int(get_extras_price(extras_selection))
-    sum += 50
-    return sum                      
+                    
 
 available_room_types = [] # to store the values read from csv file
 
@@ -29,10 +16,11 @@ log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 app.secret_key = os.getenv('app_secret_key')
 stripe.api_key = os.getenv('stripe_api_key')
+google_maps_api_key = os.getenv('google_maps_api_key')
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', api_key=google_maps_api_key)
 
 @app.route('/food')
 def food():

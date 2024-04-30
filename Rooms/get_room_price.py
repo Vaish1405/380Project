@@ -3,7 +3,10 @@ from .Deluxe import DeluxeRoom
 from .SuperDeluxe import SuperDeluxeRoom
 
 def get_room_price(selection):
-    """Function that is delegated the task of getting the room prices. 
+    """
+    Programmer: Vaishnavi Sen
+    
+    Purpose: Function that is delegated the task of getting the room prices. 
 
     Args:
         selection: The type of room selected (Standard or Deluxe or Super Deluxe).

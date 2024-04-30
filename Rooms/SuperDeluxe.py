@@ -1,7 +1,12 @@
 from .Room import Room
 
 class SuperDeluxeRoom(Room):
-    """Class representing the standard room."""
+    """
+    Programmer: Vaishnavi Sen
+
+    Purpose: Class representing the standard room.
+    
+    """
     def __init__(self):
         """Intializes the room object with given room_type.
 

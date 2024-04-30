@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>LA Hotels</title>
+    <!-- The callback parameter is required, so we use console.debug as a noop -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+         .maps-container {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0 3% 10% 0; 
+            width: 50%;
+            height: 50%; 
+        }
+        gmp-map {
+            border: 5px solid black; 
+        }
+
+      </style>
     <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +74,10 @@
     </div>
     <div class="container-with-text">
         <p class="img-text">Located at the heart of the city, for your convenience.</p>
+        <div class="maps-container">
+            <gmp-map center="34.24016189575195,-118.52935791015625" zoom="14" map-id="DEMO_MAP_ID">
+            <gmp-advanced-marker position="34.24016189575195,-118.52935791015625" title="My location"></gmp-advanced-marker>
+        </div> 
     </div>
     {% include 'footer.html' %}
 </body>
