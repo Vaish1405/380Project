@@ -75,7 +75,7 @@ body {
 .availability-form {
     background: white;
     padding: 30px;
-    margin-top: 140px;
+    margin-top: 190px;
     width: 900px;
     text-align: center;
     display: grid;
@@ -88,12 +88,12 @@ body {
     color: white;
     display: flex;
     padding-top: 0px;
-    padding-bottom: 250px;
     position: absolute;
     font-family: "Hurricane", cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 45px;
+    transform: translateY(-30%);
 }
 
 .availability-form label {
