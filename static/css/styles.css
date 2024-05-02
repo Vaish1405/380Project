@@ -18,6 +18,7 @@ body {
 .logo {
     margin: 20px;
     max-height: 40px;
+    text-shadow: 1px 1px 2px black;
 }
 
 .nav-list{
@@ -47,14 +48,14 @@ body {
     position: relative;
     justify-content: center;
     align-items: center;
-    background: url('../images/mainPageBg.png') center/cover no-repeat;
+    background: url('../images/mainPageBg2.png') center/cover no-repeat;
 }
 
 .container-with-text {
     height: 800px;
     display: flex; 
     position: relative; 
-    background: url('../images/womanRelax.png') center/cover no-repeat;
+    background: url('../images/heartOfCity.png') center/cover no-repeat;
     z-index: 1;
 }
 
@@ -74,11 +75,25 @@ body {
 .availability-form {
     background: white;
     padding: 30px;
+    margin-top: 190px;
     width: 900px;
     text-align: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 50px;
+}
+
+
+.logoText{
+    color: white;
+    display: flex;
+    padding-top: 0px;
+    position: absolute;
+    font-family: "Hurricane", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 45px;
+    transform: translateY(-30%);
 }
 
 .availability-form label {
@@ -89,9 +104,13 @@ body {
 }
 
 .availability-submit {
-    background-color: #808080;
+    background-color: #4F7A6D;
     color: white;
     border: none;
+}
+
+.availability-submit:hover{
+    background-color: black;
 }
 
 .container img, .container-with-text img {
@@ -102,32 +121,39 @@ body {
 
 .img-text {
     position: absolute;
-    top: 0;
-    right: 0; 
-    font-size: 26px;
-    font-weight: bold; 
+    /*top: 0;
+    right: 0;*/
+    display: flex;
+    padding-top: 50px;
+    padding-left: 400px;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px black;
     color: white; 
+    /*
     padding: 20px;
     margin: 150px 40px;
-    z-index: 0;
+    z-index: 0;*/
 }
 
 .info-container {
     width: 100%;
-    background-color: #D7C0AF;
-    height: 230px;
+    background-color: #435445;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .info-container p {
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 40px;
     margin: 0;
     padding: 0;
-    width: 80%;
+    width: 85%;
+    color: white;
     text-align: center;
     font-family: "Times New Roman";
+    text-shadow: 1px 1px 2px black;
 }
 
 .footer {

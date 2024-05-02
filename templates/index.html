@@ -24,10 +24,16 @@
 
       </style>
     <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
 </head>
 <body>
     {% include 'nav-menu.html' %}
     <div class="container">
+            <div class="logoText">
+                <h1>LAHotels</h1>
+            </div>
         <div>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -49,14 +55,15 @@
                         <input type="date" id="check-out" name="check-out" required>
                     </div>
                     <div>
-                        <label for="people">No. of People</label><br>
+                        <label for="people">No. of Guests</label><br>
                         <input type="number" id="people" name="people" required>
                     </div>
                     <button class="availability-submit" type="submit">Check Availability</button>
                 </div>
             </form>
-        </div>   
+        </div>
     </div>
+
     <div class="info-container">
         <p>
             At LAHotels, our mission is to provide a serene haven where guests can escape the stresses 

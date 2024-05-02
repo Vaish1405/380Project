@@ -7,22 +7,30 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="../static/css/styles.css" />
     <link rel="stylesheet" href="../static/css/user.css" />
+    <link rel="stylesheet" href="../static/css/settings.css" />
   </head>
   <body>
     {% include 'nav-menu.html' %}
-    <div class="temp" style="justify-content: left;">
-        <div class="fullIconBar">
-            <div class="profileDisplay">
-                <img src="/static/images/profilepic.png" style="padding-top: 80px; width:150px; padding-left: 30px;" />
-                <h2 style="padding-left: 32px;">{{ user_first_name }} {{ user_last_name }}</h2>
-            </div>
-            <div class="icon-bar">
-                <a href="{{ url_for('user')}}" style="font-size: 18px;"><strong>User Info</strong></a>
-                <a href="{{ url_for('userReservation')}}" style="font-size: 18px;"><strong>Reservations</strong></a>
-                <a href="{{ url_for('settings')}}"  style="font-size: 18px;"><strong>Settings</strong></a>
-                <a href="#" style="margin-top: 140px; color: red; font-size: 18px;"><strong>Logout</strong></a>
-            </div>
+    <div class="temp" style="justify-content: left">
+      <div class="fullIconBar">
+        <div class="profileDisplay">
+          <img src="/static/images/profilepic.png" style="padding-top: 80px; width: 150px; padding-left: 30px"/>
+          <h2 style="padding-left: 32px">
+            {{ user_first_name }} {{ user_last_name }}
+          </h2>
         </div>
-<div class="settingsImg">
-    <img src="/static/images/settings/settings.png" style="padding-left: 425px; padding-top: 125px;width:60%;">
-</div>
+        <div class="icon-bar">
+          <a href="{{ url_for('user')}}" style="font-size: 18px"><strong>User Info</strong></a>
+          <a href="{{ url_for('userReservation')}}" style="font-size: 18px"><strong>Reservations</strong></a>
+          <a href="{{ url_for('settings')}}" style="font-size: 18px"><strong>Settings</strong></a>
+          <a href="#" style="margin-top: 140px; color: red; font-size: 18px"><strong>Logout</strong></a>
+        </div>
+      </div>
+      <div class="settingsImg">
+        <img src="/static/images/settings/settings.png" style="padding-top: 70px; width: 550px;"/>
+      </div>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>
+  

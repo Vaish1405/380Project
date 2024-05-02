@@ -28,14 +28,14 @@
 }
 
 .amenities{
-    margin: 85px;   
+    margin: 85px;  
     display: flex; 
     justify-content: center;
     align-items: center;
 }
 
 .room-types {
-    height: 670px;    
+    height: 720px;    
     position: relative;
     z-index: 1;
     text-align: center;
@@ -61,8 +61,8 @@
 }
 
 .images-section img {
-    max-width: 400px;
-    height: 400px;
+    max-width: 360px;
+    height: 450px;
     display: inline-block;
     overflow: hidden;
     /*top right bottom left*/
@@ -80,9 +80,9 @@
     background-color: #252C34;
     color: white;
     font-size: 35px;
-    width: 400px;
+    width: 360px;
     height: 200px;
-        /*top right bottom left*/
+    /*top right bottom left*/
     margin: 0px 30px;
     padding: 60px 5px;
     box-sizing: border-box;
@@ -93,7 +93,6 @@
 .room a{
     text-decoration: inherit;
     color: inherit;
-    
 }
 
 .amentext{
@@ -177,4 +176,8 @@
 
 #learn{
     color: white;
+    text-decoration: underline;
+    text-decoration-color: #BEAA76;
+    font-size: 28px;
+    padding-left: 30px;
 }
