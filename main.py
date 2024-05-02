@@ -107,11 +107,11 @@ def user():
 
 @app.route('/userReservation')
 def userReservation():
-    return render_template('userReservation.html')
+    return render_template('userReservation.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
 
 @app.route('/settings')
 def settings():
-    return render_template('settings.html')
+    return render_template('settings.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
 
 @app.route('/editReservation')
 def editReservation():

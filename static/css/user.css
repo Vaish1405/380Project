@@ -38,7 +38,6 @@
   .profileDisplay{
     padding-top: 100px;
     width: 100%;
-    /*float: left;*/
     padding: 20px;
   }
 
@@ -96,5 +95,5 @@
   box-shadow: 10px 0 10px -1px #00000030;
   padding-left: 30px;
   padding-right: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 65px;
 }
