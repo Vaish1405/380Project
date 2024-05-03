@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc029422-1418-4895-988a-3322ae4f7a99" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Reservation/Reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reservation/Reservation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserFilterOptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserFilterOptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/reservations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/reservations.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +44,10 @@
     "Python tests.Python tests for test_findReservation.test_edit_reservation.executor": "Run",
     "Python tests.Python tests in test_ValidateAvailabilityInput.py.executor": "Run",
     "Python tests.Python tests in test_cancelReservation.py.executor": "Run",
+    "Python tests.Python tests in test_makeReservation.py.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "kaungk"
   }
 }]]></component>
   <component name="SharedIndexes">
