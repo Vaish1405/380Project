@@ -34,13 +34,18 @@
 
 .column {
     float: right;
-    width: 33.33%;
+    align-items: center;
+    width: 50%;
     /* top right bottom left*/
-    padding: 30px 20px 20px 20px;
+    padding: 50px 30px 50px 30px;
 }
 
 .row{
+    align-items: center;
+    margin: 45px;
+    border-radius:25px;
     padding: 0px 70px 20px 70px;
+    border: 2px solid black;
 }
 
 .row::after {
@@ -50,10 +55,9 @@
 }
 .text{
     text-align: center;
-    width: 300px;
-    height: 120px;
-    padding: 0px;
-    margin: 40px;
+    padding: 5px;
+    background-color: #2B4C44;
+    color: white;
 }
 
 .eventsdescrip{
