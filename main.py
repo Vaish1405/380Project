@@ -7,6 +7,16 @@ from room_cost import get_room_price
 from extras_cost import get_extras_price
 from datetime import datetime
 from reservation import ReservationController
+from flask_sqlalchemy import SQLAlchemy
+from os import path
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from . import db
+from sqlalchemy.sql import func
+import queue
+
+
+db = SQLAlchemy()
+DB_NAME = "database.db"
 
 def getDays(checkIn, checkOut):
     checkIn = datetime.strptime(checkIn, "%Y-%m-%d")
@@ -29,6 +39,35 @@ log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 app.secret_key = os.getenv('app_secret_key')
 stripe.api_key = os.getenv('stripe_api_key')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+db.init_app(app)
+
+from .auth import auth
+
+app.register_blueprint(auth, url_prefix='/temp')
+    
+with app.app_context():
+    db.create_all()
+
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login' # if user not logged in and tries to open a page that requires a login, takes user to log in page
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id)) # retireves specific user based on user ID
+
+
+class User(db.Model, UserMixin): #Data base model
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))
+    first_name = db.Column(db.String(150))
+    last_name = db.Column(db.String(150))
+    name = db.Column(db.String(150))
+    phone_number = db.Column(db.String(150))
+    user_reservations = db.Column(db.String(150))
 
 @app.route('/')
 def home():
@@ -74,9 +113,10 @@ def payment():
                            extrasCost=get_extras_price(session['extras']), 
                            nights=nights,
                            total=get_total(nights, session['room-type'], session['extras']),
-                           public_key=os.getenv('stripe_public_key'))
+                           public_key=os.getenv('stripe_public_key'),
+                           user = current_user)
 
-
+#######################
 @app.route('/temp', methods=['POST', 'GET'])
 def temp():
     session['first-name'] = request.form.get('first-name')
@@ -89,7 +129,10 @@ def temp():
                            check_out=session['check_out'], people=session['people'], 
                            room_selection=session['room-type'], extras_selection=session['extras'])
 
+#########################################
+
 @app.route('/create-payment-intent', methods=['POST'])
+@login_required
 def create_payment_intent():
     data = request.json
     amount = data['amount']
@@ -114,28 +157,32 @@ def events():
     return render_template('events.html')
 
 @app.route('/user')
+@login_required
 def user():
-    return render_template('user.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
+    return render_template('user.html', user = current_user)
 
 @app.route('/userReservation')
+@login_required
 def userReservation():
-    return render_template('userReservation.html')
+    return render_template('userReservation.html', user = current_user)
 
 @app.route('/settings')
 def settings():
     return render_template('settings.html')
 
 @app.route('/editReservation')
+@login_required
 def editReservation():
-    return render_template('editReservation.html')
+    return render_template('editReservation.html', user = current_user)
 
 @app.route('/userPageTemp.html', methods=['POST'])
+@login_required
 def userPageTemp():
     new_reservation = [request.form.get('new_check_in'), request.form.get('new_check_out'), 
                        request.form.get('new_room_type'), request.form.get('new_num_people')]
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
     ReservationController(reservation=reservation).edit_reservation(new_check_in=request.form.get('new_check_in'))
-    return render_template('userPageTemp.html', message="success!!")
+    return render_template('userPageTemp.html', message="success!!", user = current_user)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,35 @@
+ Data base model
+
+ class User(db.Model, UserMixin): #Data base model
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))
+    first_name = db.Column(db.String(150))
+    last_name = db.Column(db.String(150))
+    name = db.Column(db.String(150))
+    phone_number = db.Column(db.String(150))
+    user_reservations = db.Column(db.String(150))
+
+Found in main
+
+
+with app.app_context():    this will create a new Data base if there isnt one already
+    db.create_all()
+
+db = SQLAlchemy()          Required for initializing data base
+DB_NAME = "database.db" 
+
+
+FOR ADDING TO DATABASE
+
+db.session.add(new_user)  # Adds the new user
+db.session.commit()       # confirms the addition
+
+GETTING INFORMATION FROM DB 
+user = User.query.filter_by(email=email).first()  #this will search the user name to get the user 
+
+Once you have the right user you can access any parameter using user. for example user.password
+
+
+Make sure to do the pip installs flask-login and flask-SQLAlchemy
+
