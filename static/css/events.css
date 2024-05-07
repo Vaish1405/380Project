@@ -45,7 +45,6 @@
     margin: 45px;
     border-radius:25px;
     padding: 0px 70px 20px 70px;
-    border: 2px solid black;
 }
 
 .row::after {
