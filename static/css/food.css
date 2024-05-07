@@ -83,3 +83,41 @@
 .foodWrapper{
     margin: 10px;
 }
+
+.modal{
+    max-width: 200ch;
+    max-height: 200ch;
+    align-items: center;
+    padding: 60px;
+}
+
+.modal::backdrop {
+    background: rgb(0 0 0/ 0.4);
+}
+
+
+h1 em{
+    color: var(--cyan-9);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
+
+.button{
+    border: 0;
+    padding: 15px 35px;
+    background-color: rgba(255, 255, 255, 0.815);
+    cursor: pointer;
+    color: var(--gray-2);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.button:hover{
+    background-color: rgb(107, 144, 114);
+}
+
+
+form {
+    display: grid;
+    gap: 1em;
+}

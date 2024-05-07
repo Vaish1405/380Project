@@ -18,12 +18,23 @@
     <div class="bg-main food-bg">
         <div class="food">
             <h2>Menu</h2>
-            <h3 style="color: white;">Come join us in the restuarant for a full experience or contact us for room service.</h3>
-            <button onclick="orderFood()" class="foodButton">
+            <!--<button onclick="orderFood()" class="foodButton">
                 Contact Us
-            </button>
+            </button>-->
+            <button class="button open-button">Order Here</button>
         </div>
     </div>
+
+    <dialog class="modal" id="modal">
+        <h2 style="text-align: center;">Order Here</h2>
+        <p>Place your order here or call (818) 232-23245</p>
+        <form class="form" method="dialog">
+            <label>Your order: <input type="text"></label>
+            <label>Your phone #: <input type="text"></label>
+            <button class="button" type="submit">Submit Order</button>
+        </form>
+    </dialog>
+
         <div class="udonIntro">
             <p>Udon - A thick noodle made from wheat flour.</p>
         </div>
@@ -90,9 +101,18 @@
 </html>
 
 <script>
-    function orderFood(){
-        let order = prompt("Write your order here or call (818) 232-23245");
-        let confirmOrder = confirm("Are you sure you want to place this order?");
-        alert("You have placed your order of: " + order);
-    }
+    const modal = document.querySelector("#modal");
+    const openModal = document.querySelector(".open-button");
+
+    openModal.addEventListener("click", () => {
+        modal.showModal();
+    });
+
+    //function orderFood(){
+        //let order = prompt("Write your order here or call (818) 232-23245");
+        //let confirmOrder = confirm("Are you sure you want to place this order?");
+       // alert("You have placed your order of: " + order);
+    //}
+
+
 </script>
