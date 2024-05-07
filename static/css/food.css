@@ -84,10 +84,10 @@
 }
 
 .modal{
-    /*max-width: 100ch;*/
     max-width: 200ch;
     max-height: 200ch;
     align-items: center;
+    padding: 60px;
 }
 
 .modal::backdrop {
@@ -109,6 +109,10 @@ h1 em{
     color: var(--gray-2);
     font-weight: 700;
     font-size: 20px;
+}
+
+.button:hover{
+    background-color: rgb(107, 144, 114);
 }
 
 
