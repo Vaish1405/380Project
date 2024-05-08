@@ -26,47 +26,16 @@
                 <p style="font-size: 13px; text-align: left; padding-left: 15px; color: gray;">Contact (818) 232-23245 if you're having trouble with your reservation.</p>
             </div>
         </div>
-    <!--<div class="testFloat">
-        <h2>Current Reservation</h2>
-        <div class="currentResContainer">
-            <div class="currentReservation">
-                Example data
-                4/15/2024 - 4/25/2024
-                <br>
-                <br>
-                Check-in: 4:00pm
-                <br>
-                Check-out: 5:00pm
-            </div>
-                <div class="editNCancel">
-                    <a href="/editReservation">Edit</a>
-                    <a href="#">Cancel</a>
-                </div>
-        </div>
-    </div>-->
     <div class="testFloat">
         <div class="personInfo">
             <h1 style="text-decoration: underline; font-size: 29px;">Current Reservation:</h1>
-            <h2>{{ user_first_name }} {{ user_last_name }}</h2>
-            <div class="firstAndLast">
-                <div>
-                    <label for="check-in">Check-in:</label>
-                    <input type="text" id="check-in" name="check-in" placeholder="{{ user_first_name }}"><br>
-                </div>
-                <div>
-                    <label for="check-out">Check-out:</label>
-                    <input type="text" id="check-out" name="check-out" placeholder="{{ user_last_name }}"><br>
-                </div>
-                <div>
-                    <label for="num_of_guests">Number of Guests:</label>
-                    <input type="number" id="num_of_guests" name="num_of_guests" placeholder="{{ people }}"><br>
-                </div>
-                <div>
-                    <label for="room-type">Room Type:</label>
-                    <input type="text" id="room-type" name="room-type" placeholder="Room Type"><br>
-                </div>
-            </div>
-            <h3>Total Amount Paid: $</h3>
+            <br/>
+            <div class="firstAndLast" style="display: inline;">
+            <h3>Check-in: {{ check_in }}</h3>
+            <h3>Check-out: {{ check_out }}</h3>
+            <h3># of People: {{num_of_people }}</h3>
+            <h3>Room Type: {{ room_type }}</h3>
+            <h3>Total Amount Paid: ${{ total_amount }}</h3>
             <br />
             <br />
             <div class="editNCancel">
