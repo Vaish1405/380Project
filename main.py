@@ -10,7 +10,6 @@ from reservation import ReservationController
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from . import db
 from sqlalchemy.sql import func
 import queue
 
@@ -43,10 +42,6 @@ stripe.api_key = os.getenv('stripe_api_key')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 db.init_app(app)
 
-from .auth import auth
-
-app.register_blueprint(auth, url_prefix='/temp')
-    
 with app.app_context():
     db.create_all()
 
