@@ -44,6 +44,11 @@
     min-height: 240px;
 }
 
+.foodItem:hover{
+    transform: scale(1.02);
+    transition: all 0.4s;
+}
+
 .menuItemImage{
     float: left;
     width: 40%;
