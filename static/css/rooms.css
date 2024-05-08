@@ -221,3 +221,9 @@ body {
     padding: 10px 30px;
     margin: 8px;
 }
+
+.hoverEffect:hover{
+    transform: scale(1.02);
+    transition: all 0.4s;
+
+}
