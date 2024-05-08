@@ -148,7 +148,7 @@ body {
     position: relative;
     z-index: 1;
     text-align: center;
-    background: url('../images/testimonialBackground.png') center/cover no-repeat;
+    background: url('../images/testimonialBackgroundOrig.png') center/cover no-repeat;
 }
 .testimonials h2 {
     font-size: 40px;
