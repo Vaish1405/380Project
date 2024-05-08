@@ -4,7 +4,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 text-align: center;
-margin: 150px 150px 150px 150px;
+margin: 150px 180px 150px 180px;
 background-color: #B9C7B2;
 }
 
@@ -21,12 +21,12 @@ background-color: #B9C7B2;
 
 
 .editNCancel a:link{
-    text-decoration: none;
+    text-decoration: white;
     padding: 15px 50px 15px 50px;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 15px;
     color: white;
     border-style: solid;
-    background-color: white;
+    background-color: #619585;
 }
