@@ -2,3 +2,4 @@ flask
 stripe
 datetime
 pandas
+bcrypt

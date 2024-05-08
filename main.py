@@ -7,7 +7,16 @@ from Rooms import get_room_price
 from Extras import get_extras_price
 from datetime import datetime
 from Reservation import ReservationController
-                    
+import bcrypt
+from utility import upload_user, find_user
+
+def hash_password(password):
+    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+    return hashed.decode('utf8')
+
+def check_password(input_password, hashed_password):
+    return bcrypt.checkpw(input_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 available_room_types = [] # to store the values read from csv file
 
@@ -101,24 +110,53 @@ def amenities():
 def events():
     return render_template('events.html')
 
-@app.route('/user', methods=['POST'])
-def user():
-    session['first-name'] = request.form.get('first-name')
-    session["last-name"] = request.form.get('last-name')
-    session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
+@app.route('/userSignedUp', methods=['POST', 'GET'])
+def userSignedUp():
+    
+    if find_user(request.form.get('email')) == None: 
+        session['first-name'] = request.form.get('firstName') or "Guest"
+        session["last-name"] = request.form.get('lastName') or " "
+        session['name'] = request.form.get('firstName') + ' ' + request.form.get('lastName') 
+        session['email'] = request.form.get('email')
+        if request.form.get('phone'):
+            session['phone'] = request.form.get('phone')
+        else: 
+            session['phone'] = "Enter your phone number"
+        session['password'] = hash_password(request.form.get('password'))
+        upload_user(session['first-name'], session['last-name'], session['email'], session['phone'], session['password'])
+        return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
+    else: 
+        flash("User already exists!", 'signUp_error')
+        return redirect(request.referrer)
+
+@app.route('/userLoggedIn', methods=['POST', 'GET'])
+def userLoggedIn():
     session['email'] = request.form.get('email')
-    session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
-    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
-    return render_template('user.html', temp=ReservationController(reservation=reservation).make_reservation(), user_first_name=session['first-name'] or "Guest", 
-                           user_last_name=session['last-name'] or "", user_email=session['email'])
+    user = find_user(session['email'])
+    if user == None:
+        flash("User does not exist. Sign up if new user!")
+        
+    elif check_password(request.form.get('password'), user.password) == False:
+        flash("Entered Password is wrong!", 'login_error')
+        return redirect(request.referrer)
+    else:
+        session['first-name'] = user.first_name
+        session['last-name'] = user.last_name
+        session['phone'] = user.phone
+    return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
+
+@app.route('/user')
+def user():
+    if session['first-name']:
+        return render_template('user.html')
 
 @app.route('/userReservation')
 def userReservation():
-    return render_template('userReservation.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
+    return render_template('userReservation.html', user_first_name=session['first-name'], user_last_name=session['last-name'], user_email=session['email'])
 
 @app.route('/settings')
 def settings():
-    return render_template('settings.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
+    return render_template('settings.html', user_first_name=session['first-name'], user_last_name=session['last-name'], user_email=session['email'])
 
 @app.route('/editReservation')
 def editReservation():
@@ -132,6 +170,14 @@ def userPageTemp():
                                                                     new_room_type=request.form.get('new_room_type').lower() or session['room-type'],
                                                                     new_num_people=request.form.get('new_num_people') or session['people'])
     return render_template('userPageTemp.html', message="success!!")
+
+@app.route('/signUp')
+def signUp():
+    return render_template('signUp.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    return render_template('user.html', user_first_name="Amy", user_last_name="Vaish", user_email=request.form.get("email"))
 
 if __name__ == '__main__':
     app.run(debug=True)

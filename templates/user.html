@@ -17,7 +17,7 @@
                 <h2 style="padding-left: 32px;">{{ user_first_name }} {{ user_last_name }}</h2>
             </div>
             <div class="icon-bar">
-                <a href="{{ url_for('user')}}" style="font-size: 18px;"><strong>User Info</strong></a>
+                <a href="{{ url_for('userLoggedIn')}}" style="font-size: 18px;"><strong>User Info</strong></a>
                 <a href="{{ url_for('userReservation')}}" style="font-size: 18px;"><strong>Reservations</strong></a>
                 <a href="{{ url_for('settings')}}"  style="font-size: 18px;"><strong>Settings</strong></a>
                 <a href="#" style="margin-top: 110px; color: black; font-size: 18px;"><strong>Logout</strong></a>
@@ -43,7 +43,7 @@
                     </div>
                     <div>
                         <label for="first-name">Phone Number:</label>
-                        <input type="text" id="first-name" name="first-name" placeholder="Enter your phone number"><br>
+                        <input type="text" id="first-name" name="first-name" placeholder="{{ user_phone }}"><br>
                     </div>
                 </div>
                 <br />

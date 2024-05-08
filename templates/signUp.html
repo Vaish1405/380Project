@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>LA Hotels</title>
+    <style>
+        .signUpButton, .loginButton {
+            padding: 15px 60px;
+            background-color: #4F7A6D; /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .signUpButton:hover, .loginButton:hover {
+            background-color: black;
+        }
+
+        .formContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            height: 600px;
+        }
+
+        .formContainer form {
+            width: 45%;
+        }
+
+        .formContainer h2 {
+            margin-bottom: 20px;
+        }
+
+        .formContainer form input {
+            display: block;
+            margin-bottom: 10px;
+            width: 90%;
+            padding: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+        .flash-messages {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav-menu.html' %}
+    <div class="formContainer">
+        <form action="/userSignedUp" class="signUpForm" method="POST">
+            <h2>Sign Up</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    {% if category == 'signUp_error' %}
+                        <ul class="flash-messages">
+                            <li style="color: red; font-size: 16px;">{{ message }}</li>
+                        </ul><br>
+                    {% endif %}
+                {% endfor %}
+            {% endwith %}
+            <input type="text" placeholder="First Name" name="firstName" required>
+            <input type="text" placeholder="Last Name" name="lastName" required>
+            <input type="email" placeholder="Email Address" name="email" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="text" placeholder="Password" name="password">
+            <button class="signUpButton" type="submit">Sign Up</button>
+        </form>
+        
+        <form action="/userLoggedIn" class="loginForm" method="POST">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    {% if category == 'login_error' %}
+                        <ul class="flash-messages">
+                            <li style="color: red; font-size: 16px;">{{ message }}</li>
+                        </ul><br>
+                    {% endif %}
+                {% endfor %}
+            {% endwith %}
+            <h2>Login</h2>
+            <input type="email" placeholder="Email Address" name="email" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button class="loginButton" type="submit">Login</button>
+        </form>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>
