@@ -4,8 +4,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 text-align: center;
-margin: 150px 180px 150px 180px;
-background-color: #B9C7B2;
+margin: 170px 250px 170px 200px;
+background-color: rgba(43, 76, 68, 0.4);
 }
 
 .currentResContainer{
@@ -28,5 +28,5 @@ background-color: #B9C7B2;
     font-size: 15px;
     color: white;
     border-style: solid;
-    background-color: #619585;
+    background-color: white;
 }
