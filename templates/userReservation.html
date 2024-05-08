@@ -27,21 +27,22 @@
             </div>
         </div>
     <div class="testFloat">
-        <h2>Current Reservation</h2>
-        <div class="currentResContainer">
-            <div class="currentReservation">
-                <!--Example data-->
-                4/15/2024 - 4/25/2024
-                <br>
-                <br>
-                Check-in: 4:00pm
-                <br>
-                Check-out: 5:00pm
+        <div class="personInfo">
+            <h1 style="text-decoration: underline; font-size: 29px;">Current Reservation:</h1>
+            <br/>
+            <div class="firstAndLast" style="display: inline;">
+            <h3>Check-in: {{ check_in }}</h3>
+            <h3>Check-out: {{ check_out }}</h3>
+            <h3># of People: {{num_of_people }}</h3>
+            <h3>Room Type: {{ room_type }}</h3>
+            <h3>Total Amount Paid: ${{ total_amount }}</h3>
+            <br />
+            <br />
+            <div class="editNCancel">
+                <a href="/editReservation">Edit</a>
+                <a href="#">Cancel</a>
             </div>
-                <div class="editNCancel">
-                    <a href="/editReservation">Edit</a>
-                    <a href="#">Cancel</a>
-                </div>
+            </div>
         </div>
     </div>
 </div>
