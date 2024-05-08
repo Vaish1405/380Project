@@ -115,7 +115,7 @@ def userSignedUp():
         else: 
             session['phone'] = "Enter your phone number"
         session['password'] = hash_password(request.form.get('password'))
-        upload_user(session['first-name'], session['last-name'], session['email'], session['phone'], session['password'])
+        upload_user(session['name'], session['email'], session['phone'], session['password'])
         return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
     else: 
         flash("User already exists!", 'signUp_error')

@@ -43,7 +43,7 @@ class ReservationController:
                     'check_out': self.reservation.check_out,
                     'room_type': self.reservation.room_type,
                     'room_number': self.reservation.room_number
-                })
+                })            
             return 1 #shows success
         except: 
             return 0 # shows failure
