@@ -26,11 +26,11 @@
                 <p style="font-size: 13px; text-align: left; padding-left: 15px; color: gray;">Contact (818) 232-23245 if you're having trouble with your reservation.</p>
             </div>
         </div>
-    <div class="testFloat">
+    <!--<div class="testFloat">
         <h2>Current Reservation</h2>
         <div class="currentResContainer">
             <div class="currentReservation">
-                <!--Example data-->
+                Example data
                 4/15/2024 - 4/25/2024
                 <br>
                 <br>
@@ -42,6 +42,38 @@
                     <a href="/editReservation">Edit</a>
                     <a href="#">Cancel</a>
                 </div>
+        </div>
+    </div>-->
+    <div class="testFloat">
+        <div class="personInfo">
+            <h1 style="text-decoration: underline; font-size: 29px;">Current Reservation:</h1>
+            <h2>{{ user_first_name }} {{ user_last_name }}</h2>
+            <div class="firstAndLast">
+                <div>
+                    <label for="first-name">Check-in:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="{{ user_first_name }}"><br>
+                </div>
+                <div>
+                    <label for="first-name">Check-out:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="{{ user_last_name }}"><br>
+                </div>
+                <div>
+                    <label for="first-name">Number of Guests:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="{{ user_email }}"><br>
+                </div>
+                <div>
+                    <label for="first-name">Room Type:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Enter your phone number"><br>
+                </div>
+            </div>
+            <h3>Total Amount Paid: $</h3>
+            <br />
+            <br />
+            <div class="editNCancel">
+                <a href="/editReservation">Edit</a>
+                <a href="#">Cancel</a>
+            </div>
+            </div>
         </div>
     </div>
 </div>
