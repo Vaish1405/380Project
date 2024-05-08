@@ -11,7 +11,8 @@ def find_current_reservation(user_name):
         if row['user_name'] == user_name:
             return find_reservation(row['user_name'], row['check_in'], row["check_out"])
     
-    return 0
+    merged_df = pd.DataFrame()
+    return merged_df
     
 
 # print(find_current_reservation('Vaish Sen')['user_name'])

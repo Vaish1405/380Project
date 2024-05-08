@@ -141,7 +141,7 @@ def user():
 @app.route('/userReservation')
 def userReservation():
     data=find_current_reservation(session['name'])
-    if data == 0:
+    if data.empty:
         flash("No Reservation found for the current user", 'no_reservation_error')
         return render_template("userReservation.html", user_name=session['name'])  
     else: 
@@ -175,3 +175,4 @@ def login():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
