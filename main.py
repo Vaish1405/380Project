@@ -101,9 +101,16 @@ def amenities():
 def events():
     return render_template('events.html')
 
-@app.route('/user')
+@app.route('/user', methods=['POST'])
 def user():
-    return render_template('user.html', user_first_name="Amy", user_last_name="Vaish", user_email="vaishsuen23@gmail.com")
+    session['first-name'] = request.form.get('first-name')
+    session["last-name"] = request.form.get('last-name')
+    session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
+    session['email'] = request.form.get('email')
+    session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+    return render_template('user.html', temp=ReservationController(reservation=reservation).make_reservation(), user_first_name=session['first-name'] or "Guest", 
+                           user_last_name=session['last-name'] or "", user_email=session['email'])
 
 @app.route('/userReservation')
 def userReservation():

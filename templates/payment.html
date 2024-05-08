@@ -23,7 +23,7 @@
         <div class="left">
             <div class="customer-info">
                 <h2>Customer Information</h2>
-                <form id="payment-form" method="POST" action="/temp">
+                <form id="payment-form" method="POST" action="/user">
                     <div class="names">
                         <div>
                             <label for="first-name">First Name:</label>
@@ -94,7 +94,7 @@
                                     document.getElementById('card-errors').textContent = result.error.message;
                                 } else {
                                     // Payment succeeded
-                                    window.location.href = '/temp';
+                                    window.location.href = '/user';
                                 }
                             });
                         });
