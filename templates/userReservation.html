@@ -15,7 +15,7 @@
         <div class="fullIconBar">
             <div class="profileDisplay">
                 <img src="/static/images/profilepic.png" style="padding-top: 80px; width:150px; padding-left: 30px;" />
-                <h2 style="padding-left: 32px;">{{ user_first_name }} {{ user_last_name }}</h2>
+                <h2 style="padding-left: 32px;">{{ current_reservation[1] }}</h2>
             </div>
             <div class="icon-bar">
                 <a href="{{ url_for('userLoggedIn')}}" style="font-size: 18px;"><strong>User Info</strong></a>
@@ -26,26 +26,39 @@
                 <p style="font-size: 13px; text-align: left; padding-left: 15px; color: gray;">Contact (818) 232-23245 if you're having trouble with your reservation.</p>
             </div>
         </div>
-    <div class="testFloat">
-        <div class="personInfo">
-            <h1 style="text-decoration: underline; font-size: 29px;">Current Reservation:</h1>
-            <br/>
-            <div class="firstAndLast" style="display: inline;">
-            <h3>Check-in: {{ check_in }}</h3>
-            <h3>Check-out: {{ check_out }}</h3>
-            <h3># of People: {{num_of_people }}</h3>
-            <h3>Room Type: {{ room_type }}</h3>
-            <h3>Total Amount Paid: ${{ total_amount }}</h3>
-            <br />
-            <br />
-            <div class="editNCancel">
-                <a href="/editReservation">Edit</a>
-                <a href="#">Cancel</a>
-            </div>
-            </div>
+        <div class="testFloat">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == 'no_reservation_error' %}
+                            <ul class="flash-messages">
+                                <li style="color: red; font-size: 20px;">{{ message }}</li>
+                            </ul><br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if not messages %}
+                    <h1 style="text-decoration: underline; font-size: 29px;">Current Reservation:</h1>
+                    <div class="personInfo">
+                        <br/>
+                        <div class="firstAndLast" style="display: inline;">
+                        <h3>Check-in: {{ current_reservation[2] }}</h3>
+                        <h3>Check-out: {{ current_reservation[3] }}</h3>
+                        <h3>Room Type: {{ current_reservation[4] }}</h3>
+                        <h3>Room Number: {{current_reservation[5] }}</h3>
+                        <br />
+                        <br />
+                        <div class="editNCancel">
+                            <a href="/editReservation">Edit</a>
+                            <a href="#">Cancel</a>
+                        </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+
         </div>
     </div>
-</div>
 {% include 'footer.html' %}
 </body>
 </html>

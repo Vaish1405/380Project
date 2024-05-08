@@ -11,7 +11,7 @@
 </head>
 <body>
     {% include 'nav-menu.html' %}
-    <form action="/userPageTemp.html" method="post" style="border:1px solid #ccc">
+    <form action="/user" method="post" style="border:1px solid #ccc">
         <div class="editContainer">
             <h1>Amy Truong</h1><hr>
             <label for="new_check_in"><b>Check-in:</b></label>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="confirmChangesBtn">
-            <button class="confirmEdit">Confirm</button>
+            <button class="confirmEdit" type="submit">Confirm</button>
         </div>
     </form>
     {% include 'footer.html' %}

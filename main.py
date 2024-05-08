@@ -8,7 +8,7 @@ from Extras import get_extras_price
 from datetime import datetime
 from Reservation import ReservationController
 import bcrypt
-from utility import upload_user, find_user, hash_password, check_password
+from utility import upload_user, find_user, hash_password, check_password, find_current_reservation
 
 available_room_types = [] # to store the values read from csv file
 
@@ -65,19 +65,6 @@ def payment():
                            total=get_total(nights, session['room-type'], session['extras']),
                            public_key=os.getenv('stripe_public_key'))
 
-
-@app.route('/temp', methods=['POST', 'GET'])
-def temp():
-    session['first-name'] = request.form.get('first-name')
-    session["last-name"] = request.form.get('last-name')
-    session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
-    session['email'] = request.form.get('email')
-    session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
-    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
-    return render_template('temp.html', temp=ReservationController(reservation=reservation).make_reservation(), name=session['name'], check_in=session['check_in'], 
-                           check_out=session['check_out'], people=session['people'], 
-                           room_selection=session['room-type'], extras_selection=session['extras'])
-
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
     data = request.json
@@ -103,8 +90,7 @@ def events():
     return render_template('events.html')
 
 @app.route('/userSignedUp', methods=['POST', 'GET'])
-def userSignedUp():
-    
+def userSignedUp():    
     if find_user(request.form.get('email')) == None: 
         session['first-name'] = request.form.get('firstName') or "Guest"
         session["last-name"] = request.form.get('lastName') or " "
@@ -132,20 +118,36 @@ def userLoggedIn():
         flash("Entered Password is wrong!", 'login_error')
         return redirect(request.referrer)
     else:
-        session['first-name'] = user.first_name
-        session['last-name'] = user.last_name
+        session['first-name'] = user.user_name.split()[0]
+        session['last-name'] = user.user_name.split()[1]
+        session['name'] = user.user_name
         session['phone'] = user.phone
     return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
 
-@app.route('/user')
+@app.route('/user', methods=['GET', 'POST'])
 def user():
+    if not session['first-name']:
+        session['first-name'] = request.form.get('first-name')
+        session["last-name"] = request.form.get('last-name')
+        session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
+        session['email'] = request.form.get('email')
+        session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
+        reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+        reservation_status = ReservationController(reservation=reservation).make_reservation()
     if session['first-name']:
-        return render_template('user.html')
+        return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], 
+                               user_email=session['email'], user_phone=session['phone'])
 
 @app.route('/userReservation')
 def userReservation():
-    return render_template('userReservation.html', user_first_name=session['first-name'], user_last_name=session['last-name'], user_email=session['email'])
-
+    data=find_current_reservation(session['name'])
+    if data.empty:
+        flash("No Reservation found for the current user", 'no_reservation_error')
+        return render_template("userReservation.html")  
+    else: 
+        data = data.values[0]
+        return render_template('userReservation.html', current_reservation=data)
+        
 @app.route('/settings')
 def settings():
     return render_template('settings.html', user_first_name=session['first-name'], user_last_name=session['last-name'], user_email=session['email'])
