@@ -10,7 +10,8 @@ def find_current_reservation(user_name):
     for index, row in merged_df.iterrows():
         if row['user_name'] == user_name:
             return find_reservation(row['user_name'], row['check_in'], row["check_out"])
-        
-    return merged_df
+    
+    return 0
+    
 
 # print(find_current_reservation('Vaish Sen')['user_name'])

@@ -112,8 +112,8 @@ def userLoggedIn():
     session['email'] = request.form.get('email')
     user = find_user(session['email'])
     if user == None:
-        flash("User does not exist. Sign up if new user!")
-        
+        flash("User does not exist. Sign up if new user!", 'login_error')
+        return redirect(request.referrer)        
     elif check_password(request.form.get('password'), user.password) == False:
         flash("Entered Password is wrong!", 'login_error')
         return redirect(request.referrer)
@@ -141,12 +141,12 @@ def user():
 @app.route('/userReservation')
 def userReservation():
     data=find_current_reservation(session['name'])
-    if data.empty:
+    if data == 0:
         flash("No Reservation found for the current user", 'no_reservation_error')
-        return render_template("userReservation.html")  
+        return render_template("userReservation.html", user_name=session['name'])  
     else: 
         data = data.values[0]
-        return render_template('userReservation.html', current_reservation=data)
+        return render_template('userReservation.html', current_reservation=data, user_name=session['name'])
         
 @app.route('/settings')
 def settings():
