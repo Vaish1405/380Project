@@ -37,6 +37,7 @@ body {
     margin-left: 10px;
     font-size: 20px;
 }
+
 .nav-list a:not(.userLogo):hover {
     background-color: white;
     color: black;
