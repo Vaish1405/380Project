@@ -1,8 +1,8 @@
-from .Reservation import Reservation
+from Reservation import Reservation
 import csv
 import uuid
 from datetime import datetime, timedelta
-from .find_reservation import find_reservation
+from Reservation import find_reservation
 import pandas as pd
 from utility import find_room_number
 
@@ -44,7 +44,7 @@ class ReservationController:
                     'room_type': self.reservation.room_type,
                     'room_number': self.reservation.room_number
                 })
-                
+
             return 1 #shows success
         except: 
             return 0 # shows failure
@@ -137,3 +137,4 @@ class ReservationController:
             return 1 #shows success
         except: 
             return 0 #shows failure
+        

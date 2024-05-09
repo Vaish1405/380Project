@@ -6,7 +6,7 @@ from utility import check_validity, get_total, getDays
 from Rooms import get_room_price
 from Extras import get_extras_price
 from datetime import datetime
-from Reservation import ReservationController
+from Reservation import ReservationController, find_reservation
 import bcrypt
 from utility import upload_user, find_user, hash_password, check_password, find_current_reservation
 
@@ -122,7 +122,7 @@ def userLoggedIn():
         session['last-name'] = user.user_name.split()[1]
         session['name'] = user.user_name
         session['phone'] = user.phone
-    return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
+        return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
 
 @app.route('/user', methods=['GET', 'POST'])
 def user():
@@ -156,6 +156,13 @@ def settings():
 def editReservation():
     return render_template('editReservation.html')
 
+@app.route('/cancelReservation')
+def cancelReservation():
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+    ReservationController(reservation=reservation).cancel_reservation(find_reservation(session['name'], session['check_in'], session['check_out']))
+    flash("Reservation cancelled!", 'no_reservation_error')
+    return render_template('userReservation.html', user_name=session['name'])
+
 @app.route('/userPageTemp.html', methods=['POST'])
 def userPageTemp():
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
@@ -168,10 +175,6 @@ def userPageTemp():
 @app.route('/signUp')
 def signUp():
     return render_template('signUp.html')
-
-@app.route('/login', methods=['POST'])
-def login():
-    return render_template('user.html', user_first_name="Amy", user_last_name="Vaish", user_email=request.form.get("email"))
 
 if __name__ == '__main__':
     app.run(debug=True)
