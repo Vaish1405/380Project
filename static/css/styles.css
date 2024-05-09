@@ -121,18 +121,12 @@ body {
 
 .img-text {
     position: absolute;
-    /*top: 0;
-    right: 0;*/
     display: flex;
     padding-top: 50px;
     padding-left: 400px;
     font-size: 30px;
     text-shadow: 1px 1px 2px black;
     color: white; 
-    /*
-    padding: 20px;
-    margin: 150px 40px;
-    z-index: 0;*/
 }
 
 .info-container {
