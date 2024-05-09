@@ -18,7 +18,7 @@
                 <h2 style="padding-left: 32px;">{{ user_name }}</h2>
             </div>
             <div class="icon-bar">
-                <a href="{{ url_for('user')}}" style="font-size: 18px;"><strong>User Info</strong></a>
+                <a href="{{ url_for('userLoggedIn')}}" style="font-size: 18px;"><strong>User Info</strong></a>
                 <a href="{{ url_for('userReservation')}}" style="font-size: 18px;"><strong>Reservations</strong></a>
                 <a href="{{ url_for('settings')}}"  style="font-size: 18px;"><strong>Settings</strong></a>
                 <a href="#" style="margin-top: 110px; color: black; font-size: 18px;"><strong>Logout</strong></a>
@@ -35,6 +35,11 @@
                                 <li style="color: red; font-size: 20px;">{{ message }}</li>
                             </ul><br>
                         {% endif %}
+                        {% if category == 'success_message' %}
+                            <ul class="flash-messages">
+                                <li style="color: green; font-size: 20px;">{{ message }}</li>
+                            </ul><br>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
                 {% if not messages %}
@@ -48,10 +53,12 @@
                         <h3>Room Number: {{current_reservation[5] }}</h3>
                         <br />
                         <br />
-                        <div class="editNCancel">
-                            <a href="/editReservation">Edit</a>
-                            <a href="/cancelReservation">Cancel</a>
-                        </div>
+                        {% if not guest %}
+                            <div class="editNCancel">
+                                <a href="/editReservationForm">Edit</a>
+                                <a href="/cancelReservation">Cancel</a>
+                            </div>
+                        {% endif %}
                         </div>
                     </div>
                 {% endif %}

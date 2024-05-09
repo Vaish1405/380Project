@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime, timedelta
 from Reservation import find_reservation
 import pandas as pd
-from utility import find_room_number
+from utility import find_current_reservation
 
 # Reservation controller to be called from front-end
 class ReservationController:
@@ -111,7 +111,7 @@ class ReservationController:
             return 0 #shows failure
 
     # Editing the reservation according to user preference and User ID is unique key
-    def edit_reservation(self, **changes):
+    def edit_reservation(self, reservation_index, **changes):
         """
             Programmer: Vaishnavi Sen
             
@@ -123,7 +123,8 @@ class ReservationController:
  
         """
         try: 
-            self.cancel_reservation(find_reservation(self.reservation.user_name, self.reservation.check_in, self.reservation.check_out))
+            self.cancel_reservation(reservation_index)
+            
             for key, val in changes.items(): 
                 if key == 'new_check_in':
                     self.reservation.check_in = val
@@ -131,10 +132,16 @@ class ReservationController:
                     self.reservation.check_out = val
                 if key == 'new_room_type':
                     self.reservation.room_type = val
-                    self.reservation.room_number = find_room_number(self.reservation.check_in, self.reservation.check_out, self.reservation.room_type)
+            
+            
+                    # self.reservation.room_number = find_room_number(self.reservation.check_in, self.reservation.check_out, self.reservation.room_type)
         
             self.make_reservation()
             return 1 #shows success
-        except: 
+        except Exception as e: 
+            print(e)
             return 0 #shows failure
-        
+    
+
+# reservation = ['Vaishnavi Sen', '2024-05-12', '2024-05-19', "Standard", 101]
+# ReservationController(reservation=reservation).edit_reservation(new_check_in="2024-05-14", new_check_out="2024-05-16")

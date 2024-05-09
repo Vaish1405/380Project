@@ -21,6 +21,7 @@ google_maps_api_key = os.getenv('google_maps_api_key')
 
 @app.route('/')
 def home():
+    session.clear()
     return render_template('index.html', api_key=google_maps_api_key)
 
 @app.route('/food')
@@ -109,24 +110,28 @@ def userSignedUp():
 
 @app.route('/userLoggedIn', methods=['POST', 'GET'])
 def userLoggedIn():
-    session['email'] = request.form.get('email')
-    user = find_user(session['email'])
-    if user == None:
-        flash("User does not exist. Sign up if new user!", 'login_error')
-        return redirect(request.referrer)        
-    elif check_password(request.form.get('password'), user.password) == False:
-        flash("Entered Password is wrong!", 'login_error')
-        return redirect(request.referrer)
+    if request.referrer == "http://127.0.0.1:5000/signUp":
+        session['email'] = request.form.get('email')
+        user = find_user(session['email'])
+        if user == None:
+            flash("User does not exist. Sign up if new user!", 'login_error')
+            return redirect(request.referrer)        
+        elif check_password(request.form.get('password'), user.password) == False:
+            flash("Entered Password is wrong!", 'login_error')
+            return redirect(request.referrer)
+        else:
+            session['first-name'] = user.user_name.split()[0]
+            session['last-name'] = user.user_name.split()[1]
+            session['name'] = user.user_name
+            session['phone'] = user.phone
+            return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
+    
     else:
-        session['first-name'] = user.user_name.split()[0]
-        session['last-name'] = user.user_name.split()[1]
-        session['name'] = user.user_name
-        session['phone'] = user.phone
         return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], user_email=session['email'], user_phone=session['phone'])
 
 @app.route('/user', methods=['GET', 'POST'])
 def user():
-    if not session['first-name']:
+    if request.referrer == "http://127.0.0.1:5000/payment":
         session['first-name'] = request.form.get('first-name')
         session["last-name"] = request.form.get('last-name')
         session['name'] = request.form.get('first-name') + ' ' + request.form.get('last-name')
@@ -134,30 +139,67 @@ def user():
         session['room_number'] = find_room_number(session['check_in'], session['check_out'], session['room-type'])   
         reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
         reservation_status = ReservationController(reservation=reservation).make_reservation()
-    if session['first-name']:
-        return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], 
-                               user_email=session['email'], user_phone=session['phone'])
+    # if session['first-name']:
+    return render_template('user.html', user_first_name=session['first-name'], user_last_name=session["last-name"], 
+                               user_email=session['email'])
 
 @app.route('/userReservation')
 def userReservation():
+    if find_user(session['email']) == None: 
+        data = ["", "", session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+        return render_template('userReservation.html', current_reservation=data, user_name=session['name'], guest=True)
+
     data=find_current_reservation(session['name'])
     if data.empty:
         flash("No Reservation found for the current user", 'no_reservation_error')
         return render_template("userReservation.html", user_name=session['name'])  
     else: 
         data = data.values[0]
+        session['check_in'] = data[2]
+        session['check_out'] = data[3]
+        session['room-type'] = data[4]
+        session['room_number'] = data[5]
         return render_template('userReservation.html', current_reservation=data, user_name=session['name'])
         
 @app.route('/settings')
 def settings():
     return render_template('settings.html', user_first_name=session['first-name'], user_last_name=session['last-name'], user_email=session['email'])
 
-@app.route('/editReservation')
-def editReservation():
+@app.route('/editReservationForm')
+def editReservationForm():
     return render_template('editReservation.html')
+
+@app.route('/editReservation', methods=['GET','POST'])
+def editReservation():
+    reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+    # # print(reservation)
+
+    # session['check_in']=request.form.get('new_check_in') or session['check_in'] 
+    # session['check_out']=request.form.get('new_check_out') or session['check_out'] 
+    # session['room-type']=request.form.get('new_room_type').lower() or session['room-type']
+    ReservationController(reservation=reservation).edit_reservation(find_reservation(session['name'], session['check_in'], session['check_out']), 
+                                                                                     new_check_in=request.form.get('new_check_in') or session['check_in'], 
+                                                                                     new_check_out=request.form.get('new_check_out') or session['check_out'] , 
+                                                                                     new_room_type=request.form.get('new_room_type').lower() or session['room-type'])
+    # reservation = ['Vaishnavi Sen', '2024-05-14', '2024-05-16', "Standard", 101]
+    # ReservationController(reservation=reservation).edit_reservation(find_reservation('Vaishnavi Sen', '2024-05-14', '2024-05-16'), new_check_in="2024-05-12", new_check_out="2024-05-19")
+    # 
+    # reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
+    # print(reservation)
+    # ReservationController(reservation=reservation).edit_reservation(new_check_in=request.form.get('new_check_in') or session['check_in'], 
+    #                                                                 new_check_out=request.form.get('new_check_out') or session['check_out'], 
+    #                                                                 new_room_type=request.form.get('new_room_type').lower() or session['room-type'])
+    flash("Reservation updated!", 'success_message')
+    return render_template('userReservation.html')
 
 @app.route('/cancelReservation')
 def cancelReservation():
+    data = find_current_reservation(session['name'])
+    data = data.values[0]
+    session['check_in'] = data[2]
+    session['check_out'] = data[3]
+    session['room-type'] = data[4]
+    session['room_number'] = data[5]
     reservation = [session['name'], session['check_in'], session['check_out'], session['room-type'], session['room_number']]
     ReservationController(reservation=reservation).cancel_reservation(find_reservation(session['name'], session['check_in'], session['check_out']))
     flash("Reservation cancelled!", 'no_reservation_error')
